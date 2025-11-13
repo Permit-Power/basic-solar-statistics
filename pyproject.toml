@@ -1,0 +1,20 @@
+[project]
+name = "basic-solar-statistics"
+version = "0.1.0"
+description = "A repository to pull, clean, and organize basic solar statistics related to states and jurisdictions"
+authors = [
+    {name = "Talor Gruenwald",email = "talor.gruenwald@gmail.com"}
+]
+license = {text = "Apache 2.0"}
+readme = "README.md"
+requires-python = "^3.11"
+dependencies = [
+]
+
+[tool.poetry]
+package-mode = false
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
