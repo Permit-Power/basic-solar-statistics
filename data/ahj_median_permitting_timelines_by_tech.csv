@@ -1,4 +1,4 @@
-﻿source_id,name,geoid,state,median_permitting_timeline,num_records,data_source,technology,year
+﻿source_id,name,geoid,state,median_permitting_timeline_days,num_records,data_source,technology,year
 2335,Calexico city,609710,California,33.5,60,OHM 2024,solar,2024
 856,Camarillo city,610046,California,0,95,OHM 2024,solar,2024
 1760,Campbell city,610345,California,7,27,OHM 2024,solar,2024

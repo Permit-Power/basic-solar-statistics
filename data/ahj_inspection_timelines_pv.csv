@@ -1,4 +1,4 @@
-﻿geoid,name,state,source_id,median_inspection_timeline,population
+﻿geoid,name,state,source_id,median_inspection_timeline_days,population
 1239550,Lauderhill city,Florida,146,76.5,73987
 2562535,Somerville city,Massachusetts,171,66,80464
 34031,Passaic County,New Jersey,,64.5,519986
