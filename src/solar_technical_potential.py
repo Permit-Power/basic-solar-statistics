@@ -5,7 +5,6 @@ Module to estimate total households and households eligible for solar
 from ResStock metadata.
 
 Eligibility criteria:
-- in.orientation in {"West", "Southwest", "South", "Southeast", "East"}
 - in.tenure == "Owner"
 - in.geometry_building_type_acs in {
     "Single-Family Detached", "Single-Family Attached", "2 Unit", "3 or 4 Unit"
@@ -18,7 +17,6 @@ Output: dictionary with totals and percentage.
 import pandas as pd
 
 # Allowed values
-ORIENT_OK = {"West", "Southwest", "South", "Southeast", "East"}
 TENURE_OK = {"Owner"}
 BUILDING_OK = {
     "Single-Family Detached",
@@ -61,8 +59,7 @@ def compute_solar_eligibility(df: pd.DataFrame, by_state: bool = True):
 
     # Eligibility mask
     mask = (
-        df["in.orientation"].isin(ORIENT_OK)
-        & df["in.tenure"].isin(TENURE_OK)
+        df["in.tenure"].isin(TENURE_OK)
         & df["in.geometry_building_type_acs"].isin(BUILDING_OK)
     )
 
