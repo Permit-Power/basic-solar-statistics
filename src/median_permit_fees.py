@@ -170,7 +170,11 @@ def run_pipeline(df_permits: pd.DataFrame,
         average_df (state-level weighted averages)
     """
 
-    ahj_df = merge_ahj_permit_population(df_permits, df_population, name_abbr)
+    ahj_df = (
+        merge_ahj_permit_population(
+            df_permits, df_population[['state', 'geoid', 'population']], name_abbr)[['state', 'geoid', 'name', 'population', 'median_permit_cost']]
+            .sort_values(['state', 'population'], ascending=[True,False])
+    )
 
     median_df = compute_state_weighted_medians(ahj_df)
     average_df = compute_state_weighted_averages(ahj_df)

@@ -3,9 +3,9 @@ name = "basic-solar-statistics"
 version = "0.1.0"
 description = "A repository to pull, clean, and organize basic solar statistics related to states and jurisdictions"
 authors = [
-    {name = "Talor Gruenwald",email = "talor.gruenwald@gmail.com"}
+    { name = "Talor Gruenwald", email = "talor.gruenwald@gmail.com" }
 ]
-license = {text = "Apache 2.0"}
+license = { text = "Apache 2.0" }
 readme = "README.md"
 requires-python = "^3.11"
 dependencies = [
@@ -14,12 +14,16 @@ dependencies = [
     "censusdis (>=1.4.2,<2.0.0)",
     "requests (>=2.32.5,<3.0.0)",
     "openpyxl (>=3.1.5,<4.0.0)",
-    "gdown (>=5.2.0,<6.0.0)"
+    "gdown (>=5.2.0,<6.0.0)",
+
+    # ---- Google Cloud + Drive dependencies (safe for WIF) ----
+    "google-auth (>=2.35.0,<3.0.0)",          # stable range, compatible with all Drive APIs
+    "google-auth-httplib2 (>=0.2.0,<1.0.0)",  # required transport layer for google-api-python-client
+    "google-api-python-client (>=2.130.0,<3.0.0)"  # main Drive API client
 ]
 
 [tool.poetry]
 package-mode = false
-
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^7.1.0"
