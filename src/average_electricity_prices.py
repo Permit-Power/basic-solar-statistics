@@ -419,7 +419,7 @@ def _aggregate_utility_level(df_all: pd.DataFrame) -> pd.DataFrame:
         agg.groupby(["utility_number", "sector"])["price_per_kwh"].pct_change()
     )
 
-    return agg
+    return agg.drop(columns=['avg_mwh_per_customer', 'avg_mwh_per_customer', 'avg_kwh_per_customer'])
 
 
 def _aggregate_state_level(df_utility: pd.DataFrame) -> pd.DataFrame:
@@ -460,7 +460,7 @@ def _aggregate_state_level(df_utility: pd.DataFrame) -> pd.DataFrame:
         agg.groupby(["state", "sector"])["price_per_kwh"].pct_change()
     )
 
-    return agg
+    return agg.drop(columns=['avg_mwh_per_customer', 'avg_kwh_per_customer', 'revenue_thousand_dollars', 'sales_mwh'])
 
 
 # ---------------------------------------------------------------------------

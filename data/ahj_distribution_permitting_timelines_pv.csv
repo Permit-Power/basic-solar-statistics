@@ -1,4 +1,4 @@
-﻿geoid,name,state,source_id,median_permitting_timeline_all_years,pctile_1,pctile_10,pctile_25,pctile_50,pctile_75,pctile_90,pctile_95,data_source,num_records,population,year
+﻿geoid,name,state,source_id,median_permitting_timeline_all_years,pctile_1,pctile_10,pctile_25,pctile_50,pctile_75,pctile_90,pctile_95,data_source,num_records,population,distribution_year
 3651000,New York city,New York,26,3,0,1,2,3,4,8,12,"Ohm Analytics, Reporting Year-2025",4716,8622467,2025
 666000,San Diego city,California,34,0,0,0,0,0,0,1,3,"Ohm Analytics, Reporting Year-2025",3177,1383987,2025
 15003,Honolulu County,Hawaii,54,0,0,0,0,0,0,0,15,"Ohm Analytics, Reporting Year-2025",2784,665544,2025

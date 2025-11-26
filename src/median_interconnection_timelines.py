@@ -172,7 +172,7 @@ def compute_state_level_metrics(ahj_df: pd.DataFrame) -> pd.DataFrame:
         results.append({
             "state": keys[0],
             "year": keys[1],
-            "tech_class": keys[2],
+            "tech": keys[2],
             "weighted_average_ix": weighted_avg,
             "weighted_median_ix": weighted_med,
             "total_installs": total_inst,
