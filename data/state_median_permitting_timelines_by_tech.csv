@@ -1,0 +1,148 @@
+﻿state,median_permitting_timeline_days,num_records,data_source,technology,year
+Iowa,6,473,OHM 2024,solar,2024
+Kansas,10,476,OHM 2024,solar,2024
+Kentucky,0,1119,OHM 2024,solar,2024
+Louisiana,4,1569,OHM 2024,solar,2024
+Maine,7,432,OHM 2024,solar,2024
+Maryland,3,5156,OHM 2024,solar,2024
+Massachusetts,3,13995,OHM 2024,solar,2024
+Michigan,7,386,OHM 2024,solar,2024
+Minnesota,5,1307,OHM 2024,solar,2024
+Missouri,7,1321,OHM 2024,solar,2024
+Montana,1,1448,OHM 2024,solar,2024
+Nebraska,2,104,OHM 2024,solar,2024
+Nevada,4,7506,OHM 2024,solar,2024
+New Hampshire,3,370,OHM 2024,solar,2024
+New Jersey,12,9431,OHM 2024,solar,2024
+New Mexico,7,2538,OHM 2024,solar,2024
+New York,3,10635,OHM 2024,solar,2024
+North Carolina,4,2683,OHM 2024,solar,2024
+North Dakota,2,5,OHM 2024,solar,2024
+Ohio,0,2896,OHM 2024,solar,2024
+Oklahoma,0,2001,OHM 2024,solar,2024
+Oregon,2,5510,OHM 2024,solar,2024
+Pennsylvania,3,2798,OHM 2024,solar,2024
+Puerto Rico,4,1336,OHM 2024,solar,2024
+Rhode Island,6,1591,OHM 2024,solar,2024
+South Carolina,9,748,OHM 2024,solar,2024
+South Dakota,1,4,OHM 2024,solar,2024
+Tennessee,1,14,OHM 2024,solar,2024
+Texas,3,14894,OHM 2024,solar,2024
+Utah,8,1410,OHM 2024,solar,2024
+Vermont,5,59,OHM 2024,solar,2024
+Virginia,5,7280,OHM 2024,solar,2024
+Washington,0,5619,OHM 2024,solar,2024
+Wisconsin,4,862,OHM 2024,solar,2024
+Wyoming,9,202,OHM 2024,solar,2024
+Alabama,7,6,OHM 2024,solar,2024
+Arizona,16,15163,OHM 2024,solar,2024
+Arkansas,2,408,OHM 2024,solar,2024
+California,5,49748,OHM 2024,solar,2024
+Colorado,3,10603,OHM 2024,solar,2024
+Connecticut,4,6600,OHM 2024,solar,2024
+Delaware,3,61,OHM 2024,solar,2024
+Florida,7,27408,OHM 2024,solar,2024
+Georgia,1,839,OHM 2024,solar,2024
+Hawaii,0,976,OHM 2024,solar,2024
+Idaho,0,2266,OHM 2024,solar,2024
+Illinois,12,27030,OHM 2024,solar,2024
+Indiana,3,350,OHM 2024,solar,2024
+Mississippi,,,,solar,
+Iowa,,,,storage,
+Kansas,,,,storage,
+Kentucky,,,,storage,
+Louisiana,,,,storage,
+Maine,,,,storage,
+Maryland,,,,storage,
+Massachusetts,,,,storage,
+Michigan,,,,storage,
+Minnesota,,,,storage,
+Missouri,,,,storage,
+Montana,,,,storage,
+Nebraska,,,,storage,
+Nevada,,,,storage,
+New Hampshire,,,,storage,
+New Jersey,,,,storage,
+New Mexico,,,,storage,
+New York,,,,storage,
+North Carolina,,,,storage,
+North Dakota,,,,storage,
+Ohio,,,,storage,
+Oklahoma,,,,storage,
+Oregon,,,,storage,
+Pennsylvania,33.5,6,OHM 2023,storage,2023
+Puerto Rico,3,31,OHM 2024,storage,2024
+Rhode Island,,,,storage,
+South Carolina,,,,storage,
+South Dakota,,,,storage,
+Tennessee,,,,storage,
+Texas,,,,storage,
+Utah,,,,storage,
+Vermont,,,,storage,
+Virginia,5.5,2,OHM 2024,storage,2024
+Washington,,,,storage,
+Wisconsin,,,,storage,
+Wyoming,,,,storage,
+Alabama,,,,storage,
+Arizona,76.5,26,OHM 2024,storage,2024
+Arkansas,,,,storage,
+California,5,1724,OHM 2024,storage,2024
+Colorado,,,,storage,
+Connecticut,,,,storage,
+Delaware,,,,storage,
+Florida,19,5,OHM 2024,storage,2024
+Georgia,,,,storage,
+Hawaii,,,,storage,
+Idaho,,,,storage,
+Illinois,,,,storage,
+Indiana,,,,storage,
+Mississippi,,,,storage,
+Iowa,13,6,OHM 2024,solar_storage,2024
+Kansas,7,9,OHM 2024,solar_storage,2024
+Kentucky,0,16,OHM 2024,solar_storage,2024
+Louisiana,10,64,OHM 2024,solar_storage,2024
+Maine,3.5,8,OHM 2024,solar_storage,2024
+Maryland,4,223,OHM 2024,solar_storage,2024
+Massachusetts,8,550,OHM 2024,solar_storage,2024
+Michigan,10,133,OHM 2024,solar_storage,2024
+Minnesota,4,8,OHM 2024,solar_storage,2024
+Missouri,11,42,OHM 2024,solar_storage,2024
+Montana,0,9,OHM 2024,solar_storage,2024
+Nebraska,18,2,OHM 2024,solar_storage,2024
+Nevada,9,355,OHM 2024,solar_storage,2024
+New Hampshire,5,29,OHM 2024,solar_storage,2024
+New Jersey,12,65,OHM 2024,solar_storage,2024
+New Mexico,3,21,OHM 2024,solar_storage,2024
+New York,1,71,OHM 2024,solar_storage,2024
+North Carolina,3,1273,OHM 2024,solar_storage,2024
+North Dakota,0,2,OHM 2024,solar_storage,2024
+Ohio,6,27,OHM 2024,solar_storage,2024
+Oklahoma,9,24,OHM 2024,solar_storage,2024
+Oregon,0,465,OHM 2024,solar_storage,2024
+Pennsylvania,7.5,28,OHM 2024,solar_storage,2024
+Puerto Rico,1,37935,OHM 2024,solar_storage,2024
+Rhode Island,8.5,16,OHM 2024,solar_storage,2024
+South Carolina,7,87,OHM 2024,solar_storage,2024
+South Dakota,1,1,OHM 2023,solar_storage,2023
+Tennessee,3,5,OHM 2024,solar_storage,2024
+Texas,3,2304,OHM 2024,solar_storage,2024
+Utah,9,333,OHM 2024,solar_storage,2024
+Vermont,2,16,OHM 2024,solar_storage,2024
+Virginia,6,235,OHM 2024,solar_storage,2024
+Washington,0,438,OHM 2024,solar_storage,2024
+Wisconsin,1,16,OHM 2024,solar_storage,2024
+Wyoming,8,6,OHM 2024,solar_storage,2024
+Alabama,27,1,OHM 2024,solar_storage,2024
+Arizona,39,2743,OHM 2024,solar_storage,2024
+Arkansas,0.5,8,OHM 2024,solar_storage,2024
+California,3,59950,OHM 2024,solar_storage,2024
+Colorado,7,1076,OHM 2024,solar_storage,2024
+Connecticut,5,190,OHM 2024,solar_storage,2024
+Delaware,10,2,OHM 2024,solar_storage,2024
+Florida,9,1196,OHM 2024,solar_storage,2024
+Georgia,6,70,OHM 2024,solar_storage,2024
+Hawaii,0,7350,OHM 2024,solar_storage,2024
+Idaho,0,324,OHM 2024,solar_storage,2024
+Illinois,6,385,OHM 2024,solar_storage,2024
+Indiana,6,16,OHM 2024,solar_storage,2024
+Mississippi,,,,solar_storage,

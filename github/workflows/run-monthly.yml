@@ -1,0 +1,48 @@
+name: Monthly Data Pipeline
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 1 * *"   # 1st of each month at 12:00 UTC
+
+jobs:
+  run-pipeline:
+    permissions:
+      id-token: write     # REQUIRED for WIF
+      contents: read
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+
+      - name: Install project dependencies
+        run: |
+          poetry install --no-interaction --no-root
+
+      - name: Install workflow-scoped dependencies
+        run: |
+          poetry run pip install papermill google-api-python-client google-auth-httplib2 google-auth-oauthlib
+
+      - name: Authenticate to Google Cloud via Workload Identity Federation
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Run monthly notebook
+        run: |
+          poetry run papermill notebooks/basic_statistics.ipynb notebooks/basic_statistics-output.ipynb
