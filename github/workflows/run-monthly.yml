@@ -45,4 +45,4 @@ jobs:
 
       - name: Run monthly notebook
         run: |
-          poetry run papermill notebooks/pipeline.ipynb notebooks/pipeline-output.ipynb
+          poetry run papermill notebooks/basic_statistics.ipynb notebooks/basic_statistics-output.ipynb
