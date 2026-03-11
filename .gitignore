@@ -1,2 +1,22 @@
-#data/
+# Large data files
 data/resstock_metadata.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/*-output.ipynb
+
+# Environment / secrets
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Poetry
+poetry.lock.bak
