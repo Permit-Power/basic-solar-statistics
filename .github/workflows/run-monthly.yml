@@ -44,6 +44,8 @@ jobs:
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
       - name: Run monthly notebook
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: |
           cd notebooks
           poetry run papermill basic_statistics.ipynb basic_statistics-output.ipynb

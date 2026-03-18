@@ -260,13 +260,13 @@ def load_lbnl_csv(folder: str, preferred_substring: Optional[str] = None) -> pd.
 # ---------------------------------------------------------------------------
 
 
-def compute_median_solar_costs_all_states(
+def compute_median_solar_costs_and_size(
     lbnl: pd.DataFrame,
     inflation: pd.DataFrame,
     min_year: int = 2019,
 ) -> pd.DataFrame:
     """
-    Compute inflation-adjusted median PV system cost ($/kW) by state × year.
+    Compute inflation-adjusted median PV system cost ($/kW) and size (kW) by state × year.
 
     Filtering rules:
         - technology_type in {"pv-only", "pv+storage"}
@@ -280,8 +280,9 @@ def compute_median_solar_costs_all_states(
     Aggregation:
         - price_per_kw = adj_price / PV_system_size_DC
         - median_price_per_kw = median(price_per_kw) per (state, year)
-        - pct_change = year-over-year percent change in median_price_per_kw,
-                       grouped by state
+        - median_system_size_kw = median(PV_system_size_DC) per (state, year)
+        - pct_change_price = year-over-year percent change in median_price_per_kw,
+                             grouped by state
 
     Parameters
     ----------
@@ -302,7 +303,8 @@ def compute_median_solar_costs_all_states(
             - state
             - year
             - median_price_per_kw
-            - pct_change
+            - median_system_size_kw
+            - pct_change_price
     """
     required_cols = {
         "technology_type",
@@ -348,14 +350,14 @@ def compute_median_solar_costs_all_states(
 
     # Groupby median
     med = (
-        merged.groupby(["state", "year"], as_index=False)["price_per_kw"]
+        merged.groupby(["state", "year"], as_index=False)[["price_per_kw", "PV_system_size_DC"]]
         .median()
-        .rename(columns={"price_per_kw": "median_price_per_kw"})
+        .rename(columns={"price_per_kw": "median_price_per_kw", "PV_system_size_DC": "median_system_size_kw"})
         .sort_values(["state", "year"])
     )
 
     # Year-over-year percent change within each state
-    med["pct_change"] = (
+    med["pct_change_price"] = (
         med.groupby("state")["median_price_per_kw"].pct_change()
     )
 
@@ -425,7 +427,7 @@ def load_and_process_lbnl(
         inflation = build_inflation_multipliers(fred_api_key, start_year=start_year)
 
         # 5. Compute median solar costs
-        results = compute_median_solar_costs_all_states(
+        results = compute_median_solar_costs_and_size(
             lbnl=lbnl_df,
             inflation=inflation,
             min_year=min_install_year,
