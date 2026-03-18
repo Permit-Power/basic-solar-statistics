@@ -11,6 +11,9 @@ __pycache__/
 .ipynb_checkpoints/
 notebooks/*-output.ipynb
 
+# Generated CSV exports (for Claude Project uploads)
+output_csvs/
+
 # Environment / secrets
 .env
 .env.*
