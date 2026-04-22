@@ -43,9 +43,17 @@ jobs:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
-      - name: Run monthly notebook
+      - name: Run pipeline
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+        run: |
+          cd notebooks
+          poetry run papermill pipeline.ipynb pipeline-output.ipynb
+
+      - name: Compile state stats
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: |
           cd notebooks
-          poetry run papermill basic_statistics.ipynb basic_statistics-output.ipynb
+          poetry run papermill compile_state_stats.ipynb compile_state_stats-output.ipynb

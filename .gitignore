@@ -1,5 +1,6 @@
 # Large data files
 data/resstock_metadata.csv
+data/TTS_LBNL_public_file_*.csv
 
 # Python
 __pycache__/

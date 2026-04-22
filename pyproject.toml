@@ -15,6 +15,7 @@ dependencies = [
     "requests (>=2.32.5,<3.0.0)",
     "openpyxl (>=3.1.5,<4.0.0)",
     "gdown (>=5.2.0,<6.0.0)",
+    "pgeocode (>=0.4.0,<1.0.0)",
 
     # ---- Google Cloud + Drive dependencies (safe for WIF) ----
     "google-auth (>=2.35.0,<3.0.0)",          # stable range, compatible with all Drive APIs

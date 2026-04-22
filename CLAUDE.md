@@ -15,23 +15,27 @@ This repository pulls, cleans, and organizes solar-related statistics for U.S. s
 
 ```
 notebooks/
-  basic_statistics.ipynb      # Main pipeline notebook — runs all modules and uploads to Drive
-  export_bill_savings.ipynb   # Exports bill savings CSVs from dGen outputs (run locally)
+  pipeline.ipynb              # Stage 1: pulls all data, processes it, uploads to Drive, saves output_csvs
+  compile_state_stats.ipynb   # Stage 2: joins output_csvs into a single state-level stats table
+  export_bill_savings.ipynb   # Local utility: exports bill savings CSVs from dGen outputs
 
-src/
+modules/
   pull_solar_count_and_capacity.py   # Downloads EIA 861M Excel files and aggregates PV/battery stats
-  solar_technical_potential.py       # Computes solar-eligible household counts from ResStock metadata
+  solar_eligible_households.py       # Computes solar-eligible household counts from ResStock metadata
+  solar_technical_potential.py       # NREL SLOPE residential PV technical generation potential
   median_solar_costs.py              # Processes LBNL Tracking the Sun cost data (real $/W)
-  average_electricity_prices.py      # Builds state- and utility-level electricity price tables from EIA 861
+  solar_bill_savings_update.py       # Loads pre-computed dGen bill savings (2026 cohort, baseline scenario)
   median_permit_fees.py              # Aggregates Solar TRACE permitting fee data
   median_interconnection_timelines.py# Aggregates Solar TRACE interconnection timeline data
-  solar_bill_savings.py              # Loads pre-computed dGen bill savings exports
-  bill_savings_export.py             # Helper to export dGen per_state_outputs to CSV
+  average_electricity_prices.py      # Builds state- and utility-level electricity price tables from EIA 861
   drive_uploader.py                  # Google Drive helpers (authenticate, ensure folder path, upload)
+  manifest.py                        # Builds and uploads the Drive manifest
 
 data/
   *.csv                              # Static and pre-processed input datasets
   bill_savings_csvs/                 # Pre-computed dGen bill savings (must be present before pipeline runs)
+
+output_csvs/                         # Processed outputs written by pipeline.ipynb (git-ignored)
 
 .github/workflows/
   run-monthly.yml                    # Scheduled GitHub Action (1st of each month, 12:00 UTC)
@@ -55,7 +59,7 @@ poetry run pip install papermill
 
 ```bash
 cd notebooks
-poetry run papermill basic_statistics.ipynb basic_statistics-output.ipynb
+poetry run papermill pipeline.ipynb pipeline-output.ipynb
 ```
 
 The output notebook (`*-output.ipynb`) is git-ignored.
@@ -73,7 +77,7 @@ In CI, authentication is handled automatically via [Workload Identity Federation
 | Solar TRACE fees & IX timelines | Static CSVs in `data/` | Read from disk |
 | Bill savings | Pre-computed CSVs in `data/bill_savings_csvs/` | Must be present before pipeline runs |
 | EIA 861M solar/battery stats | Downloaded live from EIA website | `pull_solar_count_and_capacity.py` |
-| LBNL Tracking the Sun costs | Downloaded from Google Drive link | `median_solar_costs.py` |
+| LBNL Tracking the Sun costs | Local CSV in `data/` | `median_solar_costs.py` |
 | EIA 861 electricity prices | Downloaded live from EIA website | `average_electricity_prices.py` |
 
 ## Google Drive upload structure
@@ -91,6 +95,6 @@ Results are uploaded to folder ID `1DBlVUvspIPTTyZPtVovYtEgUSmQNXmG7` with the f
 
 ## Important notes
 
-- The `data/bill_savings_csvs/` directory must contain the pre-computed CSV (`run_all_states_net_savings_adjust_loan_params_state_bill_savings.csv`) before running `basic_statistics.ipynb`. This file is generated locally from dGen outputs using `export_bill_savings.ipynb` and committed to the repo.
+- The `data/bill_savings_csvs/` directory must contain the pre-computed CSV before running `pipeline.ipynb`. This file is generated locally from dGen outputs using `export_bill_savings.ipynb` and committed to the repo.
 - `data/resstock_metadata_technical_potential.csv` is ~34 MB and committed directly to the repo.
 - The GitHub Action only has `contents: read` permission; it does not write back to the repository.

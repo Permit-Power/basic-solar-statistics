@@ -1,0 +1,477 @@
+State Name,Technology,Geography ID,Technical Generation Potential - MWh MWh
+Louisiana,utility_pv,G22,3146703471.53
+Louisiana,csp,G22,1445671338.02
+Louisiana,residential_pv,G22,11881755.66
+Louisiana,commercial_pv,G22,17836990.28
+Louisiana,distributed_wind,G22,324710306.02
+Louisiana,floating_pv,G22,3018627.871
+Louisiana,biopower,G22,45896108.19940741
+Louisiana,offshore_wind,G22,1229135712.7052433
+Louisiana,hydro,G22,7602303.78413269
+Louisiana,land_based_wind,G22,107003810.43
+Mississippi,utility_pv,G28,3797550796.11
+Mississippi,csp,G28,1224143612.72
+Mississippi,residential_pv,G28,6393531.62
+Mississippi,commercial_pv,G28,8154942.42
+Mississippi,distributed_wind,G28,425574027.32
+Mississippi,floating_pv,G28,7729631.215
+Mississippi,biopower,G28,31477699.166444443
+Mississippi,offshore_wind,G28,84633466.60392371
+Mississippi,hydro,G28,2225101.2975006485
+Mississippi,land_based_wind,G28,188920543.54
+Georgia,utility_pv,G13,4124586038.81
+Georgia,csp,G13,512795819.55
+Georgia,residential_pv,G13,18698911.32
+Georgia,commercial_pv,G13,26204648.1
+Georgia,distributed_wind,G13,489481175.16
+Georgia,floating_pv,G13,5675869.682
+Georgia,biopower,G13,99745688.92148148
+Georgia,offshore_wind,G13,292849859.16549313
+Georgia,hydro,G13,11543962.05192608
+Georgia,land_based_wind,G13,138223051.76
+Illinois,utility_pv,G17,6006934604.49
+Illinois,csp,G17,0.0
+Illinois,residential_pv,G17,22751407.78
+Illinois,commercial_pv,G17,32340454.61
+Illinois,distributed_wind,G17,1002903047.98
+Illinois,floating_pv,G17,1719909.814
+Illinois,biopower,G17,56996188.6638889
+Illinois,offshore_wind,G17,17021469.573533297
+Illinois,hydro,G17,20481860.76803223
+Illinois,land_based_wind,G17,528267055.92
+Minnesota,utility_pv,G27,6118279034.09
+Minnesota,csp,G27,0.0
+Minnesota,residential_pv,G27,9777202.08
+Minnesota,commercial_pv,G27,16814289.84
+Minnesota,distributed_wind,G27,1064771245.21
+Minnesota,floating_pv,G27,37237500.24
+Minnesota,biopower,G27,110620908.79484442
+Minnesota,offshore_wind,G27,1955232.0
+Minnesota,hydro,G27,7730012.38397513
+Minnesota,land_based_wind,G27,392893980.75
+Idaho,utility_pv,G16,2974012805.11
+Idaho,csp,G16,3879399764.75
+Idaho,residential_pv,G16,2631715.67
+Idaho,commercial_pv,G16,1577308.99
+Idaho,distributed_wind,G16,227172944.75
+Idaho,floating_pv,G16,18660364.03
+Idaho,geothermal,G16,6170193.6
+Idaho,biopower,G16,7157308.902548149
+Idaho,hydro,G16,58834808.147924304
+Idaho,land_based_wind,G16,524897029.96
+Wisconsin,utility_pv,G55,3538828046.41
+Wisconsin,csp,G55,0.0
+Wisconsin,residential_pv,G55,12111238.43
+Wisconsin,commercial_pv,G55,15415277.82
+Wisconsin,distributed_wind,G55,877000101.15
+Wisconsin,floating_pv,G55,4185156.85
+Wisconsin,biopower,G55,41988799.084407404
+Wisconsin,offshore_wind,G55,77226725.98708658
+Wisconsin,hydro,G55,4760394.44122556
+Wisconsin,land_based_wind,G55,228010870.96
+Nebraska,utility_pv,G31,7982349417.37
+Nebraska,csp,G31,9694882940.23
+Nebraska,residential_pv,G31,4666235.46
+Nebraska,commercial_pv,G31,7352343.78
+Nebraska,distributed_wind,G31,609563190.08
+Nebraska,floating_pv,G31,12967310.03
+Nebraska,biopower,G31,46377976.68642964
+Nebraska,hydro,G31,9232048.608399805
+Nebraska,land_based_wind,G31,1210790945.92
+Utah,utility_pv,G49,3709227976.49
+Utah,csp,G49,5649145780.21
+Utah,residential_pv,G49,4248351.79
+Utah,commercial_pv,G49,4360765.93
+Utah,distributed_wind,G49,122355059.84
+Utah,floating_pv,G49,7028180.041000001
+Utah,geothermal,G49,3505752.0
+Utah,biopower,G49,4982533.073777777
+Utah,hydro,G49,4901946.211768059
+Utah,land_based_wind,G49,636194125.48
+Colorado,utility_pv,G08,6979828035.53
+Colorado,csp,G08,11650416298.3
+Colorado,residential_pv,G08,8612712.55
+Colorado,commercial_pv,G08,14292025.14
+Colorado,distributed_wind,G08,397658258.59
+Colorado,floating_pv,G08,19674017.95
+Colorado,geothermal,G08,1151151.6000000003
+Colorado,biopower,G08,24325268.90654815
+Colorado,hydro,G08,34549789.91310259
+Colorado,land_based_wind,G08,883699969.91
+Wyoming,utility_pv,G56,5668346535.31
+Wyoming,csp,G56,5882973958.77
+Wyoming,residential_pv,G56,1151794.26
+Wyoming,commercial_pv,G56,712259.42
+Wyoming,distributed_wind,G56,179773835.15
+Wyoming,floating_pv,G56,20534813.48
+Wyoming,geothermal,G56,678724.8
+Wyoming,biopower,G56,413993.66097037034
+Wyoming,hydro,G56,3888036.418796407
+Wyoming,land_based_wind,G56,1330381419.05
+North Dakota,utility_pv,G38,7002105372.77
+North Dakota,csp,G38,1109568964.88
+North Dakota,residential_pv,G38,1307579.94
+North Dakota,commercial_pv,G38,1517301.88
+North Dakota,distributed_wind,G38,361631817.59
+North Dakota,floating_pv,G38,1752056.197
+North Dakota,biopower,G38,15353119.8996
+North Dakota,hydro,G38,6914763.0179130165
+North Dakota,land_based_wind,G38,669797341.39
+Missouri,utility_pv,G29,5102668801.41
+Missouri,csp,G29,745589520.11
+Missouri,residential_pv,G29,13459702.7
+Missouri,commercial_pv,G29,19697365.81
+Missouri,distributed_wind,G29,1043945625.66
+Missouri,floating_pv,G29,2051977.574
+Missouri,biopower,G29,10742705.891474074
+Missouri,hydro,G29,30744776.233979695
+Missouri,land_based_wind,G29,653907868.25
+Montana,utility_pv,G30,7416131216.01
+Montana,csp,G30,1955933007.02
+Montana,residential_pv,G30,1552311.45
+Montana,commercial_pv,G30,378283.87
+Montana,distributed_wind,G30,347719709.15
+Montana,floating_pv,G30,21167865.64
+Montana,geothermal,G30,1021065.6
+Montana,biopower,G30,14847442.159370374
+Montana,hydro,G30,44926866.30892679
+Montana,land_based_wind,G30,1930819707.16
+Kansas,utility_pv,G20,10625695225.82
+Kansas,csp,G20,18009661592.85
+Kansas,residential_pv,G20,6994556.78
+Kansas,commercial_pv,G20,9196429.79
+Kansas,distributed_wind,G20,744162453.35
+Kansas,floating_pv,G20,10889161.31
+Kansas,biopower,G20,69523576.94704445
+Kansas,hydro,G20,31605575.993133966
+Kansas,land_based_wind,G20,1120963248.85
+South Dakota,utility_pv,G46,7624085911.33
+South Dakota,csp,G46,6690148151.9
+South Dakota,residential_pv,G46,1879930.44
+South Dakota,commercial_pv,G46,1800909.76
+South Dakota,distributed_wind,G46,426164820.31
+South Dakota,floating_pv,G46,1712617.299
+South Dakota,biopower,G46,128949494.75567406
+South Dakota,hydro,G46,14371777.189379387
+South Dakota,land_based_wind,G46,1153240204.75
+Iowa,utility_pv,G19,5480643021.86
+Iowa,csp,G19,4976544.37
+Iowa,residential_pv,G19,7611253.23
+Iowa,commercial_pv,G19,8239233.12
+Iowa,distributed_wind,G19,1036928958.03
+Iowa,floating_pv,G19,2467663.831
+Iowa,biopower,G19,88241847.64275557
+Iowa,hydro,G19,22950226.68411017
+Iowa,land_based_wind,G19,623214076.52
+West Virginia,utility_pv,G54,79662244.99
+West Virginia,csp,G54,0.0
+West Virginia,residential_pv,G54,3404772.05
+West Virginia,commercial_pv,G54,3329281.25
+West Virginia,distributed_wind,G54,214856221.22
+West Virginia,floating_pv,G54,486379.01
+West Virginia,biopower,G54,11662733.43377778
+West Virginia,hydro,G54,15782328.131626079
+West Virginia,land_based_wind,G54,142908800.61
+Maryland,utility_pv,G24,448303272.91
+Maryland,csp,G24,0.0
+Maryland,residential_pv,G24,8752919.19
+Maryland,commercial_pv,G24,17628776.65
+Maryland,distributed_wind,G24,147452498.59
+Maryland,floating_pv,G24,636282.557
+Maryland,biopower,G24,4387044.127333334
+Maryland,offshore_wind,G24,113523601.57588334
+Maryland,hydro,G24,2575790.170693376
+Maryland,land_based_wind,G24,21212320.09
+Rhode Island,utility_pv,G44,34760021.23
+Rhode Island,csp,G44,0.0
+Rhode Island,residential_pv,G44,1366555.49
+Rhode Island,commercial_pv,G44,3320334.05
+Rhode Island,distributed_wind,G44,16566909.37
+Rhode Island,floating_pv,G44,1120719.2959999999
+Rhode Island,biopower,G44,50600.227644444436
+Rhode Island,offshore_wind,G44,90249505.71040727
+Rhode Island,hydro,G44,20447.896272029542
+Rhode Island,land_based_wind,G44,629803.52
+New Hampshire,utility_pv,G33,97380537.95
+New Hampshire,csp,G33,0.0
+New Hampshire,residential_pv,G33,2041883.74
+New Hampshire,commercial_pv,G33,3629756.41
+New Hampshire,distributed_wind,G33,101327434.63
+New Hampshire,floating_pv,G33,2067315.209
+New Hampshire,biopower,G33,4274173.400592593
+New Hampshire,offshore_wind,G33,11827638.096951108
+New Hampshire,hydro,G33,2965398.68348369
+New Hampshire,land_based_wind,G33,46458035.92
+Vermont,utility_pv,G50,72488052.74
+Vermont,csp,G50,0.0
+Vermont,residential_pv,G50,986654.55
+Vermont,commercial_pv,G50,1890242.39
+Vermont,distributed_wind,G50,108075542.99
+Vermont,floating_pv,G50,554717.71
+Vermont,biopower,G50,5530583.418888887
+Vermont,hydro,G50,2502829.4860560526
+Vermont,land_based_wind,G50,55420645.84
+Connecticut,utility_pv,G09,61737584.69
+Connecticut,csp,G09,0.0
+Connecticut,residential_pv,G09,5169227.88
+Connecticut,commercial_pv,G09,10677284.87
+Connecticut,distributed_wind,G09,65478202.43
+Connecticut,floating_pv,G09,3873620.81
+Connecticut,biopower,G09,185522.3770962963
+Connecticut,offshore_wind,G09,10074121.238893885
+Connecticut,hydro,G09,1176438.2110534236
+Connecticut,land_based_wind,G09,6866042.64
+Delaware,utility_pv,G10,145945085.16
+Delaware,csp,G10,0.0
+Delaware,residential_pv,G10,1687076.53
+Delaware,commercial_pv,G10,1831132.95
+Delaware,distributed_wind,G10,33947281.39
+Delaware,floating_pv,G10,41469.414
+Delaware,biopower,G10,1084025.8604888888
+Delaware,offshore_wind,G10,8550238.936006876
+Delaware,land_based_wind,G10,1605114.55
+New Jersey,utility_pv,G34,259576055.4
+New Jersey,csp,G34,0.0
+New Jersey,residential_pv,G34,12095365.6
+New Jersey,commercial_pv,G34,20572981.5
+New Jersey,distributed_wind,G34,96210452.92
+New Jersey,floating_pv,G34,2412666.815
+New Jersey,biopower,G34,458792.54533333343
+New Jersey,offshore_wind,G34,313619785.5179759
+New Jersey,hydro,G34,1016023.8912839618
+New Jersey,land_based_wind,G34,5882256.27
+Pennsylvania,utility_pv,G42,792173808.33
+Pennsylvania,csp,G42,0.0
+Pennsylvania,residential_pv,G42,19582856.41
+Pennsylvania,commercial_pv,G42,31875516.28
+Pennsylvania,distributed_wind,G42,635934034.1
+Pennsylvania,floating_pv,G42,586652.442
+Pennsylvania,biopower,G42,40699873.94892593
+Pennsylvania,offshore_wind,G42,15721287.173128914
+Pennsylvania,hydro,G42,66023392.001181245
+Pennsylvania,land_based_wind,G42,275002596.07
+Ohio,utility_pv,G39,2872126068.67
+Ohio,csp,G39,0.0
+Ohio,residential_pv,G39,23521982.14
+Ohio,commercial_pv,G39,31614101.94
+Ohio,distributed_wind,G39,714303505.11
+Ohio,floating_pv,G39,94956.419
+Ohio,biopower,G39,35906040.83104444
+Ohio,offshore_wind,G39,63461601.36620935
+Ohio,hydro,G39,6604687.2732501915
+Ohio,land_based_wind,G39,254749954.91
+Alabama,utility_pv,G01,3285481948.16
+Alabama,residential_pv,G01,10741475.79
+Alabama,commercial_pv,G01,14861864.35
+Alabama,csp,G01,458204221.5
+Alabama,distributed_wind,G01,443194010.69
+Alabama,floating_pv,G01,943686.905
+Alabama,biopower,G01,47995740.5125926
+Alabama,offshore_wind,G01,169120597.70087042
+Alabama,hydro,G01,6615637.014692849
+Alabama,land_based_wind,G01,254791272.15
+Texas,utility_pv,G48,31485323440.08
+Texas,csp,G48,48055919677.31
+Texas,residential_pv,G48,61283430.81
+Texas,commercial_pv,G48,84611627.25
+Texas,distributed_wind,G48,1906316815.51
+Texas,floating_pv,G48,29432160.63
+Texas,biopower,G48,34160290.59126668
+Texas,offshore_wind,G48,870428002.5023737
+Texas,hydro,G48,10620033.35449421
+Texas,land_based_wind,G48,3196840376.35
+Maine,utility_pv,G23,1205282558.12
+Maine,csp,G23,0.0
+Maine,residential_pv,G23,2222215.31
+Maine,commercial_pv,G23,3992810.85
+Maine,distributed_wind,G23,202239951.79
+Maine,floating_pv,G23,22990545.32
+Maine,biopower,G23,38112777.71125926
+Maine,offshore_wind,G23,452990565.77964944
+Maine,hydro,G23,7697210.135093503
+Maine,land_based_wind,G23,200990265.39
+New York,utility_pv,G36,1314614373.65
+New York,csp,G36,0.0
+New York,residential_pv,G36,19793320.18
+New York,commercial_pv,G36,34886750.29
+New York,distributed_wind,G36,707478814.64
+New York,floating_pv,G36,16404656.31
+New York,biopower,G36,46960808.577544436
+New York,offshore_wind,G36,305845689.61701214
+New York,hydro,G36,53325153.77708578
+New York,land_based_wind,G36,252848232.66
+Massachusetts,utility_pv,G25,156681354.01
+Massachusetts,csp,G25,0.0
+Massachusetts,residential_pv,G25,8176395.76
+Massachusetts,commercial_pv,G25,19188631.79
+Massachusetts,distributed_wind,G25,112278160.83
+Massachusetts,floating_pv,G25,295104.288
+Massachusetts,biopower,G25,622101.7124444444
+Massachusetts,offshore_wind,G25,1143322874.6438422
+Massachusetts,hydro,G25,1211043.348713887
+Massachusetts,land_based_wind,G25,14451636.31
+Virginia,utility_pv,G51,1599983326.16
+Virginia,csp,G51,161794.09
+Virginia,residential_pv,G51,10016509.44
+Virginia,commercial_pv,G51,13198818.49
+Virginia,distributed_wind,G51,403620122.81
+Virginia,floating_pv,G51,27500177.77
+Virginia,biopower,G51,61724153.95705186
+Virginia,offshore_wind,G51,153554798.01070273
+Virginia,hydro,G51,17857599.963711035
+Virginia,land_based_wind,G51,141008024.86
+District of Columbia,utility_pv,G11,0.0
+District of Columbia,csp,G11,0.0
+District of Columbia,residential_pv,G11,156982.18
+District of Columbia,commercial_pv,G11,2206934.58
+District of Columbia,distributed_wind,G11,1215472.75
+District of Columbia,biopower,G11,1349022.8845925927
+District of Columbia,hydro,G11,752065.4985954309
+California,utility_pv,G06,4514440920.08
+California,csp,G06,6387960087.36
+California,residential_pv,G06,70314636.13
+California,commercial_pv,G06,150200335.06
+California,distributed_wind,G06,524459877.79
+California,floating_pv,G06,75687657.5
+California,geothermal,G06,108503637.60000001
+California,biopower,G06,55766980.117333345
+California,offshore_wind,G06,357413036.725693
+California,hydro,G06,92469658.29140364
+California,land_based_wind,G06,456328078.0
+Oregon,utility_pv,G41,2939641393.68
+Oregon,csp,G41,3363650772.68
+Oregon,residential_pv,G41,5836981.95
+Oregon,commercial_pv,G41,9689848.1
+Oregon,distributed_wind,G41,217002904.95
+Oregon,floating_pv,G41,12182760.71
+Oregon,geothermal,G41,12738616.800000003
+Oregon,biopower,G41,30348581.721674073
+Oregon,offshore_wind,G41,237080316.4661657
+Oregon,hydro,G41,71071016.7684915
+Oregon,land_based_wind,G41,595323820.18
+Washington,utility_pv,G53,1619657488.68
+Washington,csp,G53,1295971813.17
+Washington,residential_pv,G53,8147626.67
+Washington,commercial_pv,G53,14689297.81
+Washington,distributed_wind,G53,285932279.27
+Washington,floating_pv,G53,23554495.32
+Washington,geothermal,G53,596556.0
+Washington,biopower,G53,19697510.393703707
+Washington,offshore_wind,G53,163688760.32618397
+Washington,hydro,G53,65012368.74380131
+Washington,land_based_wind,G53,333833628.31
+Nevada,utility_pv,G32,6257146333.23
+Nevada,csp,G32,10172285159.66
+Nevada,residential_pv,G32,3542265.31
+Nevada,commercial_pv,G32,9471862.27
+Nevada,distributed_wind,G32,83821897.98
+Nevada,floating_pv,G32,31463560.1
+Nevada,geothermal,G32,54310247.99999999
+Nevada,hydro,G32,1789251.515189883
+Nevada,land_based_wind,G32,1046970622.15
+Florida,utility_pv,G12,3330753420.46
+Florida,csp,G12,1637090842.1
+Florida,residential_pv,G12,45803020.75
+Florida,commercial_pv,G12,62363611.52
+Florida,distributed_wind,G12,349809025.76
+Florida,floating_pv,G12,120071469.0
+Florida,biopower,G12,43096568.95422223
+Florida,offshore_wind,G12,1131911234.03202
+Florida,hydro,G12,2698741.2457026225
+Florida,land_based_wind,G12,64077232.18
+New Mexico,utility_pv,G35,11410896960.1
+New Mexico,csp,G35,20440593891.31
+New Mexico,residential_pv,G35,4991523.39
+New Mexico,commercial_pv,G35,4288135.88
+New Mexico,distributed_wind,G35,273956695.2
+New Mexico,floating_pv,G35,64392846.63
+New Mexico,geothermal,G35,1135821.5999999999
+New Mexico,biopower,G35,8141018.04311111
+New Mexico,hydro,G35,18699499.40513364
+New Mexico,land_based_wind,G35,1664139715.89
+Oklahoma,utility_pv,G40,7935173924.01
+Oklahoma,csp,G40,12015003852.12
+Oklahoma,residential_pv,G40,10934682.88
+Oklahoma,commercial_pv,G40,17194006.73
+Oklahoma,distributed_wind,G40,799301462.88
+Oklahoma,floating_pv,G40,96401938.94
+Oklahoma,biopower,G40,12856634.732748149
+Oklahoma,hydro,G40,14503424.777320297
+Oklahoma,land_based_wind,G40,903698124.59
+Tennessee,utility_pv,G47,1875360355.71
+Tennessee,csp,G47,2830267.84
+Tennessee,residential_pv,G47,13043822.58
+Tennessee,commercial_pv,G47,15187891.24
+Tennessee,distributed_wind,G47,473936667.27
+Tennessee,floating_pv,G47,1184847.581
+Tennessee,biopower,G47,76106756.71111111
+Tennessee,hydro,G47,40033230.3211962
+Tennessee,land_based_wind,G47,215879988.42
+Arkansas,utility_pv,G05,3716171737.23
+Arkansas,csp,G05,2128099816.57
+Arkansas,residential_pv,G05,6529459.01
+Arkansas,commercial_pv,G05,8553613.36
+Arkansas,distributed_wind,G05,506134898.76
+Arkansas,floating_pv,G05,4380128.701
+Arkansas,biopower,G05,47812125.682962954
+Arkansas,hydro,G05,16074245.841219837
+Arkansas,land_based_wind,G05,352690390.88
+Arizona,utility_pv,G04,8314796846.68
+Arizona,csp,G04,13728868577.09
+Arizona,residential_pv,G04,13993686.49
+Arizona,commercial_pv,G04,4547713.92
+Arizona,distributed_wind,G04,261472221.92
+Arizona,floating_pv,G04,21428428.47
+Arizona,geothermal,G04,919800.0
+Arizona,biopower,G04,5878410.953777778
+Arizona,hydro,G04,12999069.318968643
+Arizona,land_based_wind,G04,1049161727.47
+North Carolina,utility_pv,G37,2953992054.51
+North Carolina,csp,G37,175497005.53
+North Carolina,residential_pv,G37,17992037.95
+North Carolina,commercial_pv,G37,23572959.21
+North Carolina,distributed_wind,G37,465421780.72
+North Carolina,floating_pv,G37,10682368.31
+North Carolina,biopower,G37,58303755.71259261
+North Carolina,offshore_wind,G37,594875731.6859856
+North Carolina,hydro,G37,10659649.086132333
+North Carolina,land_based_wind,G37,116231149.77
+South Carolina,utility_pv,G45,1987299800.66
+South Carolina,csp,G45,278277298.13
+South Carolina,residential_pv,G45,9724159.84
+South Carolina,commercial_pv,G45,9248957.95
+South Carolina,distributed_wind,G45,286998314.75
+South Carolina,floating_pv,G45,26827057.55
+South Carolina,biopower,G45,43060818.69600002
+South Carolina,offshore_wind,G45,734721188.5101762
+South Carolina,hydro,G45,3304546.023010363
+South Carolina,land_based_wind,G45,55848463.31
+Kentucky,utility_pv,G21,1693272836.5
+Kentucky,csp,G21,0.0
+Kentucky,residential_pv,G21,8405121.98
+Kentucky,commercial_pv,G21,13120305.25
+Kentucky,distributed_wind,G21,398164246.44
+Kentucky,floating_pv,G21,1845859.576
+Kentucky,biopower,G21,12143633.351859262
+Kentucky,hydro,G21,12528800.595933462
+Kentucky,land_based_wind,G21,257229751.54
+Michigan,utility_pv,G26,3595423262.07
+Michigan,csp,G26,0.0
+Michigan,residential_pv,G26,19931620.44
+Michigan,commercial_pv,G26,27001398.67
+Michigan,distributed_wind,G26,854354162.55
+Michigan,floating_pv,G26,6757620.622
+Michigan,biopower,G26,99588740.8065185
+Michigan,offshore_wind,G26,285147893.7396616
+Michigan,hydro,G26,2370413.5690092267
+Michigan,land_based_wind,G26,163894719.87
+Indiana,utility_pv,G18,3453123080.96
+Indiana,csp,G18,0.0
+Indiana,residential_pv,G18,15332584.46
+Indiana,commercial_pv,G18,17659833.08
+Indiana,distributed_wind,G18,678910342.23
+Indiana,floating_pv,G18,1461824.6430000002
+Indiana,biopower,G18,31877904.229777776
+Indiana,offshore_wind,G18,10919966.729141481
+Indiana,hydro,G18,5939920.759394395
+Indiana,land_based_wind,G18,240672660.71
