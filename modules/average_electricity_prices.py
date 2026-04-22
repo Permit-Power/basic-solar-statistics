@@ -35,6 +35,7 @@ Users must supply a FRED API key for CPI retrieval.
 from __future__ import annotations
 
 import logging
+import os
 import tempfile
 import zipfile
 from pathlib import Path
@@ -112,7 +113,9 @@ def _load_cpi_annual_from_fred() -> pd.DataFrame:
             year : int
             cpi  : float
     """
-    api_key = "2764715428a4687d2a8ce57af948081d"
+    api_key = os.environ.get("FRED_API_KEY", "")
+    if not api_key:
+        raise RuntimeError("FRED_API_KEY environment variable is not set.")
     url = "https://api.stlouisfed.org/fred/series/observations"
     params = {
         "series_id": "CPIAUCSL",
