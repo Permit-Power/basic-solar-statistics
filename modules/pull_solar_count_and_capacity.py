@@ -451,7 +451,10 @@ def parse_net_metering(df_raw: pd.DataFrame) -> pd.DataFrame:
         raise ValueError("No Photovoltaic block found in net-metering sheet.")
 
     pv_capacity = extract_sector_block(pv_block, "Capacity MW", default_value=0.0)
+    # 2023 files use "Installations" instead of "Customers"
     pv_customers = extract_sector_block(pv_block, "Customers", default_value=0.0)
+    if all(s.eq(0).all() for s in pv_customers.values()):
+        pv_customers = extract_sector_block(pv_block, "Installations", default_value=0.0)
 
     # ---- Storage under Photovoltaic (older years) ----
     storage_capacity = extract_sector_block(
