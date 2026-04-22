@@ -327,8 +327,7 @@ def parse_non_net_metering(df_raw: pd.DataFrame) -> pd.DataFrame:
                     "state": state,
                     "sector": s,
                     "pv_capacity_mw_non_net": float(pv_capacity[s].loc[idx]),
-                    #"pv_customers_non_net": float(pv_customers[s].loc[idx]),
-                    "pv_customers_non_net": [0],
+                    "pv_customers_non_net": float(pv_customers[s].loc[idx]),
                     "battery_capacity_mw_non_net": float(
                         combined_batt_capacity[s].loc[idx]
                     ),
