@@ -1,7 +1,7 @@
 {
   "name": "Big Numbers Database",
   "description": "A collection of regularly updated solar energy statistics for U.S. states and jurisdictions, maintained by Permit Power. Includes data on solar costs, capacity, permitting timelines, inspection timelines, interconnection, electricity rates, jobs, bill savings, and more.",
-  "generated_at": "2026-03-18T21:40:33.719590+00:00",
+  "generated_at": "2026-04-22T17:03:43.134361+00:00",
   "total_sheets": 20,
   "categories": [
     "1. Solar",
@@ -20,26 +20,26 @@
       "granularity": "state",
       "google_sheet_id": "1enGLtu3fgy4R8QAv_D73tPtcSrWSd5aNSGZ60a90F38",
       "google_sheet_url": "https://docs.google.com/spreadsheets/d/1enGLtu3fgy4R8QAv_D73tPtcSrWSd5aNSGZ60a90F38",
-      "row_count": 50,
+      "row_count": 49,
       "columns": [
         {
           "name": "state",
           "description": "U.S. state (full name)",
           "dtype": "object",
           "sample_values": [
-            "California",
-            "Texas",
-            "Florida",
-            "New York",
-            "Ohio"
+            "LA",
+            "MS",
+            "GA",
+            "IL",
+            "MN"
           ]
         },
         {
-          "name": "solar_potential_twh",
-          "description": "Technical solar generation potential in terawatt-hours",
-          "dtype": "int64",
-          "min": 0.0,
-          "max": 236.0
+          "name": "technical_potential_gwh",
+          "description": "technical_potential_gwh",
+          "dtype": "float64",
+          "min": 156.98218,
+          "max": 70314.63613
         }
       ]
     },
@@ -865,8 +865,8 @@
           "name": "median_price_per_kw",
           "description": "median_price_per_kw",
           "dtype": "float64",
-          "min": 0.038683992911990546,
-          "max": 29445.082893226176
+          "min": 0.03901866509155345,
+          "max": 29699.825212399544
         },
         {
           "name": "median_system_size_kw",
@@ -1336,7 +1336,7 @@
     {
       "sheet_name": "Average Annual and Lifetime Solar Savings by State",
       "folder": "1. Solar",
-      "description": "Weighted average annual and lifetime bill savings from residential solar, by state.",
+      "description": "Weighted median annual and lifetime bill savings from residential solar, by state.",
       "source": "dGen model output",
       "granularity": "state",
       "google_sheet_id": "1X4PLR0MyU2NWCUC3g8YtB8vlFwVJO4swhwPJhxv48MU",
@@ -1356,39 +1356,18 @@
           ]
         },
         {
-          "name": "weighted_avg_bill_without_pv_year1",
-          "description": "Weighted average annual electricity bill without solar (Year 1), in dollars",
+          "name": "year_1_savings",
+          "description": "year_1_savings",
           "dtype": "float64",
-          "min": 1121.6798321583897,
-          "max": 3056.8424093428516
+          "min": 778.2358088409064,
+          "max": 2978.790626475468
         },
         {
-          "name": "weighted_avg_bill_with_pv_year1",
-          "description": "Weighted average annual electricity bill with solar (Year 1), in dollars",
+          "name": "lifetime_savings",
+          "description": "lifetime_savings",
           "dtype": "float64",
-          "min": 91.83122160720268,
-          "max": 791.4687013137507
-        },
-        {
-          "name": "weighted_avg_savings_year1",
-          "description": "Weighted average annual savings from solar (Year 1), in dollars",
-          "dtype": "float64",
-          "min": 960.7364988890428,
-          "max": 2786.026953389435
-        },
-        {
-          "name": "pct_savings_year1",
-          "description": "Percentage of bill saved with solar in Year 1 (0 to 1)",
-          "dtype": "float64",
-          "min": 0.6187323358694811,
-          "max": 0.943644040193896
-        },
-        {
-          "name": "lifetime_savings_weighted",
-          "description": "Weighted average lifetime savings from solar, in dollars",
-          "dtype": "float64",
-          "min": 43939.649488859526,
-          "max": 129919.11704743658
+          "min": 35075.92372381236,
+          "max": 139749.30335922286
         }
       ]
     }
