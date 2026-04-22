@@ -21,6 +21,7 @@ output_csvs/
 
 # macOS
 .DS_Store
+**/.DS_Store
 
 # Poetry
 poetry.lock.bak
