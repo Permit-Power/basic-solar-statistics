@@ -18,7 +18,7 @@ Final output schema (one row per year, state, sector):
 
 NOTES:
 - Only Residential, Commercial, Industrial sectors are included.
-- Non-net number of generators is treated as PV customers in the Residential sector.
+- Non-net residential PV customers are estimated from non-net capacity using the state's NEM average system size.
 - Battery capacity from older "Storage" fields and newer "Battery" fields
   are summed.
 - Battery energy (MWh) is only populated in years where EIA reports it.
@@ -194,7 +194,7 @@ def parse_non_net_metering(df_raw: pd.DataFrame) -> pd.DataFrame:
     The sheet is already aggregated by state and month. This function:
       - Selects December (or latest month) per state.
       - Extracts sector-level PV and battery capacity/energy.
-      - Uses number of generators as PV customers in the Residential sector.
+      - Sets pv_customers_non_net=0; customers are estimated during merge using NEM avg system size.
 
     Output columns:
         year
@@ -289,13 +289,9 @@ def parse_non_net_metering(df_raw: pd.DataFrame) -> pd.DataFrame:
                     vals = pd.to_numeric(dec_df[col], errors="coerce").fillna(0)
                     pv_capacity[sec] = pv_capacity[sec] + vals
 
-    # PV customers (non-net has no explicit customers; use number of generators
-    # assigned to the Residential sector only)
+    # PV customers are estimated after merging with net-metering data
+    # (done in download_and_aggregate_distributed_solar using NEM average system size)
     pv_customers = {s: pd.Series(0.0, index=dec_df.index) for s in SECTORS}
-    numgen_col = ("Number and Capacity (MW)", "Number of Generators")
-    if numgen_col in dec_df.columns:
-        gens = pd.to_numeric(dec_df[numgen_col], errors="coerce").fillna(0)
-        pv_customers["Residential"] = gens
 
     # Battery capacity (MW)
     # = Storage (if present) + Battery (if present)
@@ -594,6 +590,19 @@ def download_and_aggregate_distributed_solar(years: Iterable[int]) -> pd.DataFra
         ]:
             if col in merged.columns:
                 merged[col] = pd.to_numeric(merged[col], errors="coerce").fillna(0)
+
+        # Estimate non-net residential PV customers using NEM average system size.
+        # avg_mw_per_customer = pv_capacity_mw_nem / pv_customers_nem (residential only)
+        res_mask = merged["sector"] == "Residential"
+        nem_avg_mw = (
+            merged.loc[res_mask, "pv_capacity_mw_nem"]
+            / merged.loc[res_mask, "pv_customers_nem"].replace(0, np.nan)
+        ).replace(0, np.nan)  # guard against zero avg (avoids inf in division)
+        merged.loc[res_mask, "pv_customers_non_net"] = (
+            (merged.loc[res_mask, "pv_capacity_mw_non_net"] / nem_avg_mw)
+            .round()
+            .fillna(0)
+        )
 
         # Sum up net + non-net
         merged["pv_capacity_mw"] = (

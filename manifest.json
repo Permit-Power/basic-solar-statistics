@@ -1,7 +1,7 @@
 {
   "name": "Big Numbers Database",
   "description": "A collection of regularly updated solar energy statistics for U.S. states and jurisdictions, maintained by Permit Power. Includes data on solar costs, capacity, permitting timelines, inspection timelines, interconnection, electricity rates, jobs, bill savings, and more.",
-  "generated_at": "2026-04-22T17:03:43.134361+00:00",
+  "generated_at": "2026-04-23T15:21:39.806265+00:00",
   "total_sheets": 20,
   "categories": [
     "1. Solar",
@@ -762,7 +762,7 @@
           "description": "pv_customers",
           "dtype": "float64",
           "min": 0.0,
-          "max": 2193555.0
+          "max": Infinity
         },
         {
           "name": "battery_capacity_mw",
@@ -1366,7 +1366,7 @@
           "name": "lifetime_savings",
           "description": "lifetime_savings",
           "dtype": "float64",
-          "min": 35075.92372381236,
+          "min": 35075.92372381237,
           "max": 139749.30335922286
         }
       ]
