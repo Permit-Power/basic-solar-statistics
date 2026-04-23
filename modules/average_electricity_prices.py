@@ -1,35 +1,36 @@
 """
 average_electricity_prices.py
 
-Utilities to compute inflation-adjusted average retail electricity prices 
-($/kWh) by utility and by state/sector using EIA Form 861 "Sales to 
-Ultimate Customers" (Sales_Ult_Cust_YYYY.xlsx, States sheet).
+Computes inflation-adjusted average retail electricity prices ($/kWh) by
+utility and by state/sector, using two data sources:
 
-This module:
-    • Downloads each year's f861YYYY.zip from EIA.
-    • Extracts to a temporary directory (auto-deleted afterwards).
+Utility-level (EIA Form 861 annual ZIP files):
+    • Downloads f861YYYY.zip from EIA for each requested year.
     • Reads the "States" sheet of Sales_Ult_Cust_YYYY.xlsx.
     • Pulls Residential, Commercial, Industrial revenue / sales / customers.
-    • Inflation-adjusts all revenues to real dollars using annual-average CPI 
-      from the Federal Reserve Economic Data (FRED) API.
-    • Computes price_per_kwh = real_revenue_thousand_dollars / sales_mwh.
-    • Aggregates:
-          - Utility-level: by year, utility_number, utility_name, state, ownership.
-          - State-level: by year, state.
-    • Computes:
-          - Average MWh per customer
-          - Average annual bill ($ per customer)
-          - Year-over-year % change in real price_per_kwh
+    • Inflation-adjusts revenues to real dollars via FRED CPI.
+    • Aggregates to utility × year × sector.
+
+State-level (EIA API v2 — retail-sales endpoint):
+    • Fetches annual customers, price, revenue, and sales for all sectors
+      and all states over a configurable year range (default 2015–2026).
+    • Converts nominal cents/kWh to real $/kWh using FRED CPI.
+    • Consistent methodology across all years (no file-format changes).
+
+Inflation adjustment:
+    • Annual-average CPI (CPIAUCSL) from FRED API.
+    • Reference year defaults to 2026; partial-year average used if the
+      reference year is not yet complete.
 
 The output is two long-format DataFrames:
     (util_prices, state_prices)
 
 Dependencies:
-    pandas
-    requests
-    openpyxl
+    pandas, requests, openpyxl
 
-Users must supply a FRED API key for CPI retrieval.
+Required environment variables:
+    FRED_API_KEY   — St. Louis Fed FRED API key (for CPI)
+    EIA_API_KEY    — EIA API key (for state-level retail sales)
 """
 
 from __future__ import annotations
@@ -139,16 +140,21 @@ def _load_cpi_annual_from_fred() -> pd.DataFrame:
     return df
 
 
-def _build_inflation_multipliers(years: Sequence[int]) -> pd.DataFrame:
+def _build_inflation_multipliers(
+    reference_year: int = 2026,
+) -> pd.DataFrame:
     """
     Construct inflation multipliers that convert nominal revenues into
     real dollars using:
-        multiplier(year) = CPI(latest_year) / CPI(year).
+        multiplier(year) = CPI(reference_year) / CPI(year).
+
+    For years where only partial CPI data exists (e.g. current year),
+    the available monthly observations are averaged.
 
     Parameters
     ----------
-    years : Sequence[int]
-        List of years for which multipliers are needed.
+    reference_year : int
+        The dollar-year to adjust to. Default: 2026.
 
     Returns
     -------
@@ -158,10 +164,16 @@ def _build_inflation_multipliers(years: Sequence[int]) -> pd.DataFrame:
             inflation_multiplier : float
     """
     cpi = _load_cpi_annual_from_fred()
-    max_year = max(years)
 
-    latest_cpi = cpi.loc[cpi["year"] == max_year, "cpi"].iloc[0]
-    cpi["inflation_multiplier"] = latest_cpi / cpi["cpi"]
+    ref_cpi_rows = cpi.loc[cpi["year"] == reference_year, "cpi"]
+    if ref_cpi_rows.empty:
+        raise ValueError(
+            f"No CPI data available for reference year {reference_year}. "
+            "Check that FRED has data for this year."
+        )
+    ref_cpi = ref_cpi_rows.mean()
+
+    cpi["inflation_multiplier"] = ref_cpi / cpi["cpi"]
 
     return cpi[["year", "inflation_multiplier"]]
 
@@ -419,51 +431,112 @@ def _aggregate_utility_level(df_all: pd.DataFrame) -> pd.DataFrame:
 
     # Year-over-year % change in real price
     agg["pct_change_yoy"] = (
-        agg.groupby(["utility_number", "sector"])["price_per_kwh"].pct_change()
+        agg.groupby(["utility_number", "sector"])["price_per_kwh"].pct_change(fill_method=None)
     )
 
     return agg.drop(columns=['avg_mwh_per_customer', 'avg_mwh_per_customer', 'avg_kwh_per_customer'])
 
 
-def _aggregate_state_level(df_utility: pd.DataFrame) -> pd.DataFrame:
+
+# ---------------------------------------------------------------------------
+# EIA API (state-level prices, all years)
+# ---------------------------------------------------------------------------
+
+EIA_API_URL = "https://api.eia.gov/v2/electricity/retail-sales/data/"
+
+_API_SECTOR_MAP = {
+    "residential": "Residential",
+    "commercial": "Commercial",
+    "industrial": "Industrial",
+}
+
+
+def _fetch_state_prices_from_api(start_year: int, end_year: int) -> pd.DataFrame:
     """
-    Aggregate utility-level values into state-level weighted averages.
+    Fetch state-level electricity retail sales from EIA API v2 for all sectors
+    over a range of years.
 
-    Parameters
-    ----------
-    df_utility : pandas.DataFrame
-        Utility-level aggregated data.
-
-    Returns
-    -------
-    pandas.DataFrame
-        State-level (year, state, sector) records with real prices.
+    Returns raw API response as a DataFrame with columns:
+        period, stateid, sectorid, sectorName, customers, price, revenue, sales
     """
-    group_cols = ["year", "state", "sector"]
+    api_key = os.environ.get("EIA_API_KEY", "")
+    if not api_key:
+        raise RuntimeError("EIA_API_KEY environment variable is not set.")
 
-    agg = (
-        df_utility.groupby(group_cols, dropna=False, as_index=False)
-        .agg(
-            revenue_thousand_dollars=("revenue_thousand_dollars", "sum"),
-            sales_mwh=("sales_mwh", "sum"),
-            customers=("customers", "sum"),
-        )
+    params = {
+        "api_key": api_key,
+        "frequency": "annual",
+        "data[0]": "customers",
+        "data[1]": "price",
+        "data[2]": "revenue",
+        "data[3]": "sales",
+        "start": str(start_year),
+        "end": str(end_year),
+        "sort[0][column]": "period",
+        "sort[0][direction]": "desc",
+        "offset": 0,
+        "length": 5000,
+    }
+
+    logger.info("Fetching EIA API state prices %s–%s", start_year, end_year)
+    resp = requests.get(EIA_API_URL, params=params, timeout=30)
+    resp.raise_for_status()
+
+    data = resp.json().get("response", {}).get("data", [])
+    if not data:
+        raise RuntimeError(f"No EIA API data returned for {start_year}–{end_year}.")
+
+    df = pd.DataFrame(data)
+    for col in ["customers", "price", "revenue", "sales"]:
+        df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    return df
+
+
+def _harmonize_api_to_state_prices(
+    df_api: pd.DataFrame,
+    infl: pd.DataFrame,
+) -> pd.DataFrame:
+    """
+    Convert EIA API output to state_prices schema with inflation adjustment.
+
+    API units:
+        price    : cents/kWh
+        revenue  : million dollars
+        sales    : MWh
+        customers: count
+
+    Output columns: year, state, sector, customers, price_per_kwh, avg_annual_bill, pct_change_yoy
+    """
+    _VALID_STATES = {
+        "AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL",
+        "IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE",
+        "NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD",
+        "TN","TX","UT","VT","VA","WA","WV","WI","WY",
+    }
+
+    df = df_api.copy()
+    df["year"] = pd.to_numeric(df["period"], errors="coerce").astype(int)
+    df["state"] = df["stateid"]
+    df = df[df["state"].isin(_VALID_STATES)].copy()
+    df["sector"] = df["sectorName"].str.lower().map(_API_SECTOR_MAP)
+    df = df[df["sector"].notna()].copy()
+
+    df = df.merge(infl[["year", "inflation_multiplier"]], on="year", how="left")
+
+    df["price_per_kwh"] = (df["price"] / 100) * df["inflation_multiplier"]
+    df.loc[df["price_per_kwh"] <= 0, "price_per_kwh"] = pd.NA
+
+    df["avg_kwh_per_customer"] = (df["sales"] * 1_000_000) / df["customers"]
+    df["avg_annual_bill"] = df["price_per_kwh"] * df["avg_kwh_per_customer"]
+
+    df = df[["year", "state", "sector", "customers", "price_per_kwh", "avg_annual_bill"]].sort_values(
+        ["state", "sector", "year"]
     )
 
-    agg = _compute_price_per_kwh(agg)
-    agg = agg.sort_values(["year", "state", "sector"])
+    df["pct_change_yoy"] = df.groupby(["state", "sector"])["price_per_kwh"].pct_change(fill_method=None)
 
-    agg.loc[agg["price_per_kwh"] <= 0, "price_per_kwh"] = pd.NA
-
-    agg["avg_mwh_per_customer"] = agg["sales_mwh"] / agg["customers"]
-    agg["avg_kwh_per_customer"] = agg["avg_mwh_per_customer"] * 1000
-    agg["avg_annual_bill"] = agg["avg_kwh_per_customer"] * agg["price_per_kwh"]
-
-    agg["pct_change_yoy"] = (
-        agg.groupby(["state", "sector"])["price_per_kwh"].pct_change()
-    )
-
-    return agg.drop(columns=['avg_mwh_per_customer', 'avg_kwh_per_customer', 'revenue_thousand_dollars', 'sales_mwh'])
+    return df.reset_index(drop=True)
 
 
 # ---------------------------------------------------------------------------
@@ -471,60 +544,69 @@ def _aggregate_state_level(df_utility: pd.DataFrame) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 def build_eia861_prices(
-    years: Sequence[int],
+    utility_years: Sequence[int],
+    state_start_year: int = 2015,
+    state_end_year: int = 2026,
+    reference_year: int = 2026,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Build long-format real-dollar utility and state electricity price tables
-    from EIA Form 861 Sales to Ultimate Customers.
+    Build long-format real-dollar utility and state electricity price tables.
+
+    Data sources:
+        - EIA Form 861 ZIP files: utility-level only, for `utility_years`
+        - EIA API v2: state-level for all years from `state_start_year` to
+          `state_end_year` (consistent methodology across all years)
+
+    All prices are inflation-adjusted to `reference_year` dollars using
+    annual-average CPI from FRED (partial-year average used if the reference
+    year is not yet complete).
 
     Parameters
     ----------
-    years : Sequence[int]
-        Years to download and process (e.g., range(2010, 2025)).
+    utility_years : Sequence[int]
+        Years to pull from EIA 861 files for utility-level data (e.g., range(2015, 2025)).
+    state_start_year : int
+        First year for EIA API state-level pull. Default: 2015.
+    state_end_year : int
+        Last year for EIA API state-level pull. Default: 2026.
+    reference_year : int
+        CPI reference year for inflation adjustment. Default: 2026.
 
     Returns
     -------
-    (util_prices, state_prices) : Tuple[pandas.DataFrame, pandas.DataFrame]
+    (util_prices, state_prices) : Tuple[pd.DataFrame, pd.DataFrame]
 
         util_prices :
-            Long-format utility-level dataset including:
-                • Real revenue
-                • Sales (MWh)
-                • Customers
-                • Real price per kWh
-                • Avg consumption per customer
-                • Avg annual bill
-                • YoY price changes
+            Utility-level real-dollar prices from EIA 861 files.
 
         state_prices :
-            State-level equivalent aggregations.
+            State-level real-dollar prices from EIA API, consistent
+            methodology across all years.
     """
+    # --- Utility-level from 861 files ---
     frames = []
-
-    for year in years:
+    for year in utility_years:
         url = _build_eia861_url(year)
         logger.info("Processing EIA-861 year %s", year)
-
         zip_bytes = _download_zip_to_bytes(url)
         df_raw = _extract_states_sheet_from_zip(zip_bytes, year)
         df_long = _tidy_states_sheet_to_long(df_raw, year)
-
         frames.append(df_long)
 
     if not frames:
-        raise ValueError("No years supplied.")
+        raise ValueError("No utility_years supplied.")
 
     df_all = pd.concat(frames, ignore_index=True)
 
-    # Apply real-dollar inflation adjustment
-    infl = _build_inflation_multipliers(years)
+    infl = _build_inflation_multipliers(reference_year=reference_year)
     df_all = df_all.merge(infl, on="year", how="left")
     df_all["revenue_thousand_dollars"] = (
         df_all["revenue_thousand_dollars"] * df_all["inflation_multiplier"]
     )
-
-    # Aggregate
     util_prices = _aggregate_utility_level(df_all)
-    state_prices = _aggregate_state_level(util_prices)
+
+    # --- State-level from EIA API ---
+    df_api = _fetch_state_prices_from_api(state_start_year, state_end_year)
+    state_prices = _harmonize_api_to_state_prices(df_api, infl)
 
     return util_prices, state_prices
