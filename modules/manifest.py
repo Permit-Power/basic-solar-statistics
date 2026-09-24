@@ -107,7 +107,7 @@ COLUMN_DESCRIPTIONS = {
 
     # Bill savings
     "year_1_savings":                     "Weighted median first-year bill savings from solar (PV only), in dollars",
-    "savings_24_years":                   "Weighted median bill savings from solar (PV only) summed over 24 years, nominal dollars",
+    "lifetime_savings":                   "Weighted median bill savings from solar (PV only) summed over 25 years, in 2026 dollars",
     "weighted_avg_bill_without_pv_year1": "Weighted average annual electricity bill without solar (Year 1), in dollars",
     "weighted_avg_bill_with_pv_year1":    "Weighted average annual electricity bill with solar (Year 1), in dollars",
     "weighted_avg_savings_year1":         "Weighted average annual savings from solar (Year 1), in dollars",

@@ -1,17 +1,20 @@
 """
 solar_bill_savings_update.py
 
-Computes weighted median Year-1 and 24-year bill savings for the 2026
+Computes weighted median Year-1 and lifetime (25-year) bill savings for the 2026
 cohort of solar adopters, using dGen baseline scenario outputs.
 
 Unlike the original solar_bill_savings.py, this module:
   - Uses baseline.csv instead of policy.csv
   - Filters to year == 2026 only (first cohort of adopters)
   - Uses weighted median (not weighted average) to match analysis_functions.py
-  - Uses cf_energy_value_pv_only for 24-year savings (gross energy value)
+  - Reports lifetime savings as 25 years in today's (2026) dollars
 
-dGen's cash-flow arrays have 25 slots: slot 0 is year 0 (always 0) and slots
-1-24 are years 1-24, so the model output covers 24 years of savings, not 25.
+cf_energy_value_pv_only only covers years 1-24 (slot 0 is year 0, always 0),
+but cf_discounted_savings_pv_only covers years 1-25. It is the same energy
+value discounted by ((1 + real_discount_rate) * (1 + inflation_rate))^t, so
+multiplying back by (1 + real_discount_rate)^t leaves savings deflated by
+inflation only, i.e. in today's dollars.
 
 Directory structure expected:
     {base_directory}/{state_abbr}/{run_name}/baseline.csv
@@ -62,17 +65,18 @@ def compute_state_bill_savings_baseline(
     cohort_year: int = COHORT_YEAR,
 ) -> pd.DataFrame:
     """
-    Compute weighted median Year-1 and 24-year bill savings by state,
+    Compute weighted median Year-1 and lifetime bill savings by state,
     using only the first cohort of adopters (cohort_year).
 
     Year-1 savings  = utility_bill_wo_sys_pv_only[1] - utility_bill_w_sys_pv_only[1]
-    24-year savings  = sum of cf_energy_value_pv_only (slot 0 is year 0 = 0, then
-                       years 1-24; nominal gross energy value, undiscounted)
+    Lifetime savings = sum over years 1-25 of
+                       cf_discounted_savings_pv_only[t] * (1 + real_discount_rate)^t
+                       (gross energy value in today's dollars; not discounted)
 
     Returns
     -------
     pd.DataFrame
-        Columns: state_abbr, year_1_savings, savings_24_years, median_bill_year_1
+        Columns: state_abbr, year_1_savings, lifetime_savings, median_bill_year_1
     """
     results = []
 
@@ -93,7 +97,8 @@ def compute_state_bill_savings_baseline(
 
         wo = df["utility_bill_wo_sys_pv_only"].apply(_parse_array)
         w  = df["utility_bill_w_sys_pv_only"].apply(_parse_array)
-        ev = df["cf_energy_value_pv_only"].apply(_parse_array)
+        ds = df["cf_discounted_savings_pv_only"].apply(_parse_array)
+        real_discount = 1 + df["real_discount_rate"].values
 
         year1 = np.array([
             (wo_arr[1] - w_arr[1]) if len(wo_arr) >= 2 and len(w_arr) >= 2 else np.nan
@@ -103,16 +108,16 @@ def compute_state_bill_savings_baseline(
             wo_arr[1] if len(wo_arr) >= 2 else np.nan
             for wo_arr in wo
         ])
-        savings_24 = np.array([
-            sum(ev_arr[1:25]) if len(ev_arr) >= 2 else np.nan
-            for ev_arr in ev
+        lifetime = np.array([
+            sum(v * r ** t for t, v in enumerate(ds_arr[1:26], start=1)) if len(ds_arr) >= 26 else np.nan
+            for ds_arr, r in zip(ds, real_discount)
         ])
         weights = df["new_adopters"].values.astype(float)
 
         results.append({
             "state_abbr": state_abbr.upper(),
             "year_1_savings": _weighted_median(year1, weights),
-            "savings_24_years": _weighted_median(savings_24, weights),
+            "lifetime_savings": _weighted_median(lifetime, weights),
             "median_bill_year_1": _weighted_median(bill_wo_year1, weights),
         })
 
@@ -163,7 +168,7 @@ def load_from_export(
     Returns
     -------
     pd.DataFrame
-        Columns: state_abbr, year_1_savings, savings_24_years, median_bill_year_1
+        Columns: state_abbr, year_1_savings, lifetime_savings, median_bill_year_1
     """
     if output_filename is None:
         output_filename = f"{run_name}_baseline_{cohort_year}_state_bill_savings.csv"

@@ -51,7 +51,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | `solar_eligible_households_by_state.csv` | ResStock | Eligible and suitable household counts by state |
 | `potential_solar_generation_by_state.csv` | NREL SLOPE | Technical generation potential in GWh by state |
 | `residential_solar_costs_by_state_over_time.csv` | LBNL TTS | Median $/kW and system size (kW), inflation-adjusted, by state and year |
-| `annual_and_lifetime_solar_savings_by_state.csv` | dGen | Median year-1 and 24-year bill savings by state (dGen `synapse_attachrate_75` run, PV only) |
+| `annual_and_lifetime_solar_savings_by_state.csv` | dGen | Median year-1 and lifetime (25-year, 2026 $) bill savings by state (dGen `synapse_attachrate_75` run, PV only) |
 | `electricity_rates_by_state.csv` | EIA API | Avg price ($/kWh) and annual bill by state, sector, year (2026 $) |
 | `electricity_rates_by_utility.csv` | EIA 861 | Avg price ($/kWh) and annual bill by utility, sector, year (2026 $) |
 | `solartrace_timelines_by_state.csv` | Solar TRACE xlsx | All timeline metrics by state, year, size class, tech class |
@@ -81,7 +81,7 @@ Reads from `output_csvs/` and a handful of static files in `data/`, joins everyt
 |--------|------------|---------------|
 | State, State (Abbr.) | `data/state_name_abbr.csv` | — |
 | Median solar savings in first year | `output_csvs/annual_and_lifetime_solar_savings_by_state.csv` | — |
-| Median solar savings over 24 years | same | — |
+| Median solar savings over lifetime | same | 25 years, 2026 dollars |
 | Average electricity retail cost ($/kWh) | `output_csvs/electricity_rates_by_state.csv` | Latest year, residential sector |
 | Average annual electricity bill | same | Latest year, residential sector |
 | Number of solar installations | `output_csvs/solar_storage_capacity_installations_by_state_sector.csv` | Latest year, residential sector |
