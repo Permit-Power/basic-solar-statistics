@@ -1,14 +1,17 @@
 """
 solar_bill_savings_update.py
 
-Computes weighted median Year-1 and lifetime bill savings for the 2026
+Computes weighted median Year-1 and 24-year bill savings for the 2026
 cohort of solar adopters, using dGen baseline scenario outputs.
 
 Unlike the original solar_bill_savings.py, this module:
   - Uses baseline.csv instead of policy.csv
   - Filters to year == 2026 only (first cohort of adopters)
   - Uses weighted median (not weighted average) to match analysis_functions.py
-  - Uses cf_energy_value_pv_only for lifetime savings (gross energy value)
+  - Uses cf_energy_value_pv_only for 24-year savings (gross energy value)
+
+dGen's cash-flow arrays have 25 slots: slot 0 is year 0 (always 0) and slots
+1-24 are years 1-24, so the model output covers 24 years of savings, not 25.
 
 Directory structure expected:
     {base_directory}/{state_abbr}/{run_name}/baseline.csv
@@ -24,9 +27,9 @@ import pandas as pd
 
 BASE_DIRECTORY = (
     "/Users/wael/Library/CloudStorage/GoogleDrive-wael@permitpower.org"
-    "/Shared drives/PP (All)/Research/$1 watt solar/Results/Raw"
+    "/Shared drives/PP (All)/Research/$1 watt solar/2025/Results/Updated tariffs"
 )
-RUN_NAME = "run_all_states_net_savings_add_itc"
+RUN_NAME = "synapse_attachrate_75"
 COHORT_YEAR = 2026
 
 
@@ -59,16 +62,17 @@ def compute_state_bill_savings_baseline(
     cohort_year: int = COHORT_YEAR,
 ) -> pd.DataFrame:
     """
-    Compute weighted median Year-1 and lifetime bill savings by state,
+    Compute weighted median Year-1 and 24-year bill savings by state,
     using only the first cohort of adopters (cohort_year).
 
     Year-1 savings  = utility_bill_wo_sys_pv_only[1] - utility_bill_w_sys_pv_only[1]
-    Lifetime savings = sum of cf_energy_value_pv_only (25 years, gross energy value)
+    24-year savings  = sum of cf_energy_value_pv_only (slot 0 is year 0 = 0, then
+                       years 1-24; nominal gross energy value, undiscounted)
 
     Returns
     -------
     pd.DataFrame
-        Columns: state_abbr, year_1_savings, lifetime_savings
+        Columns: state_abbr, year_1_savings, savings_24_years, median_bill_year_1
     """
     results = []
 
@@ -99,8 +103,8 @@ def compute_state_bill_savings_baseline(
             wo_arr[1] if len(wo_arr) >= 2 else np.nan
             for wo_arr in wo
         ])
-        lifetime = np.array([
-            sum(ev_arr[:25]) if len(ev_arr) >= 1 else np.nan
+        savings_24 = np.array([
+            sum(ev_arr[1:25]) if len(ev_arr) >= 2 else np.nan
             for ev_arr in ev
         ])
         weights = df["new_adopters"].values.astype(float)
@@ -108,7 +112,7 @@ def compute_state_bill_savings_baseline(
         results.append({
             "state_abbr": state_abbr.upper(),
             "year_1_savings": _weighted_median(year1, weights),
-            "lifetime_savings": _weighted_median(lifetime, weights),
+            "savings_24_years": _weighted_median(savings_24, weights),
             "median_bill_year_1": _weighted_median(bill_wo_year1, weights),
         })
 
@@ -159,7 +163,7 @@ def load_from_export(
     Returns
     -------
     pd.DataFrame
-        Columns: state_abbr, year_1_savings, lifetime_savings
+        Columns: state_abbr, year_1_savings, savings_24_years, median_bill_year_1
     """
     if output_filename is None:
         output_filename = f"{run_name}_baseline_{cohort_year}_state_bill_savings.csv"
