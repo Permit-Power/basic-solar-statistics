@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Runs msa_tracking/run_scheduled.sh daily at 10:00 and at login. The script
+  itself only does work when this month's snapshot is incomplete, so this acts
+  as a monthly job that catches up after the machine was asleep or off.
+  Install: see README "MSA utility approval tracking".
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>org.permitpower.msa-tracking</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>/Users/wael/Documents/repos/basic-solar-statistics/msa_tracking/run_scheduled.sh</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>10</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/wael/Documents/repos/basic-solar-statistics/msa_tracking/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/wael/Documents/repos/basic-solar-statistics/msa_tracking/launchd.err.log</string>
+</dict>
+</plist>

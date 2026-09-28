@@ -33,3 +33,11 @@ python-dotenv = "^1.2.2"
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.group.msa]
+optional = true
+
+[tool.poetry.group.msa.dependencies]
+playwright = "^1.63.0"
+beautifulsoup4 = "^4.15.0"

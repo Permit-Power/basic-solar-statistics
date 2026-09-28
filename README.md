@@ -191,3 +191,58 @@ gcloud auth application-default login \
 API keys required (set in `.env` or as environment variables):
 - `EIA_API_KEY` — for electricity prices
 - `FRED_API_KEY` — for CPI inflation data (solar costs module)
+
+---
+
+## MSA utility approval tracking (`msa_tracking/`)
+
+A separate, locally scheduled pipeline that tracks which utilities have approved meter socket adapters (MSAs) from ConnectDER, Enphase, and Tesla, using each manufacturer's public listing. It is not part of the GitHub Action: Tesla's page is behind Akamai bot protection and only loads in a real (headed) browser, which is unlikely to work from a CI runner.
+
+```
+msa_tracking/
+  msa_scrape.py       # fetch + save raw responses only, no parsing
+  processing.py       # parse all raw snapshots -> msa_master.csv
+  run_scheduled.sh    # scheduled entry point (scrape --catch-up, then process)
+  org.permitpower.msa-tracking.plist   # launchd job definition
+  raw/YYYY-MM-DD/     # raw snapshots (git-ignored)
+  msa_master.csv      # long-format master list
+  run_log.txt         # one block per run: sources fetched, rows parsed, errors (git-ignored)
+```
+
+| Manufacturer | Product(s) | Source | How it's fetched |
+|---|---|---|---|
+| ConnectDER | IslandDER MSA, Solar MSA, EV MSA | Public Prismic CMS API behind connectder.com (the site itself has a Vercel bot checkpoint) | `requests`, JSON |
+| Enphase | IQ Meter Collar | Static HTML listing | `requests`, HTML |
+| Tesla | Backup Switch (Powerwall), Backup Switch (Powershare) | Static HTML listing behind Akamai | Headed Playwright Chromium (window parked off-screen) |
+
+**`msa_scrape.py`** saves each source's raw response untouched into `raw/<today>/` plus a `fetch_status.json`. A failing source is logged and the others are still saved.
+
+**`processing.py`** rebuilds `msa_master.csv` from *every* snapshot in `raw/` on each run, so fixing a parser or a mapping corrects the full history. One row per `snapshot_date × manufacturer × product × state × utility`. Verbatim columns (`state`, `utility`, `approval_raw`, `expected_date`, `install_type`, `notes`, `utility_other_names`) sit alongside standardized ones (`state_std`, `utility_std`, `approval_std`). Nothing is filtered for scope: ConnectDER's `N/A` and `Expected` rows are kept. The mapping dictionaries (`APPROVAL_STD`, `UTILITY_VARIANTS`, `STATE_STD`) are at the top of the file; values missing from them are reported as warnings in the run log.
+
+Tesla and Enphase publish only a list of approved utilities, so being on the list is recorded as `approval_raw = "Listed"`. Enphase status pills (`Pilot in progress`, `Approvals on case-by-case basis`) become the approval level; `Ring-type meter base only` goes to `notes`.
+
+### Running it manually
+
+```bash
+poetry install --with msa          # playwright + beautifulsoup4 (optional group, not installed in CI)
+poetry run playwright install chromium
+
+poetry run python msa_tracking/msa_scrape.py     # snapshot all sources into raw/<today>/
+poetry run python msa_tracking/processing.py     # rebuild msa_master.csv from all snapshots
+```
+
+### Schedule (launchd, macOS)
+
+launchd runs `run_scheduled.sh` daily at 10:00 and at login. The script calls `msa_scrape.py --catch-up`, which fetches only sources not yet fetched successfully this calendar month and exits immediately once the month is complete. The net effect is one snapshot per month that catches up after the Mac was asleep or off, and retries a failed source (e.g. Tesla blocked) the next day without re-downloading the others. The Mac must be logged in, since Tesla needs a browser window.
+
+```bash
+# install / reload
+cp msa_tracking/org.permitpower.msa-tracking.plist ~/Library/LaunchAgents/
+launchctl bootout gui/$(id -u)/org.permitpower.msa-tracking 2>/dev/null
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/org.permitpower.msa-tracking.plist
+
+launchctl kickstart gui/$(id -u)/org.permitpower.msa-tracking   # run now
+launchctl bootout gui/$(id -u)/org.permitpower.msa-tracking     # uninstall
+```
+
+Check `msa_tracking/run_log.txt` for each run's results; `launchd.out.log` / `launchd.err.log` capture anything the scripts print or crash with. The plist hard-codes this repo's path and `/opt/homebrew/bin/poetry` (in `run_scheduled.sh`); edit both if either moves.
