@@ -201,11 +201,12 @@ A separate, locally scheduled pipeline that tracks which utilities have approved
 ```
 msa_tracking/
   msa_scrape.py       # fetch + save raw responses only, no parsing
-  processing.py       # parse all raw snapshots -> msa_master.csv
+  processing.py       # parse all raw snapshots -> msa_master.csv + msa_summary.csv
   run_scheduled.sh    # scheduled entry point (scrape --catch-up, then process)
   org.permitpower.msa-tracking.plist   # launchd job definition
   raw/YYYY-MM-DD/     # raw snapshots (git-ignored)
-  msa_master.csv      # long-format master list
+  msa_master.csv      # long-format master list, full history
+  msa_summary.csv     # current status per state x utility, one column per brand
   run_log.txt         # one block per run: sources fetched, rows parsed, errors (git-ignored)
 ```
 
@@ -218,6 +219,8 @@ msa_tracking/
 **`msa_scrape.py`** saves each source's raw response untouched into `raw/<today>/` plus a `fetch_status.json`. A failing source is logged and the others are still saved.
 
 **`processing.py`** rebuilds `msa_master.csv` from *every* snapshot in `raw/` on each run, so fixing a parser or a mapping corrects the full history. One row per `snapshot_date × manufacturer × product × state × utility`. Verbatim columns (`state`, `utility`, `approval_raw`, `expected_date`, `install_type`, `notes`, `utility_other_names`) sit alongside standardized ones (`state_std`, `utility_std`, `approval_std`). Nothing is filtered for scope: ConnectDER's `N/A` and `Expected` rows are kept. The mapping dictionaries (`APPROVAL_STD`, `UTILITY_VARIANTS`, `STATE_STD`) are at the top of the file; values missing from them are reported as warnings in the run log.
+
+**`msa_summary.csv`** is the current picture for advocacy: one row per state × utility (sorted by state, then utility) with a `Tesla`, `Enphase`, and `ConnectDER` column. Each shows that brand's best status across its products, using its latest snapshot: `Approved`, `Pilot`, `Case-by-case`, `Pending` (ConnectDER "In Progress" / "Expected"), or blank when not approved (not listed, or N/A). Rows with no state are left out. Per-product detail stays in `msa_master.csv`.
 
 Tesla and Enphase publish only a list of approved utilities, so being on the list is recorded as `approval_raw = "Listed"`. Enphase status pills (`Pilot in progress`, `Approvals on case-by-case basis`) become the approval level; `Ring-type meter base only` goes to `notes`.
 

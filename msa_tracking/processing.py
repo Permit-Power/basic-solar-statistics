@@ -1,11 +1,15 @@
-"""Parse every raw MSA snapshot and rebuild msa_master.csv from scratch.
+"""Parse every raw MSA snapshot and rebuild msa_master.csv and msa_summary.csv.
 
 The master list is regenerated from ALL folders in raw/ on every run (never
 appended), so fixing a parser or a mapping below corrects the whole history.
 
-Long format: one row per snapshot_date x manufacturer x product x state x utility.
-Verbatim fields are kept as written by the manufacturer; *_std columns are
-added alongside. Nothing is filtered for scope.
+msa_master.csv, long format: one row per snapshot_date x manufacturer x product
+x state x utility. Verbatim fields are kept as written by the manufacturer;
+*_std columns are added alongside. Nothing is filtered for scope.
+
+msa_summary.csv, wide format: the current picture, one row per state x
+utility with one status column per brand (see SUMMARY_STATUS), built from each
+brand's latest snapshot. Rows without a state are left out.
 
     poetry run python msa_tracking/processing.py
 """
@@ -22,6 +26,7 @@ from bs4 import BeautifulSoup
 HERE = Path(__file__).resolve().parent
 RAW_DIR = HERE / "raw"
 OUT_CSV = HERE / "msa_master.csv"
+SUMMARY_CSV = HERE / "msa_summary.csv"
 LOG_FILE = HERE / "run_log.txt"
 
 SOURCE_URLS = {
@@ -47,6 +52,21 @@ APPROVAL_STD = {
     "Expected Q, YYYY": "expected",
     "N/A": "not_applicable",
 }
+
+# Standardized approval level -> status in the per-brand summary. A brand's
+# status for a utility is its best one across all its products, in the order
+# listed in SUMMARY_ORDER. Not approved (N/A, or not listed at all) is left
+# blank so approvals stand out.
+SUMMARY_STATUS = {
+    "approved": "Approved",
+    "pilot": "Pilot",
+    "case_by_case": "Case-by-case",
+    "in_progress": "Pending",
+    "expected": "Pending",
+    "not_applicable": "",
+}
+SUMMARY_ORDER = ["Approved", "Pilot", "Case-by-case", "Pending", ""]
+SUMMARY_BRANDS = ["Tesla", "Enphase", "ConnectDER"]
 
 # Enphase status pills that describe a limitation rather than an approval
 # level. These go in `notes` and the approval stays "Listed".
@@ -253,6 +273,29 @@ def parse_tesla(snap_dir):
 PARSERS = {"ConnectDER": parse_connectder, "Enphase": parse_enphase, "Tesla": parse_tesla}
 
 
+def build_summary(master):
+    """One row per state x utility, one status column per brand, using each
+    brand's most recent snapshot."""
+    latest = master.groupby("manufacturer")["snapshot_date"].transform("max")
+    current = master[(master["snapshot_date"] == latest) & (master["state_std"] != "")].copy()
+    current["status"] = current["approval_std"].map(SUMMARY_STATUS).fillna("UNMAPPED")
+    current["rank"] = current["status"].map(
+        {s: i for i, s in enumerate(SUMMARY_ORDER)}).fillna(len(SUMMARY_ORDER))
+
+    best = current.sort_values("rank").drop_duplicates(["state_std", "utility_std", "manufacturer"])
+    summary = (
+        best.pivot(index=["state_std", "utility_std"], columns="manufacturer", values="status")
+        .reindex(columns=SUMMARY_BRANDS).fillna("").reset_index()
+    )
+    state_names = {}
+    for name, abbr in STATE_STD.items():
+        state_names.setdefault(abbr, name)
+    summary.insert(0, "state", summary.pop("state_std").map(state_names))
+    summary = summary.rename(columns={"utility_std": "utility"})
+    summary.columns.name = None
+    return summary.sort_values(["state", "utility"], key=lambda c: c.str.lower())
+
+
 def main():
     setup_logging()
     snapshots = sorted(p for p in RAW_DIR.glob("????-??-??") if p.is_dir())
@@ -295,6 +338,11 @@ def main():
 
     master = master.sort_values(["snapshot_date", "manufacturer", "product", "state", "utility"])
     master.to_csv(OUT_CSV, index=False)
+    summary = build_summary(master)
+    summary.to_csv(SUMMARY_CSV, index=False)
+    latest = master.groupby("manufacturer")["snapshot_date"].max()
+    log.info("summary  %d state x utility rows written to %s (latest snapshots: %s)", len(summary),
+             SUMMARY_CSV.name, ", ".join(f"{m} {d}" for m, d in latest.items()))
     log.info("processing done  %d rows written to %s%s", len(master), OUT_CSV.name,
              f"; {errors} parser error(s)" if errors else "")
     return 1 if errors else 0
