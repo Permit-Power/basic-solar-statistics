@@ -3,13 +3,13 @@ Arizona,Arizona Public Service,Approved,Approved,Approved
 Arizona,Hohokam Irrigation and Drainage District,Approved,Approved,
 Arizona,Salt River Project,Approved,Approved,Approved
 Arizona,Sulphur Springs Valley Electric Cooperative,Approved,Approved,Approved
-Arizona,Trico electric co-op,,Approved,
+Arizona,Trico Electric Cooperative,,Approved,
 Arizona,Tucson Electric Power,Approved,Approved,Approved
 Arizona,UniSource Energy,,Pilot,
 California,Lathrop Irrigation District,Approved,Approved,
 California,Pacific Gas and Electric,Approved,Approved,Approved
 California,Pacific Power,Approved,Approved,Approved
-California,Plumas-Sierra Rural Electric co-op,,Approved,
+California,Plumas-Sierra Rural Electric Cooperative,,Approved,
 California,Sacramento Municipal Utility District,Approved,Approved,Approved
 California,San Diego Gas and Electric,Approved,Approved,Approved
 California,Southern California Edison,Approved,Approved,Approved
@@ -23,20 +23,18 @@ Colorado,La Plata Electric Association,,Approved,Approved
 Colorado,Poudre Valley Rural Electric Association,Approved,Approved,
 Colorado,San Isabel Electric,,Approved,
 Colorado,Xcel Energy,Approved,,Approved
-Colorado,Yampa Valley Electrical Association (YVEA),,Approved,
+Colorado,Yampa Valley Electric Association,,Approved,
 Connecticut,Eversource,Approved,Approved,Approved
 Connecticut,United Illuminating,,Pilot,
 Delaware,Delaware Electric Cooperative,Approved,,
-Delaware,Delmarva Power,,Approved,Pending
-District of Columbia,Pepco,,,Approved
+Delaware,Delmarva Power,Approved,Approved,Approved
+District of Columbia,Pepco,Approved,,Approved
 Florida,City of Tallahassee,,Approved,Approved
 Florida,Orlando Utilities Commission,Approved,Approved,
 Georgia,Central Georgia EMC,,Approved,
 Georgia,Coweta-Fayette EMC,,Approved,
 Georgia,Walton EMC,,Approved,
-Hawaii,Hawai'i Electric Light Co,,,Pending
 Hawaii,Hawaiian Electric,Approved,Pilot,Pending
-Hawaii,Maui Electric,,,Pending
 Idaho,Idaho Falls Power,,,Approved
 Idaho,Rocky Mountain Power,,Approved,Approved
 Illinois,Ameren,Approved,Approved,Approved
@@ -53,7 +51,7 @@ Maryland,Baltimore Gas and Electric,Approved,Approved,Approved
 Maryland,Delmarva Power,Approved,Approved,Approved
 Maryland,Pepco,Approved,Approved,Approved
 Maryland,Potomac Edison,Approved,Approved,Approved
-Maryland,Southern Maryland Electric Cooperative,,,Approved
+Maryland,Southern Maryland Electric Cooperative,,Approved,Approved
 Michigan,Traverse City Light and Power,Approved,Approved,
 Missouri,Evergy,Approved,,Approved
 Montana,Black Hills Energy,Approved,Approved,
@@ -83,7 +81,7 @@ Pennsylvania,Penelec,,,Pending
 Pennsylvania,Penn Power,,,Pending
 Pennsylvania,PPL Electric Utilities,Approved,,
 Pennsylvania,West Penn Power,,,Pending
-Saskatchewan,Saskatoon Light & Power (SL&P),,Approved,
+Saskatchewan,Saskatoon Light & Power,,Approved,
 South Carolina,Aiken Electric Cooperative,,Approved,
 South Carolina,Horry Electric Cooperative,,Approved,
 South Dakota,Black Hills Energy,Approved,Approved,
@@ -94,7 +92,7 @@ Texas,Bandera Electric Cooperative,,Approved,
 Texas,Bluebonnet Electric Cooperative,Approved,Approved,
 Texas,CoServ Electric Cooperative,Approved,Approved,
 Texas,Farmers Electric Cooperative,,Approved,
-Texas,Grayson-Collin Electric Cooperative (GCEC),Approved,,
+Texas,Grayson-Collin Electric Cooperative,Approved,,
 Utah,Dixie Power,,Approved,
 Utah,Kaysville City Power,Approved,,
 Utah,Rocky Mountain Power,Approved,Approved,Approved
@@ -114,4 +112,4 @@ Wisconsin,Eau Claire Energy Cooperative,Approved,Approved,
 Wisconsin,Sturgeon Bay Utilities,Approved,Approved,
 Wyoming,Black Hills Energy,Approved,Approved,
 Wyoming,Rocky Mountain Power,,Approved,Approved
-Wyoming,Yampa Valley Electrical Association (YVEA),,Approved,
+Wyoming,Yampa Valley Electric Association,,Approved,

@@ -25,7 +25,8 @@ output_csvs/
 
 # Poetry
 poetry.lock.bak
-# MSA tracking raw snapshots and run log
-msa_tracking/raw/
+# MSA tracking: raw downloads, executed notebooks, logs
+msa_tracking/data/raw/
+msa_tracking/runs/
 msa_tracking/run_log.txt
 msa_tracking/launchd.*.log

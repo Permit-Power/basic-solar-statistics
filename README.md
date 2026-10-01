@@ -196,47 +196,76 @@ API keys required (set in `.env` or as environment variables):
 
 ## MSA utility approval tracking (`msa_tracking/`)
 
-A separate, locally scheduled pipeline that tracks which utilities have approved meter socket adapters (MSAs) from ConnectDER, Enphase, and Tesla, using each manufacturer's public listing. It is not part of the GitHub Action: Tesla's page is behind Akamai bot protection and only loads in a real (headed) browser, which is unlikely to work from a CI runner.
+A separate, locally scheduled pipeline that tracks which utilities have approved meter socket adapters (MSAs) from ConnectDER, Enphase, and Tesla, and what share of households live where at least one is approved. It is not part of the GitHub Action: Tesla's page is behind Akamai bot protection and only loads in a real (headed) browser, which is unlikely to work from a CI runner.
 
 ```
 msa_tracking/
-  msa_scrape.py       # fetch + save raw responses only, no parsing
-  processing.py       # parse all raw snapshots -> msa_master.csv + msa_summary.csv
-  run_scheduled.sh    # scheduled entry point (scrape --catch-up, then process)
+  1_pull_msa.ipynb        # download manufacturer listings -> data/raw/msa/YYYY-MM-DD/
+  2_pull_eia.ipynb        # download EIA Form 861          -> data/raw/eia/YYYY/
+  3_process_msa.ipynb     # parse snapshots                -> outputs/msa_master.csv, msa_summary.csv
+  4_process_eia.ipynb     # residential customers by utility -> outputs/eia_residential_customers.csv
+  5_join_outputs.ipynb    # join via crosswalk             -> outputs/msa_utilities_all.csv, msa_state_summary.csv
+  common.py               # paths, EIA_YEAR, run logging
+  mappings.py             # hand-edited dictionaries: utility names, approval levels, states
+  data/
+    raw/                  # downloads (git-ignored)
+    msa_eia_crosswalk.csv # hand-reviewed MSA utility -> EIA utility ID mapping
+  outputs/                # everything generated
+  run_scheduled.sh        # runs the five notebooks (used by launchd)
   org.permitpower.msa-tracking.plist   # launchd job definition
-  raw/YYYY-MM-DD/     # raw snapshots (git-ignored)
-  msa_master.csv      # long-format master list, full history
-  msa_summary.csv     # current status per state x utility, one column per brand
-  run_log.txt         # one block per run: sources fetched, rows parsed, errors (git-ignored)
+  run_log.txt             # what each step did, warnings, errors (git-ignored)
+  runs/                   # executed notebook copies from scheduled runs (git-ignored)
 ```
 
-| Manufacturer | Product(s) | Source | How it's fetched |
-|---|---|---|---|
-| ConnectDER | IslandDER MSA, Solar MSA, EV MSA | Public Prismic CMS API behind connectder.com (the site itself has a Vercel bot checkpoint) | `requests`, JSON |
-| Enphase | IQ Meter Collar | Static HTML listing | `requests`, HTML |
-| Tesla | Backup Switch (Powerwall), Backup Switch (Powershare) | Static HTML listing behind Akamai | Headed Playwright Chromium (window parked off-screen) |
+Each notebook explains its step at the top and can be opened and run on its own, in order.
 
-**`msa_scrape.py`** saves each source's raw response untouched into `raw/<today>/` plus a `fetch_status.json`. A failing source is logged and the others are still saved.
+### Steps
 
-**`processing.py`** rebuilds `msa_master.csv` from *every* snapshot in `raw/` on each run, so fixing a parser or a mapping corrects the full history. One row per `snapshot_date × manufacturer × product × state × utility`. Verbatim columns (`state`, `utility`, `approval_raw`, `expected_date`, `install_type`, `notes`, `utility_other_names`) sit alongside standardized ones (`state_std`, `utility_std`, `approval_std`). Nothing is filtered for scope: ConnectDER's `N/A` and `Expected` rows are kept. The mapping dictionaries (`APPROVAL_STD`, `UTILITY_VARIANTS`, `STATE_STD`) are at the top of the file; values missing from them are reported as warnings in the run log.
+**1. Pull MSA listings.** Saves each manufacturer's raw response untouched, so a broken parser never loses history. A failing source is logged and the others are still saved; `fetch_status.json` records what succeeded.
 
-**`msa_summary.csv`** is the current picture for advocacy: one row per state × utility (sorted by state, then utility) with a `Tesla`, `Enphase`, and `ConnectDER` column. Each shows that brand's best status across its products, using its latest snapshot: `Approved`, `Pilot`, `Case-by-case`, `Pending` (ConnectDER "In Progress" / "Expected"), or blank when not approved (not listed, or N/A). Rows with no state are left out. Per-product detail stays in `msa_master.csv`.
+| Manufacturer | Products | Source |
+|---|---|---|
+| ConnectDER | IslandDER MSA, Solar MSA, EV MSA | Public Prismic CMS API behind connectder.com (the site itself has a bot checkpoint) |
+| Enphase | IQ Meter Collar | Static HTML listing |
+| Tesla | Backup Switch (Powerwall), Backup Switch (Powershare) | Static HTML behind Akamai; headed Playwright Chromium, window parked off-screen |
 
-Tesla and Enphase publish only a list of approved utilities, so being on the list is recorded as `approval_raw = "Listed"`. Enphase status pills (`Pilot in progress`, `Approvals on case-by-case basis`) become the approval level; `Ring-type meter base only` goes to `notes`.
+**2. Pull EIA.** Downloads the annual EIA-861 zip for `EIA_YEAR` (2024, the latest final year). Utility-level customer counts aren't in the EIA API.
+
+**3. Process MSA.** Rebuilds from *every* snapshot on each run, so fixing a parser or `mappings.py` corrects the whole history.
+- `msa_master.csv`: one row per snapshot × manufacturer × product × state × utility; verbatim fields plus `*_std` columns. Nothing filtered.
+- `msa_summary.csv`: current status per state × utility with a `Tesla`, `Enphase`, `ConnectDER` column: `Approved`, `Pilot`, `Case-by-case`, `Pending` (ConnectDER "In Progress"/"Expected"), or blank. Each brand's best status across its products, from its latest snapshot. Tesla and Enphase only list approved utilities, so being listed counts as approved.
+
+**4. Process EIA.** Residential customers (our stand-in for households) counted under the utility that owns the wires and meter, which is who approves an MSA: bundled utilities, delivery-only utilities in restructured states, Texas wires companies, and small short-form utilities (residential share estimated from similar utilities; `residential_estimated`). Retail suppliers and third-party rooftop solar owners are left out because those households are already counted under their utility. Checked against EIA's published totals (US within 0.1%).
+
+**5. Join and outputs.** `data/msa_eia_crosswalk.csv` links MSA names to EIA utility IDs. One MSA utility can be several EIA utilities (NV Energy, Evergy, Hawaiian Electric, Black Hills Energy in WY); the four former FirstEnergy Pennsylvania companies share one EIA utility, split by `customer_share` from their 2023 counts.
+- `msa_utilities_all.csv`: every EIA utility × state with residential customers and the three brand statuses. `any_device_approved` = `Yes` when at least one brand is Approved; the rest are advocacy targets.
+- `msa_state_summary.csv`: per state and US, residential customers, how many live where at least one device is approved, and the % overall and per brand. Only `Approved` counts.
+
+### Maintenance
+
+The run log is where problems show up:
+- **"unmapped ... values"**: a new spelling or status from a manufacturer. Add it to `mappings.py`.
+- **"MSA utilities missing from msa_eia_crosswalk.csv"**: a newly listed utility. Add a row (state, utility as in `msa_summary.csv`, EIA utility ID from `eia_residential_customers.csv`). Notebook 5 fails until it's added, so it can't be silently dropped.
+- **A step FAILED**: e.g. Tesla blocked. The scheduled run retries the next day.
 
 ### Running it manually
 
 ```bash
-poetry install --with msa          # playwright + beautifulsoup4 (optional group, not installed in CI)
+poetry install --with msa          # playwright, beautifulsoup4, papermill (optional group, not installed in CI)
 poetry run playwright install chromium
-
-poetry run python msa_tracking/msa_scrape.py     # snapshot all sources into raw/<today>/
-poetry run python msa_tracking/processing.py     # rebuild msa_master.csv from all snapshots
 ```
+
+Open the notebooks and run them in order, or from the terminal:
+
+```bash
+msa_tracking/run_scheduled.sh --force    # all five steps (step 1 still skips sources done this month)
+```
+
+After editing `mappings.py` or the crosswalk, rerun only notebooks 3 and 5.
 
 ### Schedule (launchd, macOS)
 
-launchd runs `run_scheduled.sh` daily at 10:00 and at login. The script calls `msa_scrape.py --catch-up`, which fetches only sources not yet fetched successfully this calendar month and exits immediately once the month is complete. The net effect is one snapshot per month that catches up after the Mac was asleep or off, and retries a failed source (e.g. Tesla blocked) the next day without re-downloading the others. The Mac must be logged in, since Tesla needs a browser window.
+launchd runs `run_scheduled.sh` daily at 10:00 and at login. It only does work while this month's MSA snapshot is incomplete, so the net effect is one snapshot per month that catches up after the Mac was asleep or off, and retries a failed source the next day without re-downloading the others. The Mac must be logged in, since Tesla needs a browser window.
 
 ```bash
 # install / reload
@@ -248,4 +277,4 @@ launchctl kickstart gui/$(id -u)/org.permitpower.msa-tracking   # run now
 launchctl bootout gui/$(id -u)/org.permitpower.msa-tracking     # uninstall
 ```
 
-Check `msa_tracking/run_log.txt` for each run's results; `launchd.out.log` / `launchd.err.log` capture anything the scripts print or crash with. The plist hard-codes this repo's path and `/opt/homebrew/bin/poetry` (in `run_scheduled.sh`); edit both if either moves.
+`launchd.out.log` / `launchd.err.log` capture anything the scripts print or crash with. The plist hard-codes this repo's path and `run_scheduled.sh` hard-codes `/opt/homebrew/bin/poetry`; edit them if either moves.

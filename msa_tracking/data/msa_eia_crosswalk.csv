@@ -1,0 +1,122 @@
+state,utility,eia_utility_id,eia_utility_name,customer_share,match,note
+AZ,Arizona Public Service,803,Arizona Public Service Co,1.0,auto (reviewed),
+AZ,Hohokam Irrigation and Drainage District,8700,Hohokam Irr & Drain Dist,1.0,auto (reviewed),
+AZ,Salt River Project,16572,Salt River Project,1.0,auto (reviewed),
+AZ,Sulphur Springs Valley Electric Cooperative,18280,Sulphur Springs Valley E C Inc,1.0,auto (reviewed),
+AZ,Trico Electric Cooperative,19189,Trico Electric Cooperative Inc,1.0,auto (reviewed),
+AZ,Tucson Electric Power,24211,Tucson Electric Power Co,1.0,auto (reviewed),
+AZ,UniSource Energy,19728,"UNS Electric, Inc",1.0,manual,UniSource Energy Services operates as UNS Electric
+CA,Lathrop Irrigation District,62779,Lathrop Irrigation District,1.0,auto (reviewed),
+CA,Pacific Gas and Electric,14328,Pacific Gas & Electric Co.,1.0,auto (reviewed),
+CA,Pacific Power,14354,PacifiCorp,1.0,auto (reviewed),
+CA,Plumas-Sierra Rural Electric Cooperative,15308,Plumas-Sierra Rural Elec Coop,1.0,auto (reviewed),
+CA,Sacramento Municipal Utility District,16534,Sacramento Municipal Util Dist,1.0,auto (reviewed),
+CA,San Diego Gas and Electric,16609,San Diego Gas & Electric Co,1.0,auto (reviewed),
+CA,Southern California Edison,17609,Southern California Edison Co,1.0,auto (reviewed),
+CO,Black Hills Energy,56146,"Black Hills Colorado Electric, LLC",1.0,auto (reviewed),
+CO,City of Longmont,11187,City of Longmont,1.0,auto (reviewed),
+CO,Estes Park Utilities,5997,Town of Estes Park,1.0,auto (reviewed),
+CO,Fort Collins Light and Power,6604,City of Fort Collins - (CO),1.0,auto (reviewed),
+CO,Grand Valley Power,7563,Grand Valley Power,1.0,auto (reviewed),
+CO,Holy Cross Energy,8773,"Holy Cross Electric Assn, Inc",1.0,auto (reviewed),
+CO,La Plata Electric Association,10539,"La Plata Electric Assn, Inc",1.0,auto (reviewed),
+CO,Poudre Valley Rural Electric Association,15257,"Poudre Valley REA, Inc",1.0,auto (reviewed),
+CO,San Isabel Electric,16616,"San Isabel Electric Assn, Inc",1.0,auto (reviewed),
+CO,Xcel Energy,15466,Public Service Co of Colorado,1.0,auto (reviewed),
+CO,Yampa Valley Electric Association,21081,Yampa Valley Electric Assn Inc,1.0,auto (reviewed),
+CT,Eversource,4176,Connecticut Light & Power Co,1.0,manual,Eversource in Connecticut is Connecticut Light & Power
+CT,United Illuminating,19497,United Illuminating Co,1.0,auto (reviewed),
+DC,Pepco,15270,Potomac Electric Power Co,1.0,auto (reviewed),
+DE,Delaware Electric Cooperative,5070,Delaware Electric Cooperative,1.0,auto (reviewed),
+DE,Delmarva Power,5027,Delmarva Power,1.0,auto (reviewed),
+FL,City of Tallahassee,18445,City of Tallahassee - (FL),1.0,auto (reviewed),
+FL,Orlando Utilities Commission,14610,Orlando Utilities Comm,1.0,auto (reviewed),
+GA,Central Georgia EMC,3248,Central Georgia El Member Corp,1.0,manual,
+GA,Coweta-Fayette EMC,4432,Coweta-Fayette El Member Corp,1.0,auto (reviewed),
+GA,Walton EMC,20065,Walton Electric Member Corp,1.0,auto (reviewed),
+HI,Hawaiian Electric,11843,Maui Electric Co Ltd,1.0,manual,"Single Hawaiian Electric brand covering Oahu (Hawaiian Electric Co), Hawai'i Island (HELCO) and Maui County (Maui Electric)"
+HI,Hawaiian Electric,19547,Hawaiian Electric Co Inc,1.0,manual,"Single Hawaiian Electric brand covering Oahu (Hawaiian Electric Co), Hawai'i Island (HELCO) and Maui County (Maui Electric)"
+HI,Hawaiian Electric,8287,Hawaii Electric Light Co Inc,1.0,manual,"Single Hawaiian Electric brand covering Oahu (Hawaiian Electric Co), Hawai'i Island (HELCO) and Maui County (Maui Electric)"
+IA,MidAmerican Energy,12341,MidAmerican Energy Co,1.0,auto (reviewed),
+ID,Idaho Falls Power,9187,City of Idaho Falls - (ID),1.0,manual,Idaho Falls Power is the City of Idaho Falls municipal utility
+ID,Rocky Mountain Power,14354,PacifiCorp,1.0,auto (reviewed),
+IL,Ameren,56697,Ameren Illinois Company,1.0,auto (reviewed),
+IL,City of Highland Light and Power,8573,City of Highland,1.0,auto (reviewed),
+IL,Commonwealth Edison,4110,Commonwealth Edison Co,1.0,auto (reviewed),
+IL,MidAmerican Energy,12341,MidAmerican Energy Co,1.0,auto (reviewed),
+IN,Lawrenceburg Municipality Utilities,10798,Lawrenceburg Municipal Utils,1.0,auto (reviewed),
+IN,Lebanon Utilities,9613,City of Lebanon - (IN),1.0,auto (reviewed),
+IN,Richmond Power and Light,15989,City of Richmond - (IN),1.0,auto (reviewed),
+KS,Evergy,10000,Evergy Metro,1.0,manual,Evergy operates three EIA utilities in Kansas
+KS,Evergy,10005,"Evergy Kansas South, Inc",1.0,manual,Evergy operates three EIA utilities in Kansas
+KS,Evergy,22500,"Evergy Kansas Central, Inc",1.0,manual,Evergy operates three EIA utilities in Kansas
+MD,Baltimore Gas and Electric,1167,Baltimore Gas & Electric Co,1.0,auto (reviewed),
+MD,Delmarva Power,5027,Delmarva Power,1.0,auto (reviewed),
+MD,Pepco,15270,Potomac Electric Power Co,1.0,auto (reviewed),
+MD,Potomac Edison,15263,The Potomac Edison Company,1.0,auto (reviewed),
+MD,Southern Maryland Electric Cooperative,17637,Southern Maryland Elec Coop Inc,1.0,auto (reviewed),
+ME,Versant Power,1179,Versant Power,1.0,auto (reviewed),
+MI,Traverse City Light and Power,19125,City of Traverse City - (MI),1.0,auto (reviewed),
+MO,Evergy,10000,Evergy Metro,1.0,manual,Evergy operates two EIA utilities in Missouri
+MO,Evergy,12698,Evergy Missouri West,1.0,manual,Evergy operates two EIA utilities in Missouri
+MT,Black Hills Energy,19545,"Black Hills Power, Inc.",1.0,auto (reviewed),
+MT,Flathead Electric Cooperative,6395,Flathead Electric Coop Inc,1.0,auto (reviewed),
+NC,Wake Electric,19981,Wake Electric Membership Corp,1.0,auto (reviewed),
+NE,Nebraska Public Power District,13337,Nebraska Public Power District,1.0,auto (reviewed),
+NE,Omaha Public Power District,14127,Omaha Public Power District,1.0,auto (reviewed),
+NJ,Atlantic City Electric,963,Atlantic City Electric Co,1.0,auto (reviewed),
+NJ,Jersey Central Power and Light,9726,Jersey Central Power & Lt Co,1.0,auto (reviewed),
+NJ,Public Service Electric and Gas,15477,Public Service Elec & Gas Co,1.0,auto (reviewed),
+NJ,Rockland Electric Co,16213,Rockland Electric Co,1.0,auto (reviewed),
+NM,Los Alamos County Utilities,11204,Los Alamos County,1.0,auto (reviewed),
+NS,Nova Scotia Power,,,1.0,none,Canada; not in EIA-861
+NV,NV Energy,13407,Nevada Power Co,1.0,manual,NV Energy = Nevada Power (south) + Sierra Pacific Power (north)
+NV,NV Energy,17166,Sierra Pacific Power Co,1.0,manual,NV Energy = Nevada Power (south) + Sierra Pacific Power (north)
+NV,Valley Electric Association,19840,"Valley Electric Assn, Inc",1.0,auto (reviewed),
+OH,Buckeye Rural Electric Cooperative,2502,"Buckeye Rural Elec Coop, Inc",1.0,auto (reviewed),
+OH,Tipp City,18941,City of Tipp City - (OH),1.0,auto (reviewed),
+OH,Westerville Electric,20477,City of Westerville - (OH),1.0,auto (reviewed),
+OH,Yellow Springs Electric,21101,Village of Yellow Springs - (OH),1.0,auto (reviewed),
+OK,Oklahoma Electric Cooperative,14062,Oklahoma Electric Coop Inc,1.0,auto (reviewed),
+OR,Central Electric Cooperative,3240,Central Electric Coop Inc - (OR),1.0,auto (reviewed),
+OR,Consumers Power Inc.,4743,"Consumers Power, Inc",1.0,auto (reviewed),
+OR,Pacific Power,14354,PacifiCorp,1.0,auto (reviewed),
+PA,Met-Ed,66101,FirstEnergy Pennsylvania Electric Co,0.2882,manual,"Merged into FirstEnergy Pennsylvania Electric Co in 2024; customer_share = this company's share of the four former FirstEnergy PA utilities' residential customers in EIA-861 2023 (518,166 of 1,798,105)"
+PA,PECO,14940,PECO Energy Co,1.0,auto (reviewed),
+PA,PPL Electric Utilities,14715,PPL Electric Utilities Corp,1.0,auto (reviewed),
+PA,Penelec,66101,FirstEnergy Pennsylvania Electric Co,0.2766,manual,"Merged into FirstEnergy Pennsylvania Electric Co in 2024; customer_share = this company's share of the four former FirstEnergy PA utilities' residential customers in EIA-861 2023 (497,375 of 1,798,105)"
+PA,Penn Power,66101,FirstEnergy Pennsylvania Electric Co,0.0832,manual,"Merged into FirstEnergy Pennsylvania Electric Co in 2024; customer_share = this company's share of the four former FirstEnergy PA utilities' residential customers in EIA-861 2023 (149,685 of 1,798,105)"
+PA,West Penn Power,66101,FirstEnergy Pennsylvania Electric Co,0.352,manual,"Merged into FirstEnergy Pennsylvania Electric Co in 2024; customer_share = this company's share of the four former FirstEnergy PA utilities' residential customers in EIA-861 2023 (632,879 of 1,798,105)"
+SC,Aiken Electric Cooperative,162,Aiken Electric Coop Inc,1.0,auto (reviewed),
+SC,Horry Electric Cooperative,8786,Horry Electric Coop Inc,1.0,auto (reviewed),
+SD,Black Hills Energy,19545,"Black Hills Power, Inc.",1.0,auto (reviewed),
+SD,MidAmerican Energy,12341,MidAmerican Energy Co,1.0,auto (reviewed),
+SD,West River Electric Association,20401,West River Electric Assn Inc,1.0,auto (reviewed),
+SK,Saskatoon Light & Power,,,1.0,none,Canada; not in EIA-861
+TX,Austin Energy,1015,Austin Energy,1.0,auto (reviewed),
+TX,Bandera Electric Cooperative,1175,"Bandera Electric Coop, Inc",1.0,auto (reviewed),
+TX,Bluebonnet Electric Cooperative,1892,"Bluebonnet Electric Coop, Inc",1.0,auto (reviewed),
+TX,CoServ Electric Cooperative,5078,"Denton County Elec Coop, Inc",1.0,manual,CoServ is the trade name of Denton County Electric Cooperative
+TX,Farmers Electric Cooperative,6182,"Farmers Electric Coop, Inc - (TX)",1.0,auto (reviewed),
+TX,Grayson-Collin Electric Cooperative,7559,"Grayson-Collin Elec Coop, Inc",1.0,auto (reviewed),
+UT,Dixie Power,40165,"Dixie Escalante R E A, Inc",1.0,auto (reviewed),
+UT,Kaysville City Power,10063,Kaysville City Corporation,1.0,auto (reviewed),
+UT,Rocky Mountain Power,14354,PacifiCorp,1.0,auto (reviewed),
+UT,St. George Utilities,17874,City of St George,1.0,auto (reviewed),
+UT,Washington City Utility,20135,City of Washington - (UT),1.0,auto (reviewed),
+VA,Appalachian Power,733,Appalachian Power Co,1.0,auto (reviewed),
+VA,Virginia Tech Electric,19882,Virginia Tech Electric Service,1.0,auto (reviewed),
+VT,Burlington Electric Department,2548,City of Burlington Electric - (VT),1.0,auto (reviewed),
+VT,Green Mountain Power,7601,Green Mountain Power Corp,1.0,auto (reviewed),
+VT,Lyndonville Electric,11359,The Town of Lyndon Electric Department,1.0,manual,"Lyndonville Electric Department, Town of Lyndon"
+VT,Vermont Electric Cooperative,19791,"Vermont Electric Cooperative, Inc",1.0,auto (reviewed),
+VT,Washington Electric Cooperative,20151,Washington Electric Coop - (VT),1.0,auto (reviewed),
+WA,Pacific Power,14354,PacifiCorp,1.0,auto (reviewed),
+WA,Tacoma Public Utilities,18429,City of Tacoma - (WA),1.0,auto (reviewed),
+WI,Eau Claire Energy Cooperative,5632,Eau Claire Electric Coop,1.0,auto (reviewed),
+WI,Sturgeon Bay Utilities,18249,City of Sturgeon Bay - (WI),1.0,auto (reviewed),
+WV,Appalachian Power,733,Appalachian Power Co,1.0,auto (reviewed),
+WY,Black Hills Energy,19545,"Black Hills Power, Inc.",1.0,manual,"Black Hills Energy in Wyoming = Black Hills Power + Cheyenne Light, Fuel & Power"
+WY,Black Hills Energy,3461,Cheyenne Light Fuel & Power,1.0,manual,"Black Hills Energy in Wyoming = Black Hills Power + Cheyenne Light, Fuel & Power"
+WY,Rocky Mountain Power,14354,PacifiCorp,1.0,auto (reviewed),
+WY,Yampa Valley Electric Association,21081,Yampa Valley Electric Assn Inc,1.0,auto (reviewed),

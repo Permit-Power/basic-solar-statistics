@@ -1,17 +1,30 @@
 #!/bin/zsh
-# Scheduled entry point (called daily by launchd; see README "MSA utility
-# approval tracking"). Fetches whatever is still due this month, then rebuilds
-# msa_master.csv. Does nothing once the month's snapshot is complete.
+# Scheduled entry point, run daily by launchd (see README "MSA utility approval
+# tracking"). Runs the five notebooks in order with papermill, but only while
+# this month's MSA snapshot is incomplete; once it's complete, it does nothing
+# until next month. --force runs everything regardless.
+#
+# Executed copies of the notebooks are saved in runs/ (git-ignored).
 
-cd "$(dirname "$0")/.." || exit 1
+cd "$(dirname "$0")" || exit 1
 POETRY=/opt/homebrew/bin/poetry
 
-"$POETRY" run python msa_tracking/msa_scrape.py --catch-up
-scrape_status=$?
-[ $scrape_status -eq 3 ] && exit 0  # nothing due this month
+run() {
+  "$POETRY" run papermill "$1.ipynb" "runs/$1-output.ipynb" --cwd . --log-level WARNING "${@:2}"
+}
 
-"$POETRY" run python msa_tracking/processing.py
-process_status=$?
+due=$("$POETRY" run python common.py)
+if [[ -z "$due" && "$1" != "--force" ]]; then
+  exit 0  # this month's snapshot is already complete
+fi
 
-[ $scrape_status -ne 0 ] && exit $scrape_status
-exit $process_status
+mkdir -p runs
+run_status=0
+# Keep going after a failure so later steps still use whatever was fetched;
+# the exit status reports that something failed (details in run_log.txt).
+run 1_pull_msa -p catch_up True || run_status=1
+run 2_pull_eia || run_status=1
+run 3_process_msa || run_status=1
+run 4_process_eia || run_status=1
+run 5_join_outputs || run_status=1
+exit $run_status

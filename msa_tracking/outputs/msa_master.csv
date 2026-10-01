@@ -1,0 +1,732 @@
+snapshot_date,manufacturer,product,state,state_std,utility,utility_std,utility_other_names,approval_raw,approval_std,expected_date,install_type,notes,source_url
+2026-09-24,ConnectDER,EV MSA,Arizona,AZ,Arizona Public Service,Arizona Public Service,APS,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Arizona,AZ,Salt River Project,Salt River Project,SRP,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Arizona,AZ,Sulphur Springs Valley Electric Cooperative,Sulphur Springs Valley Electric Cooperative,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Arizona,AZ,Tucson Electric Power,Tucson Electric Power,TEP,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,California,CA,Pacific Gas & Electric,Pacific Gas and Electric,PG&E,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,California,CA,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,California,CA,Sacramento Municipal Utility District,Sacramento Municipal Utility District,SMUD,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,California,CA,San Diego Gas & Electric,San Diego Gas and Electric,SDG&E; SDGE,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,California,CA,Southern California Edison,Southern California Edison,SCE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Colorado,CO,Black Hills Energy,Black Hills Energy,,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Colorado,CO,Fort Collins Light & Power,Fort Collins Light and Power,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Colorado,CO,Holy Cross Energy,Holy Cross Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Colorado,CO,La Plata Electric Association,La Plata Electric Association,LPEA,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Colorado,CO,Xcel Energy,Xcel Energy,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Connecticut,CT,Eversource,Eversource,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Delaware,DE,Delmarva Power,Delmarva Power,PHI,"Expected Q, YYYY",expected,"Q3, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Florida,FL,City of Tallahassee,City of Tallahassee,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Hawaii,HI,Hawai'i Electric Light Co,Hawaiian Electric,HELCO; HECO,"Expected Q, YYYY",expected,"Q4, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Hawaii,HI,Hawaiian Electric,Hawaiian Electric,HECO,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Hawaii,HI,Maui Electric,Hawaiian Electric,MECO; HECO,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Idaho,ID,Idaho Falls Power,Idaho Falls Power,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Idaho,ID,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Illinois,IL,Ameren,Ameren,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Illinois,IL,ComEd,Commonwealth Edison,Commonwealth Edison,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Kansas,KS,Evergy,Evergy,,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Maryland,MD,Baltimore Gas & Electric,Baltimore Gas and Electric,BG&E; BGE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Maryland,MD,Delmarva Power,Delmarva Power,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Maryland,MD,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Maryland,MD,Potomac Edison,Potomac Edison,First Energy,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Maryland,MD,Southern Maryland Electric Cooperative,Southern Maryland Electric Cooperative,SMECO,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Missouri,MO,Evergy,Evergy,,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Montana,MT,Flathead Electric Cooperative,Flathead Electric Cooperative,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Nebraska,NE,Nebraska Public Power District,Nebraska Public Power District,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Nebraska,NE,Omaha Public Power District,Omaha Public Power District,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Nevada,NV,NV Energy,NV Energy,NVE,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Nevada,NV,Valley Electric Association,Valley Electric Association,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,New Jersey,NJ,Atlantic City Electric,Atlantic City Electric,PHI; ACE,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,First Energy; JCP&L,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,New Jersey,NJ,Public Service Electric & Gas Company,Public Service Electric and Gas,PSEG; PSE&G,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,New Jersey,NJ,Rockland Electric Co,Rockland Electric Co,RECO,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,North Carolina,NC,Wake Electric,Wake Electric,Wake EMC,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Ohio,OH,Buckeye Rural Electric,Buckeye Rural Electric Cooperative,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Ohio,OH,Tipp City,Tipp City,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Ohio,OH,Westerville Electric,Westerville Electric,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Ohio,OH,Yellow Springs Electric,Yellow Springs Electric,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Oregon,OR,Consumers Power Inc.,Consumers Power Inc.,,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Oregon,OR,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Pennsylvania,PA,Met-Ed,Met-Ed,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Pennsylvania,PA,PECO,PECO,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Pennsylvania,PA,Penelec,Penelec,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Pennsylvania,PA,Penn Power,Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Pennsylvania,PA,West Penn Power,West Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Texas,TX,Austin Energy,Austin Energy,,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Utah,UT,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Vermont,VT,Green Mountain Power,Green Mountain Power,GMP,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Virginia,VA,Appalachian Power,Appalachian Power,APCo,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Virginia,VA,Virginia Tech Electric,Virginia Tech Electric,,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Washington,WA,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Washington DC,DC,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,West Virginia,WV,Appalachian Power,Appalachian Power,APCo,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,EV MSA,Wyoming,WY,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Arizona,AZ,Arizona Public Service,Arizona Public Service,APS,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Arizona,AZ,Salt River Project,Salt River Project,SRP,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Arizona,AZ,Sulphur Springs Valley Electric Cooperative,Sulphur Springs Valley Electric Cooperative,,In Progress (TBD),in_progress,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Arizona,AZ,Tucson Electric Power,Tucson Electric Power,TEP,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,California,CA,Pacific Gas & Electric,Pacific Gas and Electric,PG&E,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,California,CA,Pacific Power,Pacific Power,Pacificorp,"Expected Q, YYYY",expected,"Q3, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,California,CA,Sacramento Municipal Utility District,Sacramento Municipal Utility District,SMUD,Approved,approved,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,California,CA,San Diego Gas & Electric,San Diego Gas and Electric,SDG&E; SDGE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,California,CA,Southern California Edison,Southern California Edison,SCE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Colorado,CO,Black Hills Energy,Black Hills Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Colorado,CO,Fort Collins Light & Power,Fort Collins Light and Power,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Colorado,CO,Holy Cross Energy,Holy Cross Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Colorado,CO,La Plata Electric Association,La Plata Electric Association,LPEA,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Colorado,CO,Xcel Energy,Xcel Energy,,In Progress (TBD),in_progress,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Connecticut,CT,Eversource,Eversource,,"Expected Q, YYYY",expected,"Q3, 2026",Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Delaware,DE,Delmarva Power,Delmarva Power,PHI,"Expected Q, YYYY",expected,"Q3, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Florida,FL,City of Tallahassee,City of Tallahassee,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Hawaii,HI,Hawai'i Electric Light Co,Hawaiian Electric,HELCO; HECO,"Expected Q, YYYY",expected,"Q4, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Hawaii,HI,Hawaiian Electric,Hawaiian Electric,HECO,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Hawaii,HI,Maui Electric,Hawaiian Electric,MECO; HECO,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Idaho,ID,Idaho Falls Power,Idaho Falls Power,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Idaho,ID,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,"Expected Q, YYYY",expected,"Q3, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Illinois,IL,Ameren,Ameren,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Illinois,IL,ComEd,Commonwealth Edison,Commonwealth Edison,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Kansas,KS,Evergy,Evergy,,"Expected Q, YYYY",expected,"Q3, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Maryland,MD,Baltimore Gas & Electric,Baltimore Gas and Electric,BG&E; BGE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Maryland,MD,Delmarva Power,Delmarva Power,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Maryland,MD,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Maryland,MD,Potomac Edison,Potomac Edison,First Energy,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Maryland,MD,Southern Maryland Electric Cooperative,Southern Maryland Electric Cooperative,SMECO,"Expected Q, YYYY",expected,"Q3, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Missouri,MO,Evergy,Evergy,,"Expected Q, YYYY",expected,"Q3, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Montana,MT,Flathead Electric Cooperative,Flathead Electric Cooperative,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Nebraska,NE,Nebraska Public Power District,Nebraska Public Power District,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Nebraska,NE,Omaha Public Power District,Omaha Public Power District,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Nevada,NV,NV Energy,NV Energy,NVE,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Nevada,NV,Valley Electric Association,Valley Electric Association,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,New Jersey,NJ,Atlantic City Electric,Atlantic City Electric,PHI; ACE,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,First Energy; JCP&L,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,New Jersey,NJ,Public Service Electric & Gas Company,Public Service Electric and Gas,PSEG; PSE&G,"Expected Q, YYYY",expected,"Q3, 2026",Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,New Jersey,NJ,Rockland Electric Co,Rockland Electric Co,RECO,In Progress (TBD),in_progress,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,North Carolina,NC,Wake Electric,Wake Electric,Wake EMC,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Ohio,OH,Buckeye Rural Electric,Buckeye Rural Electric Cooperative,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Ohio,OH,Tipp City,Tipp City,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Ohio,OH,Westerville Electric,Westerville Electric,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Ohio,OH,Yellow Springs Electric,Yellow Springs Electric,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Oregon,OR,Consumers Power Inc.,Consumers Power Inc.,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Oregon,OR,Pacific Power,Pacific Power,Pacificorp,"Expected Q, YYYY",expected,"Q3, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Pennsylvania,PA,Met-Ed,Met-Ed,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Pennsylvania,PA,PECO,PECO,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Pennsylvania,PA,Penelec,Penelec,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Pennsylvania,PA,Penn Power,Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Pennsylvania,PA,West Penn Power,West Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Texas,TX,Austin Energy,Austin Energy,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Utah,UT,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,"Expected Q, YYYY",expected,"Q3, 2026",Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Vermont,VT,Green Mountain Power,Green Mountain Power,GMP,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Virginia,VA,Appalachian Power,Appalachian Power,APCo,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Virginia,VA,Virginia Tech Electric,Virginia Tech Electric,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Washington,WA,Pacific Power,Pacific Power,Pacificorp,"Expected Q, YYYY",expected,"Q3, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Washington DC,DC,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,West Virginia,WV,Appalachian Power,Appalachian Power,APCo,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,IslandDER MSA,Wyoming,WY,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,"Expected Q, YYYY",expected,"Q3, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Arizona,AZ,Arizona Public Service,Arizona Public Service,APS,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Arizona,AZ,Salt River Project,Salt River Project,SRP,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Arizona,AZ,Sulphur Springs Valley Electric Cooperative,Sulphur Springs Valley Electric Cooperative,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Arizona,AZ,Tucson Electric Power,Tucson Electric Power,TEP,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,California,CA,Pacific Gas & Electric,Pacific Gas and Electric,PG&E,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,California,CA,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,California,CA,Sacramento Municipal Utility District,Sacramento Municipal Utility District,SMUD,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,California,CA,San Diego Gas & Electric,San Diego Gas and Electric,SDG&E; SDGE,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,California,CA,Southern California Edison,Southern California Edison,SCE,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Colorado,CO,Black Hills Energy,Black Hills Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Colorado,CO,Fort Collins Light & Power,Fort Collins Light and Power,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Colorado,CO,Holy Cross Energy,Holy Cross Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Colorado,CO,La Plata Electric Association,La Plata Electric Association,LPEA,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Colorado,CO,Xcel Energy,Xcel Energy,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Connecticut,CT,Eversource,Eversource,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Delaware,DE,Delmarva Power,Delmarva Power,PHI,"Expected Q, YYYY",expected,"Q3, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Florida,FL,City of Tallahassee,City of Tallahassee,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Hawaii,HI,Hawai'i Electric Light Co,Hawaiian Electric,HELCO; HECO,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Hawaii,HI,Hawaiian Electric,Hawaiian Electric,HECO,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Hawaii,HI,Maui Electric,Hawaiian Electric,MECO; HECO,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Idaho,ID,Idaho Falls Power,Idaho Falls Power,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Idaho,ID,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Illinois,IL,Ameren,Ameren,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Illinois,IL,ComEd,Commonwealth Edison,Commonwealth Edison,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Kansas,KS,Evergy,Evergy,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Maryland,MD,Baltimore Gas & Electric,Baltimore Gas and Electric,BG&E; BGE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Maryland,MD,Delmarva Power,Delmarva Power,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Maryland,MD,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Maryland,MD,Potomac Edison,Potomac Edison,First Energy,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Maryland,MD,Southern Maryland Electric Cooperative,Southern Maryland Electric Cooperative,SMECO,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Missouri,MO,Evergy,Evergy,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Montana,MT,Flathead Electric Cooperative,Flathead Electric Cooperative,,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Nebraska,NE,Nebraska Public Power District,Nebraska Public Power District,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Nebraska,NE,Omaha Public Power District,Omaha Public Power District,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Nevada,NV,NV Energy,NV Energy,NVE,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Nevada,NV,Valley Electric Association,Valley Electric Association,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,New Jersey,NJ,Atlantic City Electric,Atlantic City Electric,PHI; ACE,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,First Energy; JCP&L,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,New Jersey,NJ,Public Service Electric & Gas Company,Public Service Electric and Gas,PSEG; PSE&G,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,New Jersey,NJ,Rockland Electric Co,Rockland Electric Co,RECO,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,North Carolina,NC,Wake Electric,Wake Electric,Wake EMC,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Ohio,OH,Buckeye Rural Electric,Buckeye Rural Electric Cooperative,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Ohio,OH,Tipp City,Tipp City,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Ohio,OH,Westerville Electric,Westerville Electric,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Ohio,OH,Yellow Springs Electric,Yellow Springs Electric,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Oregon,OR,Consumers Power Inc.,Consumers Power Inc.,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Oregon,OR,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Pennsylvania,PA,Met-Ed,Met-Ed,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Pennsylvania,PA,PECO,PECO,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Pennsylvania,PA,Penelec,Penelec,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Pennsylvania,PA,Penn Power,Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Pennsylvania,PA,West Penn Power,West Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Texas,TX,Austin Energy,Austin Energy,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Utah,UT,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Vermont,VT,Green Mountain Power,Green Mountain Power,GMP,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Virginia,VA,Appalachian Power,Appalachian Power,APCo,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Virginia,VA,Virginia Tech Electric,Virginia Tech Electric,,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Washington,WA,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Washington DC,DC,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,West Virginia,WV,Appalachian Power,Appalachian Power,APCo,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,ConnectDER,Solar MSA,Wyoming,WY,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-09-24,Enphase,IQ Meter Collar,,,Potomac Edison,Potomac Edison,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Arizona,AZ,Arizona Public Service (APS),Arizona Public Service,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Arizona,AZ,Hohokam Irrigation and Power,Hohokam Irrigation and Drainage District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Arizona,AZ,Salt River Project (SRP),Salt River Project,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Arizona,AZ,Sulphur Spring Valley Electric,Sulphur Springs Valley Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Arizona,AZ,Trico electric co-op,Trico Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Arizona,AZ,Tucson Electric Power (TEP),Tucson Electric Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Arizona,AZ,UniSource Energy,UniSource Energy,,Pilot in progress,pilot,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,California,CA,Lathrop Irrigation District,Lathrop Irrigation District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,California,CA,Pacific Gas and Electric Company (PG&E),Pacific Gas and Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,California,CA,Pacific Power,Pacific Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,California,CA,Plumas-Sierra Rural Electric co-op,Plumas-Sierra Rural Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,California,CA,Sacramento Municipal Utility District (SMUD),Sacramento Municipal Utility District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,California,CA,San Diego Gas & Electric (SDG&E),San Diego Gas and Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,California,CA,Southern California Edison (SCE),Southern California Edison,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,Black Hills Corporation,Black Hills Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,City of Ft. Collins Utility,Fort Collins Light and Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,City of Longmont,City of Longmont,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,Estes Park Utilities,Estes Park Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,Grand Valley Power,Grand Valley Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,Holy Cross Energy,Holy Cross Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,La Plata Electric Association (LPEA),La Plata Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,Poudre Valley Rural Electric Association,Poudre Valley Rural Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,San Isabel Electric,San Isabel Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Colorado,CO,Yampa Valley Electrical Association (YVEA),Yampa Valley Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Connecticut,CT,Eversource,Eversource,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Connecticut,CT,United Illuminating,United Illuminating,,Pilot in progress,pilot,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Delaware,DE,Delmarva,Delmarva Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Florida,FL,City of Tallahassee Electric Utility,City of Tallahassee,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Florida,FL,OUC (Orlando Utilities Commission),Orlando Utilities Commission,,Listed,approved,,,Ring-type meter base only,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Georgia,GA,Central Georgia EMC,Central Georgia EMC,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Georgia,GA,Coweta-Fayette EMC,Coweta-Fayette EMC,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Georgia,GA,Walton EMC,Walton EMC,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Hawaii,HI,Heco,Hawaiian Electric,,Pilot in progress,pilot,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Idaho,ID,Rocky Mountain Power,Rocky Mountain Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Illinois,IL,Ameren,Ameren,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Illinois,IL,City of Highland Light and Power,City of Highland Light and Power,,Approvals on case-by-case basis,case_by_case,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Illinois,IL,ComEd,Commonwealth Edison,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Illinois,IL,MidAmerican Energy,MidAmerican Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Indiana,IN,Lawrenceburg Municipality Utilities,Lawrenceburg Municipality Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Indiana,IN,Lebanon Utilities,Lebanon Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Indiana,IN,Richmond Power and Light,Richmond Power and Light,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Iowa,IA,MidAmerican Energy,MidAmerican Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Maryland,MD,Baltimore Gas and Electric (BGE),Baltimore Gas and Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Maryland,MD,DPL,Delmarva Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Maryland,MD,PEPCO,Pepco,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Maryland,MD,Potomac Edison,Potomac Edison,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Michigan,MI,Traverse City Light and Power,Traverse City Light and Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Montana,MT,Black Hills Corporation,Black Hills Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Nebraska,NE,Nebraska Public Power District,Nebraska Public Power District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Nebraska,NE,Omaha Public Power District (OPPD),Omaha Public Power District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Nevada,NV,NV Energy,NV Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,New Jersey,NJ,ACE,Atlantic City Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,New Jersey,NJ,Jersey Central Power and Light,Jersey Central Power and Light,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,New Mexico,NM,Los Alamos Department of public utilities,Los Alamos County Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Nova Scotia,NS,Nova Scotia Power,Nova Scotia Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Ohio,OH,Buckeye Rural Electrical Cooperative,Buckeye Rural Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Ohio,OH,City of Westerville OH,Westerville Electric,,Listed,approved,,,Ring-type meter base only,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Ohio,OH,Village of Yellow Springs,Yellow Springs Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Oklahoma,OK,Oklahoma Electric Cooperative,Oklahoma Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Oregon,OR,Central Electric Cooperative,Central Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Oregon,OR,Pacific Power,Pacific Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Saskatchewan,SK,Saskatoon Light & Power (SL&P),Saskatoon Light & Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,South Carolina,SC,Aiken Electric Cooperative,Aiken Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,South Carolina,SC,Horry Electric Cooperative,Horry Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,South Dakota,SD,Black Hills Corporation,Black Hills Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,South Dakota,SD,MidAmerican Energy,MidAmerican Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,South Dakota,SD,West River Electric Association (WREA),West River Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Texas,TX,Austin Energy,Austin Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Texas,TX,Bandera Electric Cooperative,Bandera Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Texas,TX,Bluebonnet Electric Cooperative,Bluebonnet Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Texas,TX,CoServ,CoServ Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Texas,TX,Farmers Electric Cooperative,Farmers Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Utah,UT,Dixie Power,Dixie Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Utah,UT,Rocky Mountain Power,Rocky Mountain Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Utah,UT,St. George Utilities,St. George Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Utah,UT,Washington City Utility,Washington City Utility,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Vermont,VT,Burlington Electric Department,Burlington Electric Department,,Listed,approved,,,Ring-type meter base only,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Vermont,VT,Green Mountain Power,Green Mountain Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Vermont,VT,Vermont Electric Coop,Vermont Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Vermont,VT,Washington Electrical Cooperative,Washington Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Washington,WA,Pacific Power,Pacific Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Washington,WA,Tacoma Public Utilities,Tacoma Public Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Wisconsin,WI,Eau Clair Utility,Eau Claire Energy Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Wisconsin,WI,Sturgeon Bay Utilities,Sturgeon Bay Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Wyoming,WY,Black Hills Corporation,Black Hills Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Wyoming,WY,Rocky Mountain Power,Rocky Mountain Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Enphase,IQ Meter Collar,Wyoming,WY,Yampa Valley Electrical Association (YVEA),Yampa Valley Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-09-24,Tesla,Backup Switch (Powershare),Arizona,AZ,Arizona Public Service Company,Arizona Public Service,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Arizona,AZ,Hohokam Irrigation & Drainage District,Hohokam Irrigation and Drainage District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Arizona,AZ,Salt River Project,Salt River Project,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Arizona,AZ,Sulphur Springs Valley Electric Coop,Sulphur Springs Valley Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Arizona,AZ,Tucson Electric Power,Tucson Electric Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),California,CA,Lathrop Irrigation District,Lathrop Irrigation District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),California,CA,Pacific Gas and Electric Company,Pacific Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),California,CA,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),California,CA,Sacramento Municipal Utility District (SMUD),Sacramento Municipal Utility District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),California,CA,San Diego Gas & Electric (SDG&E),San Diego Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),California,CA,Southern California Edison (SCE),Southern California Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Colorado,CO,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Colorado,CO,Fort Collins Light and Power (FCLP),Fort Collins Light and Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Colorado,CO,Xcel Energy-Colorado,Xcel Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Hawaii,HI,Hawaiian Electric Company,Hawaiian Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Illinois,IL,Commonwealth Edison,Commonwealth Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Kansas,KS,Evergy,Evergy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Michigan,MI,Traverse City Light and Power,Traverse City Light and Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Missouri,MO,Evergy,Evergy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Montana,MT,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Nevada,NV,NV Energy (South and North),NV Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Oregon,OR,Central Electric Cooperative,Central Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Oregon,OR,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),South Dakota,SD,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),South Dakota,SD,West River Electric Association,West River Electric Association,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Texas,TX,Austin Energy (City of Austin),Austin Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Texas,TX,Bluebonnet Electric Coop (BB),Bluebonnet Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Texas,TX,CoServ Electric Cooperative,CoServ Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Texas,TX,Grayson-Collin Electric Cooperative (GCEC),Grayson-Collin Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Utah,UT,Kaysville City Power,Kaysville City Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Utah,UT,Rocky Mountain Power (RMP),Rocky Mountain Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Vermont,VT,Green Mountain Power (GMP),Green Mountain Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Vermont,VT,Lyndonville Electric,Lyndonville Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Vermont,VT,Vermont Electric Cooperative,Vermont Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Washington,WA,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Washington,WA,Tacoma Public Utilities,Tacoma Public Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Wisconsin,WI,Eau Claire Energy Coop,Eau Claire Energy Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Wisconsin,WI,Sturgeon Bay Utilities,Sturgeon Bay Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powershare),Wyoming,WY,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Arizona,AZ,Arizona Public Service Company,Arizona Public Service,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Arizona,AZ,Hohokam Irrigation & Drainage District,Hohokam Irrigation and Drainage District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Arizona,AZ,Salt River Project,Salt River Project,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Arizona,AZ,Sulphur Springs Valley Electric Coop,Sulphur Springs Valley Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Arizona,AZ,Tucson Electric Power,Tucson Electric Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),California,CA,Lathrop Irrigation District,Lathrop Irrigation District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),California,CA,Pacific Gas and Electric Company,Pacific Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),California,CA,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),California,CA,Sacramento Municipal Utility District (SMUD),Sacramento Municipal Utility District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),California,CA,San Diego Gas & Electric (SDG&E),San Diego Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),California,CA,Southern California Edison (SCE),Southern California Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Colorado,CO,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Colorado,CO,Fort Collins Light and Power (FCLP),Fort Collins Light and Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Colorado,CO,Poudre Valley Electric Association,Poudre Valley Rural Electric Association,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Colorado,CO,Xcel Energy-Colorado,Xcel Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Connecticut,CT,Eversource,Eversource,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Delaware,DE,Delaware Electric Cooperative,Delaware Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Florida,FL,Orlando Utilities Commission,Orlando Utilities Commission,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Hawaii,HI,Hawaiian Electric Company,Hawaiian Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Illinois,IL,Ameren,Ameren,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Illinois,IL,Commonwealth Edison,Commonwealth Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Maine,ME,Versant Power,Versant Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Maryland,MD,Baltimore Gas & Electric (BGE),Baltimore Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Maryland,MD,Delmarva Power,Delmarva Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Maryland,MD,Potomac Edison,Potomac Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Maryland,MD,Potomac Electric Power Company (Pepco),Pepco,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Michigan,MI,Traverse City Light and Power,Traverse City Light and Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Montana,MT,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Nevada,NV,NV Energy (South and North),NV Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),New Jersey,NJ,Atlantic City Electric (ACE),Atlantic City Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),New Jersey,NJ,Public Service Electirc & Gas (PSE&G) NJ,Public Service Electric and Gas,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),New Mexico,NM,Los Alamos County Utilities,Los Alamos County Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Oregon,OR,Central Electric Cooperative,Central Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Oregon,OR,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Pennsylvania,PA,PPL Electric Utilities,PPL Electric Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),South Dakota,SD,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),South Dakota,SD,West River Electric Association,West River Electric Association,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Texas,TX,Austin Energy (City of Austin),Austin Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Texas,TX,Bluebonnet Electric Coop (BB),Bluebonnet Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Texas,TX,CoServ Electric Cooperative,CoServ Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Texas,TX,Grayson-Collin Electric Cooperative (GCEC),Grayson-Collin Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Utah,UT,Kaysville City Power,Kaysville City Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Utah,UT,Rocky Mountain Power (RMP),Rocky Mountain Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Vermont,VT,Green Mountain Power (GMP),Green Mountain Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Vermont,VT,Lyndonville Electric,Lyndonville Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Vermont,VT,Vermont Electric Cooperative,Vermont Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Vermont,VT,Washington Electric Coop,Washington Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Washington,WA,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Washington,WA,Tacoma Public Utilities,Tacoma Public Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Wisconsin,WI,Eau Claire Energy Coop,Eau Claire Energy Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Wisconsin,WI,Sturgeon Bay Utilities,Sturgeon Bay Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-09-24,Tesla,Backup Switch (Powerwall),Wyoming,WY,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,ConnectDER,EV MSA,Arizona,AZ,Arizona Public Service,Arizona Public Service,APS,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Arizona,AZ,Salt River Project,Salt River Project,SRP,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Arizona,AZ,Sulphur Springs Valley Electric Cooperative,Sulphur Springs Valley Electric Cooperative,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Arizona,AZ,Tucson Electric Power,Tucson Electric Power,TEP,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,California,CA,Pacific Gas & Electric,Pacific Gas and Electric,PG&E,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,California,CA,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,California,CA,Sacramento Municipal Utility District,Sacramento Municipal Utility District,SMUD,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,California,CA,San Diego Gas & Electric,San Diego Gas and Electric,SDG&E; SDGE,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,California,CA,Southern California Edison,Southern California Edison,SCE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Colorado,CO,Black Hills Energy,Black Hills Energy,,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Colorado,CO,Fort Collins Light & Power,Fort Collins Light and Power,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Colorado,CO,Holy Cross Energy,Holy Cross Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Colorado,CO,La Plata Electric Association,La Plata Electric Association,LPEA,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Colorado,CO,Xcel Energy,Xcel Energy,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Connecticut,CT,Eversource,Eversource,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Delaware,DE,Delmarva Power,Delmarva Power,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Florida,FL,City of Tallahassee,City of Tallahassee,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Hawaii,HI,Hawai'i Electric Light Co,Hawaiian Electric,HELCO; HECO,"Expected Q, YYYY",expected,"Q4, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Hawaii,HI,Hawaiian Electric,Hawaiian Electric,HECO,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Hawaii,HI,Maui Electric,Hawaiian Electric,MECO; HECO,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Idaho,ID,Idaho Falls Power,Idaho Falls Power,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Idaho,ID,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Illinois,IL,Ameren,Ameren,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Illinois,IL,ComEd,Commonwealth Edison,Commonwealth Edison,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Kansas,KS,Evergy,Evergy,,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Maryland,MD,Baltimore Gas & Electric,Baltimore Gas and Electric,BG&E; BGE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Maryland,MD,Delmarva Power,Delmarva Power,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Maryland,MD,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Maryland,MD,Potomac Edison,Potomac Edison,First Energy,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Maryland,MD,Southern Maryland Electric Cooperative,Southern Maryland Electric Cooperative,SMECO,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Missouri,MO,Evergy,Evergy,,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Montana,MT,Flathead Electric Cooperative,Flathead Electric Cooperative,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Nebraska,NE,Nebraska Public Power District,Nebraska Public Power District,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Nebraska,NE,Omaha Public Power District,Omaha Public Power District,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Nevada,NV,NV Energy,NV Energy,NVE,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Nevada,NV,Valley Electric Association,Valley Electric Association,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,New Jersey,NJ,Atlantic City Electric,Atlantic City Electric,PHI; ACE,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,First Energy; JCP&L,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,New Jersey,NJ,Public Service Electric & Gas Company,Public Service Electric and Gas,PSEG; PSE&G,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,New Jersey,NJ,Rockland Electric Co,Rockland Electric Co,RECO,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,North Carolina,NC,Wake Electric,Wake Electric,Wake EMC,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Ohio,OH,Buckeye Rural Electric,Buckeye Rural Electric Cooperative,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Ohio,OH,Tipp City,Tipp City,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Ohio,OH,Westerville Electric,Westerville Electric,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Ohio,OH,Yellow Springs Electric,Yellow Springs Electric,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Oregon,OR,Consumers Power Inc.,Consumers Power Inc.,,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Oregon,OR,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Pennsylvania,PA,Met-Ed,Met-Ed,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Pennsylvania,PA,PECO,PECO,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Pennsylvania,PA,Penelec,Penelec,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Pennsylvania,PA,Penn Power,Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Pennsylvania,PA,West Penn Power,West Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Texas,TX,Austin Energy,Austin Energy,,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Utah,UT,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Vermont,VT,Green Mountain Power,Green Mountain Power,GMP,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Virginia,VA,Appalachian Power,Appalachian Power,APCo,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Virginia,VA,Virginia Tech Electric,Virginia Tech Electric,,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Washington,WA,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Washington DC,DC,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,West Virginia,WV,Appalachian Power,Appalachian Power,APCo,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,EV MSA,Wyoming,WY,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Arizona,AZ,Arizona Public Service,Arizona Public Service,APS,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Arizona,AZ,Salt River Project,Salt River Project,SRP,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Arizona,AZ,Sulphur Springs Valley Electric Cooperative,Sulphur Springs Valley Electric Cooperative,,In Progress (TBD),in_progress,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Arizona,AZ,Tucson Electric Power,Tucson Electric Power,TEP,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,California,CA,Pacific Gas & Electric,Pacific Gas and Electric,PG&E,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,California,CA,Pacific Power,Pacific Power,Pacificorp,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,California,CA,Sacramento Municipal Utility District,Sacramento Municipal Utility District,SMUD,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,California,CA,San Diego Gas & Electric,San Diego Gas and Electric,SDG&E; SDGE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,California,CA,Southern California Edison,Southern California Edison,SCE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Colorado,CO,Black Hills Energy,Black Hills Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Colorado,CO,Fort Collins Light & Power,Fort Collins Light and Power,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Colorado,CO,Holy Cross Energy,Holy Cross Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Colorado,CO,La Plata Electric Association,La Plata Electric Association,LPEA,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Colorado,CO,Xcel Energy,Xcel Energy,,In Progress (TBD),in_progress,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Connecticut,CT,Eversource,Eversource,,"Expected Q, YYYY",expected,"Q4, 2026",Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Delaware,DE,Delmarva Power,Delmarva Power,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Florida,FL,City of Tallahassee,City of Tallahassee,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Hawaii,HI,Hawai'i Electric Light Co,Hawaiian Electric,HELCO; HECO,"Expected Q, YYYY",expected,"Q4, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Hawaii,HI,Hawaiian Electric,Hawaiian Electric,HECO,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Hawaii,HI,Maui Electric,Hawaiian Electric,MECO; HECO,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Idaho,ID,Idaho Falls Power,Idaho Falls Power,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Idaho,ID,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,"Expected Q, YYYY",expected,"Q4, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Illinois,IL,Ameren,Ameren,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Illinois,IL,ComEd,Commonwealth Edison,Commonwealth Edison,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Kansas,KS,Evergy,Evergy,,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Maryland,MD,Baltimore Gas & Electric,Baltimore Gas and Electric,BG&E; BGE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Maryland,MD,Delmarva Power,Delmarva Power,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Maryland,MD,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Maryland,MD,Potomac Edison,Potomac Edison,First Energy,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Maryland,MD,Southern Maryland Electric Cooperative,Southern Maryland Electric Cooperative,SMECO,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Missouri,MO,Evergy,Evergy,,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Montana,MT,Flathead Electric Cooperative,Flathead Electric Cooperative,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Nebraska,NE,Nebraska Public Power District,Nebraska Public Power District,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Nebraska,NE,Omaha Public Power District,Omaha Public Power District,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Nevada,NV,NV Energy,NV Energy,NVE,"Expected Q, YYYY",expected,"Q4, 2026",Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Nevada,NV,Valley Electric Association,Valley Electric Association,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,New Jersey,NJ,Atlantic City Electric,Atlantic City Electric,PHI; ACE,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,First Energy; JCP&L,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,New Jersey,NJ,Public Service Electric & Gas Company,Public Service Electric and Gas,PSEG; PSE&G,"Expected Q, YYYY",expected,"Q4, 2026",Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,New Jersey,NJ,Rockland Electric Co,Rockland Electric Co,RECO,In Progress (TBD),in_progress,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,North Carolina,NC,Wake Electric,Wake Electric,Wake EMC,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Ohio,OH,Buckeye Rural Electric,Buckeye Rural Electric Cooperative,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Ohio,OH,Tipp City,Tipp City,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Ohio,OH,Westerville Electric,Westerville Electric,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Ohio,OH,Yellow Springs Electric,Yellow Springs Electric,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Oregon,OR,Consumers Power Inc.,Consumers Power Inc.,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Oregon,OR,Pacific Power,Pacific Power,Pacificorp,"Expected Q, YYYY",expected,"Q4, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Pennsylvania,PA,Met-Ed,Met-Ed,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Pennsylvania,PA,PECO,PECO,,N/A,not_applicable,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Pennsylvania,PA,Penelec,Penelec,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Pennsylvania,PA,Penn Power,Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Pennsylvania,PA,West Penn Power,West Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Texas,TX,Austin Energy,Austin Energy,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Utah,UT,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,"Expected Q, YYYY",expected,"Q4, 2026",Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Vermont,VT,Green Mountain Power,Green Mountain Power,GMP,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Virginia,VA,Appalachian Power,Appalachian Power,APCo,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Virginia,VA,Virginia Tech Electric,Virginia Tech Electric,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Washington,WA,Pacific Power,Pacific Power,Pacificorp,"Expected Q, YYYY",expected,"Q4, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Washington DC,DC,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,West Virginia,WV,Appalachian Power,Appalachian Power,APCo,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,IslandDER MSA,Wyoming,WY,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,"Expected Q, YYYY",expected,"Q4, 2026",Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Arizona,AZ,Arizona Public Service,Arizona Public Service,APS,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Arizona,AZ,Salt River Project,Salt River Project,SRP,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Arizona,AZ,Sulphur Springs Valley Electric Cooperative,Sulphur Springs Valley Electric Cooperative,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Arizona,AZ,Tucson Electric Power,Tucson Electric Power,TEP,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,California,CA,Pacific Gas & Electric,Pacific Gas and Electric,PG&E,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,California,CA,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,California,CA,Sacramento Municipal Utility District,Sacramento Municipal Utility District,SMUD,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,California,CA,San Diego Gas & Electric,San Diego Gas and Electric,SDG&E; SDGE,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,California,CA,Southern California Edison,Southern California Edison,SCE,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Colorado,CO,Black Hills Energy,Black Hills Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Colorado,CO,Fort Collins Light & Power,Fort Collins Light and Power,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Colorado,CO,Holy Cross Energy,Holy Cross Energy,,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Colorado,CO,La Plata Electric Association,La Plata Electric Association,LPEA,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Colorado,CO,Xcel Energy,Xcel Energy,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Connecticut,CT,Eversource,Eversource,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Delaware,DE,Delmarva Power,Delmarva Power,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Florida,FL,City of Tallahassee,City of Tallahassee,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Hawaii,HI,Hawai'i Electric Light Co,Hawaiian Electric,HELCO; HECO,N/A,not_applicable,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Hawaii,HI,Hawaiian Electric,Hawaiian Electric,HECO,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Hawaii,HI,Maui Electric,Hawaiian Electric,MECO; HECO,N/A,not_applicable,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Idaho,ID,Idaho Falls Power,Idaho Falls Power,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Idaho,ID,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Illinois,IL,Ameren,Ameren,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Illinois,IL,ComEd,Commonwealth Edison,Commonwealth Edison,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Kansas,KS,Evergy,Evergy,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Maryland,MD,Baltimore Gas & Electric,Baltimore Gas and Electric,BG&E; BGE,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Maryland,MD,Delmarva Power,Delmarva Power,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Maryland,MD,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Maryland,MD,Potomac Edison,Potomac Edison,First Energy,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Maryland,MD,Southern Maryland Electric Cooperative,Southern Maryland Electric Cooperative,SMECO,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Missouri,MO,Evergy,Evergy,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Montana,MT,Flathead Electric Cooperative,Flathead Electric Cooperative,,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Nebraska,NE,Nebraska Public Power District,Nebraska Public Power District,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Nebraska,NE,Omaha Public Power District,Omaha Public Power District,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Nevada,NV,NV Energy,NV Energy,NVE,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Nevada,NV,Valley Electric Association,Valley Electric Association,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,New Jersey,NJ,Atlantic City Electric,Atlantic City Electric,PHI; ACE,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,First Energy; JCP&L,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,New Jersey,NJ,Public Service Electric & Gas Company,Public Service Electric and Gas,PSEG; PSE&G,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,New Jersey,NJ,Rockland Electric Co,Rockland Electric Co,RECO,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,North Carolina,NC,Wake Electric,Wake Electric,Wake EMC,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Ohio,OH,Buckeye Rural Electric,Buckeye Rural Electric Cooperative,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Ohio,OH,Tipp City,Tipp City,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Ohio,OH,Westerville Electric,Westerville Electric,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Ohio,OH,Yellow Springs Electric,Yellow Springs Electric,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Oregon,OR,Consumers Power Inc.,Consumers Power Inc.,,N/A,not_applicable,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Oregon,OR,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Pennsylvania,PA,Met-Ed,Met-Ed,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Pennsylvania,PA,PECO,PECO,,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Pennsylvania,PA,Penelec,Penelec,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Pennsylvania,PA,Penn Power,Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Pennsylvania,PA,West Penn Power,West Penn Power,First Energy,"Expected Q, YYYY",expected,"Q4, 2026",,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Texas,TX,Austin Energy,Austin Energy,,Approved,approved,,Joint Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Utah,UT,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Vermont,VT,Green Mountain Power,Green Mountain Power,GMP,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Virginia,VA,Appalachian Power,Appalachian Power,APCo,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Virginia,VA,Virginia Tech Electric,Virginia Tech Electric,,Approved,approved,,,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Washington,WA,Pacific Power,Pacific Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Washington DC,DC,Pepco,Pepco,PHI,Approved,approved,,Installer Allowed,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,West Virginia,WV,Appalachian Power,Appalachian Power,APCo,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,ConnectDER,Solar MSA,Wyoming,WY,Rocky Mountain Power,Rocky Mountain Power,Pacificorp,Approved,approved,,Utility Install,,https://connectder.com/utility-approval-status
+2026-10-01,Enphase,IQ Meter Collar,,,Potomac Edison,Potomac Edison,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Arizona,AZ,Arizona Public Service (APS),Arizona Public Service,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Arizona,AZ,Hohokam Irrigation and Power,Hohokam Irrigation and Drainage District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Arizona,AZ,Salt River Project (SRP),Salt River Project,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Arizona,AZ,Sulphur Spring Valley Electric,Sulphur Springs Valley Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Arizona,AZ,Trico electric co-op,Trico Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Arizona,AZ,Tucson Electric Power (TEP),Tucson Electric Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Arizona,AZ,UniSource Energy,UniSource Energy,,Pilot in progress,pilot,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,California,CA,Lathrop Irrigation District,Lathrop Irrigation District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,California,CA,Pacific Gas and Electric Company (PG&E),Pacific Gas and Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,California,CA,Pacific Power,Pacific Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,California,CA,Plumas-Sierra Rural Electric co-op,Plumas-Sierra Rural Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,California,CA,Sacramento Municipal Utility District (SMUD),Sacramento Municipal Utility District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,California,CA,San Diego Gas & Electric (SDG&E),San Diego Gas and Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,California,CA,Southern California Edison (SCE),Southern California Edison,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,Black Hills Corporation,Black Hills Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,City of Ft. Collins Utility,Fort Collins Light and Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,City of Longmont,City of Longmont,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,Estes Park Utilities,Estes Park Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,Grand Valley Power,Grand Valley Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,Holy Cross Energy,Holy Cross Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,La Plata Electric Association (LPEA),La Plata Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,Poudre Valley Rural Electric Association,Poudre Valley Rural Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,San Isabel Electric,San Isabel Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Colorado,CO,Yampa Valley Electrical Association (YVEA),Yampa Valley Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Connecticut,CT,Eversource,Eversource,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Connecticut,CT,United Illuminating,United Illuminating,,Pilot in progress,pilot,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Delaware,DE,Delmarva,Delmarva Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Florida,FL,City of Tallahassee Electric Utility,City of Tallahassee,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Florida,FL,OUC (Orlando Utilities Commission),Orlando Utilities Commission,,Listed,approved,,,Ring-type meter base only,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Georgia,GA,Central Georgia EMC,Central Georgia EMC,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Georgia,GA,Coweta-Fayette EMC,Coweta-Fayette EMC,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Georgia,GA,Walton EMC,Walton EMC,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Hawaii,HI,Heco,Hawaiian Electric,,Pilot in progress,pilot,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Idaho,ID,Rocky Mountain Power,Rocky Mountain Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Illinois,IL,Ameren,Ameren,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Illinois,IL,City of Highland Light and Power,City of Highland Light and Power,,Approvals on case-by-case basis,case_by_case,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Illinois,IL,ComEd,Commonwealth Edison,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Illinois,IL,MidAmerican Energy,MidAmerican Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Indiana,IN,Lawrenceburg Municipality Utilities,Lawrenceburg Municipality Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Indiana,IN,Lebanon Utilities,Lebanon Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Indiana,IN,Richmond Power and Light,Richmond Power and Light,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Iowa,IA,MidAmerican Energy,MidAmerican Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Maryland,MD,Baltimore Gas and Electric (BGE),Baltimore Gas and Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Maryland,MD,DPL,Delmarva Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Maryland,MD,PEPCO,Pepco,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Maryland,MD,Potomac Edison,Potomac Edison,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Maryland,MD,Southern Maryland Electric Coop (SMECO),Southern Maryland Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Michigan,MI,Traverse City Light and Power,Traverse City Light and Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Montana,MT,Black Hills Corporation,Black Hills Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Nebraska,NE,Nebraska Public Power District,Nebraska Public Power District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Nebraska,NE,Omaha Public Power District (OPPD),Omaha Public Power District,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Nevada,NV,NV Energy,NV Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,New Jersey,NJ,ACE,Atlantic City Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,New Jersey,NJ,Jersey Central Power and Light,Jersey Central Power and Light,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,New Mexico,NM,Los Alamos Department of public utilities,Los Alamos County Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Nova Scotia,NS,Nova Scotia Power,Nova Scotia Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Ohio,OH,Buckeye Rural Electrical Cooperative,Buckeye Rural Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Ohio,OH,City of Westerville OH,Westerville Electric,,Listed,approved,,,Ring-type meter base only,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Ohio,OH,Village of Yellow Springs,Yellow Springs Electric,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Oklahoma,OK,Oklahoma Electric Cooperative,Oklahoma Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Oregon,OR,Central Electric Cooperative,Central Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Oregon,OR,Pacific Power,Pacific Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Saskatchewan,SK,Saskatoon Light & Power (SL&P),Saskatoon Light & Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,South Carolina,SC,Aiken Electric Cooperative,Aiken Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,South Carolina,SC,Horry Electric Cooperative,Horry Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,South Dakota,SD,Black Hills Corporation,Black Hills Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,South Dakota,SD,MidAmerican Energy,MidAmerican Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,South Dakota,SD,West River Electric Association (WREA),West River Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Texas,TX,Austin Energy,Austin Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Texas,TX,Bandera Electric Cooperative,Bandera Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Texas,TX,Bluebonnet Electric Cooperative,Bluebonnet Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Texas,TX,CoServ,CoServ Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Texas,TX,Farmers Electric Cooperative,Farmers Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Utah,UT,Dixie Power,Dixie Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Utah,UT,Rocky Mountain Power,Rocky Mountain Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Utah,UT,St. George Utilities,St. George Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Utah,UT,Washington City Utility,Washington City Utility,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Vermont,VT,Burlington Electric Department,Burlington Electric Department,,Listed,approved,,,Ring-type meter base only,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Vermont,VT,Green Mountain Power,Green Mountain Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Vermont,VT,Vermont Electric Coop,Vermont Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Vermont,VT,Washington Electrical Cooperative,Washington Electric Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Washington,WA,Pacific Power,Pacific Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Washington,WA,Tacoma Public Utilities,Tacoma Public Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Wisconsin,WI,Eau Clair Utility,Eau Claire Energy Cooperative,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Wisconsin,WI,Sturgeon Bay Utilities,Sturgeon Bay Utilities,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Wyoming,WY,Black Hills Corporation,Black Hills Energy,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Wyoming,WY,Rocky Mountain Power,Rocky Mountain Power,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Enphase,IQ Meter Collar,Wyoming,WY,Yampa Valley Electrical Association (YVEA),Yampa Valley Electric Association,,Listed,approved,,,,https://enphase.com/installers/storage/gen4/iq-meter-collar/approvals
+2026-10-01,Tesla,Backup Switch (Powershare),Arizona,AZ,Arizona Public Service Company,Arizona Public Service,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Arizona,AZ,Hohokam Irrigation & Drainage District,Hohokam Irrigation and Drainage District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Arizona,AZ,Salt River Project,Salt River Project,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Arizona,AZ,Sulphur Springs Valley Electric Coop,Sulphur Springs Valley Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Arizona,AZ,Tucson Electric Power,Tucson Electric Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),California,CA,Lathrop Irrigation District,Lathrop Irrigation District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),California,CA,Pacific Gas and Electric Company,Pacific Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),California,CA,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),California,CA,Sacramento Municipal Utility District (SMUD),Sacramento Municipal Utility District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),California,CA,San Diego Gas & Electric (SDG&E),San Diego Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),California,CA,Southern California Edison (SCE),Southern California Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Colorado,CO,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Colorado,CO,Fort Collins Light and Power (FCLP),Fort Collins Light and Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Colorado,CO,Xcel Energy-Colorado,Xcel Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Hawaii,HI,Hawaiian Electric Company,Hawaiian Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Illinois,IL,Commonwealth Edison,Commonwealth Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Kansas,KS,Evergy,Evergy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Michigan,MI,Traverse City Light and Power,Traverse City Light and Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Missouri,MO,Evergy,Evergy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Montana,MT,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Nevada,NV,NV Energy (South and North),NV Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Oregon,OR,Central Electric Cooperative,Central Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Oregon,OR,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),South Dakota,SD,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),South Dakota,SD,West River Electric Association,West River Electric Association,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Texas,TX,Austin Energy (City of Austin),Austin Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Texas,TX,Bluebonnet Electric Coop (BB),Bluebonnet Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Texas,TX,CoServ Electric Cooperative,CoServ Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Texas,TX,Grayson-Collin Electric Cooperative (GCEC),Grayson-Collin Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Utah,UT,Kaysville City Power,Kaysville City Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Utah,UT,Rocky Mountain Power (RMP),Rocky Mountain Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Vermont,VT,Green Mountain Power (GMP),Green Mountain Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Vermont,VT,Lyndonville Electric,Lyndonville Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Vermont,VT,Vermont Electric Cooperative,Vermont Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Washington,WA,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Washington,WA,Tacoma Public Utilities,Tacoma Public Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Wisconsin,WI,Eau Claire Energy Coop,Eau Claire Energy Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Wisconsin,WI,Sturgeon Bay Utilities,Sturgeon Bay Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powershare),Wyoming,WY,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Arizona,AZ,Arizona Public Service Company,Arizona Public Service,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Arizona,AZ,Hohokam Irrigation & Drainage District,Hohokam Irrigation and Drainage District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Arizona,AZ,Salt River Project,Salt River Project,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Arizona,AZ,Sulphur Springs Valley Electric Coop,Sulphur Springs Valley Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Arizona,AZ,Tucson Electric Power,Tucson Electric Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),California,CA,Lathrop Irrigation District,Lathrop Irrigation District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),California,CA,Pacific Gas and Electric Company,Pacific Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),California,CA,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),California,CA,Sacramento Municipal Utility District (SMUD),Sacramento Municipal Utility District,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),California,CA,San Diego Gas & Electric (SDG&E),San Diego Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),California,CA,Southern California Edison (SCE),Southern California Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Colorado,CO,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Colorado,CO,Fort Collins Light and Power (FCLP),Fort Collins Light and Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Colorado,CO,Poudre Valley Electric Association,Poudre Valley Rural Electric Association,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Colorado,CO,Xcel Energy-Colorado,Xcel Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Connecticut,CT,Eversource,Eversource,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Delaware,DE,Delaware Electric Cooperative,Delaware Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Delaware,DE,Delmarva,Delmarva Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),District of Columbia,DC,Pepco,Pepco,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Florida,FL,Orlando Utilities Commission,Orlando Utilities Commission,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Hawaii,HI,Hawaiian Electric Company,Hawaiian Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Illinois,IL,Ameren,Ameren,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Illinois,IL,Commonwealth Edison,Commonwealth Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Maine,ME,Versant Power,Versant Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Maryland,MD,Baltimore Gas & Electric (BGE),Baltimore Gas and Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Maryland,MD,Delmarva Power,Delmarva Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Maryland,MD,Potomac Edison,Potomac Edison,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Maryland,MD,Potomac Electric Power Company (Pepco),Pepco,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Michigan,MI,Traverse City Light and Power,Traverse City Light and Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Montana,MT,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Nevada,NV,NV Energy (South and North),NV Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),New Jersey,NJ,Atlantic City Electric (ACE),Atlantic City Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),New Jersey,NJ,Jersey Central Power & Light,Jersey Central Power and Light,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),New Jersey,NJ,Public Service Electirc & Gas (PSE&G) NJ,Public Service Electric and Gas,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),New Mexico,NM,Los Alamos County Utilities,Los Alamos County Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Oregon,OR,Central Electric Cooperative,Central Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Oregon,OR,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Pennsylvania,PA,PPL Electric Utilities,PPL Electric Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),South Dakota,SD,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),South Dakota,SD,West River Electric Association,West River Electric Association,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Texas,TX,Austin Energy (City of Austin),Austin Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Texas,TX,Bluebonnet Electric Coop (BB),Bluebonnet Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Texas,TX,CoServ Electric Cooperative,CoServ Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Texas,TX,Grayson-Collin Electric Cooperative (GCEC),Grayson-Collin Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Utah,UT,Kaysville City Power,Kaysville City Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Utah,UT,Rocky Mountain Power (RMP),Rocky Mountain Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Vermont,VT,Green Mountain Power (GMP),Green Mountain Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Vermont,VT,Lyndonville Electric,Lyndonville Electric,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Vermont,VT,Vermont Electric Cooperative,Vermont Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Vermont,VT,Washington Electric Coop,Washington Electric Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Washington,WA,Pacific Power,Pacific Power,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Washington,WA,Tacoma Public Utilities,Tacoma Public Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Wisconsin,WI,Eau Claire Energy Coop,Eau Claire Energy Cooperative,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Wisconsin,WI,Sturgeon Bay Utilities,Sturgeon Bay Utilities,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
+2026-10-01,Tesla,Backup Switch (Powerwall),Wyoming,WY,Black Hills Energy,Black Hills Energy,,Listed,approved,,,,https://www.tesla.com/support/energy/powerwall/learn/tesla-backup-switch
