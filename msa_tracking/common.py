@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parent
 # Inputs
 RAW_MSA_DIR = ROOT / "data" / "raw" / "msa"      # one folder per snapshot date (git-ignored)
 RAW_EIA_DIR = ROOT / "data" / "raw" / "eia"      # one folder per EIA-861 year (git-ignored)
+RAW_CENSUS_DIR = ROOT / "data" / "raw" / "census"  # one folder per ACS year (git-ignored)
 CROSSWALK_CSV = ROOT / "data" / "msa_eia_crosswalk.csv"  # hand-reviewed
 
 # Outputs
@@ -26,6 +27,10 @@ LOG_FILE = ROOT / "run_log.txt"
 # EIA-861 year used for residential customer counts. 2024 is the latest final
 # year; a 2025 early release exists but excludes some utilities.
 EIA_YEAR = 2024
+
+# American Community Survey 5-year estimates used for people per household by
+# county (2024 = the 2020-2024 estimates).
+ACS_YEAR = 2024
 
 # MSA sources: key used for raw file names and fetch_status.json -> display name.
 MSA_SOURCES = {"connectder": "ConnectDER", "enphase": "Enphase", "tesla": "Tesla"}
