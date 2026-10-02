@@ -51,7 +51,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | `solar_eligible_households_by_state.csv` | ResStock | Eligible and suitable household counts by state |
 | `potential_solar_generation_by_state.csv` | NREL SLOPE | Technical generation potential in GWh by state |
 | `residential_solar_costs_by_state_over_time.csv` | LBNL TTS | Median $/kW and system size (kW), inflation-adjusted, by state and year |
-| `annual_and_lifetime_solar_savings_by_state.csv` | dGen | Median year-1 and lifetime (25-year, 2026 $) bill savings by state (dGen `synapse_attachrate_75` run, PV only) |
+| `annual_and_lifetime_solar_savings_by_state.csv` | dGen | Median year-1 and lifetime (25-year, 2026 $) bill savings for a typical solar customer, by state, under the state's export compensation policy (PV only; see "Solar bill savings" below) |
 | `electricity_rates_by_state.csv` | EIA API | Avg price ($/kWh) and annual bill by state, sector, year (2026 $) |
 | `electricity_rates_by_utility.csv` | EIA 861 | Avg price ($/kWh) and annual bill by utility, sector, year (2026 $) |
 | `solartrace_timelines_by_state.csv` | Solar TRACE xlsx | All timeline metrics by state, year, size class, tech class |
@@ -81,7 +81,7 @@ Reads from `output_csvs/` and a handful of static files in `data/`, joins everyt
 |--------|------------|---------------|
 | State, State (Abbr.) | `data/state_name_abbr.csv` | — |
 | Median solar savings in first year | `output_csvs/annual_and_lifetime_solar_savings_by_state.csv` | — |
-| Median solar savings over lifetime | same | 25 years, 2026 dollars |
+| Median solar savings over lifetime | same | 25 years, 2026 dollars; export policy per state |
 | Average electricity retail cost ($/kWh) | `output_csvs/electricity_rates_by_state.csv` | Latest year, residential sector |
 | Average annual electricity bill | same | Latest year, residential sector |
 | Number of solar installations | `output_csvs/solar_storage_capacity_installations_by_state_sector.csv` | Latest year, residential sector |
@@ -120,6 +120,18 @@ The following Ohm files are **no longer used** anywhere in the pipeline and are 
 
 ---
 
+## Solar bill savings
+
+`data/bill_savings_csvs/state_bill_savings_2026_by_export_policy.csv` is generated locally by `notebooks/export_bill_savings.ipynb` (via `modules/solar_bill_savings_update.py`) from dGen runs on the shared drive (`$1 watt solar/2025/Results/Updated tariffs/{STATE}/{run}/baseline.csv`), then committed.
+
+- **Two dGen runs**, identical except export compensation: `synapse_attachrate_75` credits exports at full retail (net metering) and `synapse_attachrate_75_net_billing` at hourly wholesale prices (net billing). California is on its NEM 3.0 net billing in both.
+- **Per-state policy** from `data/dsire_iou_net_metering_may2026.csv` (DSIRE, investor-owned utilities, residential): net metering states use the net metering run, net billing states the net billing run, and states credited between retail and avoided cost (NH, NV at 75% of retail, TX) the average of the two. DC (not in the file) uses net metering; TN (no export compensation) uses net billing, which overstates. Overrides and notes are in `SCENARIO_OVERRIDES` / `SCENARIO_NOTES`.
+- **Typical solar customer**: weighted medians over the 2026 adopters of the net metering run, in both runs (same households, matched by `agent_id`). Weighting the net billing run by its own adopters would pick a smaller, better-economics group.
+- **First-year savings** = bill without solar − bill with solar (PV only), year 1. **Lifetime** = 25 years of savings in 2026 dollars (dGen's discounted savings with the 5% real discount removed).
+- The CSV also keeps both runs' values, the policy, the scenario used, and a note per state.
+
+---
+
 ## data/ folder — static inputs
 
 | File | Used by | Notes |
@@ -130,6 +142,7 @@ The following Ohm files are **no longer used** anywhere in the pipeline and are 
 | `TTS_LBNL_public_file_29-Sep-2025_all.csv` | `median_solar_costs.py` | LBNL Tracking the Sun (local copy) |
 | `resstock_metadata_technical_potential.csv` | `solar_eligible_households.py` | ~34 MB; ResStock household metadata |
 | `bill_savings_csvs/` | `solar_bill_savings_update.py` | Pre-computed dGen outputs; must exist before pipeline runs |
+| `dsire_iou_net_metering_may2026.csv` | `solar_bill_savings_update.py` | State residential export compensation (DSIRE, IOUs), picks the dGen run per state |
 | `state_cancellation_rates.csv` | `compile_state_stats.ipynb` | Ohm; used in state_stats |
 | `ahj_cancellation_rates.csv` | `pipeline.ipynb` | Ohm; uploaded to Drive only |
 | `ahj_distribution_permitting_timelines_pv.csv` | `pipeline.ipynb`, `median_permit_fees.py` | Ohm; provides AHJ population weights for fees module |

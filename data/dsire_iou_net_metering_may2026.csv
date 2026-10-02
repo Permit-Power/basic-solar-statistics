@@ -1,0 +1,51 @@
+state,state_abbr,dsire_map_color,dsire_category,residential_resolved,export_credit_pct_of_retail,mixed_flag,confidence,notes
+Alabama,AL,green,net_billing_or_other,net_billing_or_other,,0,high,
+Alaska,AK,blue,net_metering,net_metering,,0,high,
+Arizona,AZ,green,net_billing_or_other,net_billing_or_other,,0,high,
+Arkansas,AR,green,net_billing_or_other,net_billing_or_other,,0,high,
+California,CA,green,net_billing_or_other,net_billing_or_other,,0,high,
+Colorado,CO,blue,net_metering,net_metering,1.0,0,high,"CREDIT = FULL RETAIL, 1:1 kWh with monthly rollover (Xcel, Black Hills). Annual surplus at true-up paid at avoided cost (Xcel) unless customer elects rollover/donation. Co-ops/munis differ."
+Connecticut,CT,blue,net_metering,net_metering,,0,high,
+Delaware,DE,blue,net_metering,net_metering,,0,high,
+Florida,FL,blue,net_metering,net_metering,,0,high,
+Georgia,GA,green,net_billing_or_other,net_billing_or_other,,0,high,
+Hawaii,HI,green,net_billing_or_other,net_billing_or_other,,0,high,
+Idaho,ID,striped,mixed_unlabeled,net_billing_or_other,,1,medium,"Idaho Power (largest IOU), residential Schedule 6: real-time net billing since Jan 2024; exports credited at an avoided-cost, time-of-day export credit rate (not a fixed % of retail). Rate cut ~31% effective Oct 1, 2025; next update deferred to 2028. Avista residential: monthly net metering at retail. Rocky Mountain Power residential: nominally net billing but reported (EnergySage, unverified) as still ~full retail for systems <25 kW."
+Illinois,IL,green,net_billing_or_other,net_billing_or_other,,0,high,
+Indiana,IN,green,net_billing_or_other,net_billing_or_other,,0,high,
+Iowa,IA,blue,net_metering,net_metering,,0,high,
+Kansas,KS,blue,net_metering,net_metering,,0,high,
+Kentucky,KY,green,net_billing_or_other,net_billing_or_other,,0,high,
+Louisiana,LA,green,net_billing_or_other,net_billing_or_other,,0,high,
+Maine,ME,blue,net_metering,net_metering,,0,high,
+Maryland,MD,blue,net_metering,net_metering,,0,high,
+Massachusetts,MA,blue,net_metering,net_metering,,0,high,
+Michigan,MI,green,net_billing_or_other,net_billing_or_other,,0,high,
+Minnesota,MN,blue,net_metering,net_metering,,0,high,
+Mississippi,MS,green,net_billing_or_other,net_billing_or_other,,0,high,
+Missouri,MO,blue,net_metering,net_metering,,0,high,
+Montana,MT,blue,net_metering,net_metering,,0,high,
+Nebraska,NE,blue,net_metering,net_metering,,0,high,
+Nevada,NV,striped,mixed_unlabeled,net_metering,0.75,1,medium,"CREDIT = 75% OF RETAIL on net excess (NV Energy Tier 4, AB 405; locked 20 yrs). Netting interval differs: Sierra Pacific (north) uses 15-minute netting for new customers approved on/after Oct 1, 2025; Nevada Power (south) keeps monthly netting but added a 15-min peak demand charge Apr 2026. Sources conflicted on Nevada Power netting."
+New Hampshire,NH,striped,mixed_unlabeled,net_metering,,1,medium,"CREDIT IS PARTIAL, NOT A FLAT %: exports credited at 100% supply + 100% transmission + 25% distribution (NEM 2.0/2.1, NHPUC Order 27074, Nov 2024); same across Eversource, Unitil, Liberty. Effective % of retail varies by utility; ~85% is cited only by installer marketing sites (unverified)."
+New Jersey,NJ,blue,net_metering,net_metering,,0,high,
+New Mexico,NM,blue,net_metering,net_metering,,0,high,
+New York,NY,striped,mixed_unlabeled,net_metering,,1,medium,Residential customers remain on monthly net metering. Striping likely reflects non-residential rules (excluded). Residential credit value not verified as full retail.
+North Carolina,NC,blue,net_metering,net_metering,,0,high,
+North Dakota,ND,blue,net_metering,net_metering,,0,high,
+Ohio,OH,blue,net_metering,net_metering,,0,high,
+Oklahoma,OK,blue,net_metering,net_metering,,0,high,
+Oregon,OR,striped,mixed_unlabeled,net_metering,,1,low,PGE and Pacific Power residential: monthly kWh net metering at retail. Reason for DSIRE striping unverified; possibly Idaho Power's Oregon territory (filed Feb 2024 to adopt its Idaho net billing; outcome not found).
+Pennsylvania,PA,blue,net_metering,net_metering,,0,high,
+Rhode Island,RI,blue,net_metering,net_metering,,0,high,
+South Carolina,SC,blue,net_metering,net_metering,,0,high,
+South Dakota,SD,green,net_billing_or_other,net_billing_or_other,,0,high,
+Tennessee,TN,white,none,none,,0,high,No IOU distributed generation compensation per DSIRE.
+Texas,TX,striped,mixed_unlabeled,mixed,,1,medium,No statewide residential mandate. ERCOT areas: export compensation at the retail electric provider's discretion (per DSIRE map note). Non-ERCOT IOUs not researched.
+Utah,UT,green,net_billing_or_other,net_billing_or_other,,0,high,
+Vermont,VT,green,net_billing_or_other,net_billing_or_other,,0,high,
+Virginia,VA,blue,net_metering,net_metering,,0,high,
+Washington,WA,blue,net_metering,net_metering,,0,high,
+West Virginia,WV,green,net_billing_or_other,net_billing_or_other,,0,high,
+Wisconsin,WI,blue,net_metering,net_metering,,0,high,
+Wyoming,WY,blue,net_metering,net_metering,,0,high,
