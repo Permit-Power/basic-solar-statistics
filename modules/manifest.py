@@ -106,6 +106,8 @@ COLUMN_DESCRIPTIONS = {
     "operations_and_maintenance":           "Jobs in operations and maintenance",
 
     # Bill savings
+    "year_1_savings":                     "Weighted median first-year bill savings for a typical solar customer (PV only) under the state's export compensation policy, in dollars",
+    "lifetime_savings":                   "Weighted median bill savings for a typical solar customer (PV only) over 25 years under the state's export compensation policy, in 2026 dollars",
     "weighted_avg_bill_without_pv_year1": "Weighted average annual electricity bill without solar (Year 1), in dollars",
     "weighted_avg_bill_with_pv_year1":    "Weighted average annual electricity bill with solar (Year 1), in dollars",
     "weighted_avg_savings_year1":         "Weighted average annual savings from solar (Year 1), in dollars",
