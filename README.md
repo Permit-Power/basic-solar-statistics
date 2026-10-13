@@ -35,7 +35,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | Ohm static uploads | Loads pre-processed Ohm CSVs and uploads directly to Drive | Ohm Analytics | `cancellation_*`, `permitting_timelines_*`, `inspection_timelines_ahj` |
 | Solar capacity | Downloads EIA 861M files for 2017–2025, aggregates PV/battery stats | EIA 861M (live) | `capacity` |
 | Solar eligibility | Filters ResStock households for rooftop suitability | ResStock metadata | `eligibility` |
-| Solar costs | Downloads LBNL Tracking the Sun, applies CPI inflation adjustment | LBNL / FRED API (live) | `costs` |
+| Solar costs | Reads LBNL Tracking the Sun data tool export (state medians, inflation-adjusted by LBNL) | `data/tts_state_download_data.xlsx` | `costs` |
 | Electricity prices | Pulls state prices from EIA API (2015–2026), utility prices from EIA 861 files (2015–2024) | EIA API + EIA 861 (live) | `state_prices`, `util_prices` |
 | Permitting fees | Aggregates Solar TRACE fee data by AHJ and state | `data/solartrace_fees.csv` | `ahj_df_fees`, `state_df_fees` |
 | IX timelines (legacy) | Aggregates old Solar TRACE IX CSV by AHJ and state | `data/solartrace_ix.csv` | `ahj_df_ix`, `state_df_ix` |
@@ -50,7 +50,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | `solar_storage_capacity_installations_by_state_sector.csv` | EIA 861M | Cumulative solar/storage capacity and install counts by state, sector, year |
 | `solar_eligible_households_by_state.csv` | ResStock | Eligible and suitable household counts by state |
 | `potential_solar_generation_by_state.csv` | NREL SLOPE | Technical generation potential in GWh by state |
-| `residential_solar_costs_by_state_over_time.csv` | LBNL TTS | Median $/kW and system size (kW), inflation-adjusted, by state and year |
+| `residential_solar_costs_by_state_over_time.csv` | LBNL TTS data tool | Median residential $/kW (inflation-adjusted by LBNL) and system size (kW) by state and year, with sample sizes |
 | `annual_and_lifetime_solar_savings_by_state.csv` | dGen | Median year-1 and lifetime (25-year, 2026 $) bill savings for a typical solar customer, by state, under the state's export compensation policy (PV only; see "Solar bill savings" below) |
 | `electricity_rates_by_state.csv` | EIA API | Avg price ($/kWh) and annual bill by state, sector, year (2026 $) |
 | `electricity_rates_by_utility.csv` | EIA 861 | Avg price ($/kWh) and annual bill by utility, sector, year (2026 $) |
@@ -91,8 +91,8 @@ Reads from `output_csvs/` and a handful of static files in `data/`, joins everyt
 | Percent of total households suitable | same | — |
 | Solar penetration | computed: installs / eligible households | — |
 | Annual technical potential (GWh) | `output_csvs/potential_solar_generation_by_state.csv` | — |
-| Median solar cost ($/kW) | `output_csvs/residential_solar_costs_by_state_over_time.csv` | 2024 |
-| Median solar system size (kW) | same | 2024 |
+| Median solar cost ($/kW) | `output_csvs/residential_solar_costs_by_state_over_time.csv` | Most recent of 2025/2024 with a median based on ≥200 systems; blank otherwise. The year used per state is in `output_csvs/solar_costs_latest_by_state.csv` |
+| Median solar system size (kW) | same | Same rule, chosen separately from cost |
 | Solar permit cancellation rate | `data/state_cancellation_rates.csv` | 2022–2024 combined |
 | Median permitting timeline — solar | `output_csvs/solartrace_timelines_by_state.csv` | 2023, 0-10kW, pv_only, ≥250 installs |
 | Median permitting timeline — solar+storage | same | 2023, 0-10kW, pv_storage, ≥250 installs |
@@ -139,7 +139,7 @@ The following Ohm files are **no longer used** anywhere in the pipeline and are 
 | `SolarTRACE Dataset v9-9-2025.xlsx` | `process_solartrace_timelines.py` | Primary timeline source |
 | `solartrace_fees.csv` | `median_permit_fees.py` | Permitting fee data |
 | `solartrace_ix.csv` | `median_interconnection_timelines.py` | Legacy IX data; still uploaded to Drive but not used in state_stats |
-| `TTS_LBNL_public_file_29-Sep-2025_all.csv` | `median_solar_costs.py` | LBNL Tracking the Sun (local copy) |
+| `tts_state_download_data.xlsx` | `median_solar_costs.py` | LBNL Tracking the Sun data tool export (trackingthesun.lbl.gov, 2026 edition, installs through 2025); replace with a new export to update |
 | `resstock_metadata_technical_potential.csv` | `solar_eligible_households.py` | ~34 MB; ResStock household metadata |
 | `bill_savings_csvs/` | `solar_bill_savings_update.py` | Pre-computed dGen outputs; must exist before pipeline runs |
 | `dsire_iou_net_metering_may2026.csv` | `solar_bill_savings_update.py` | State residential export compensation (DSIRE, IOUs), picks the dGen run per state |
@@ -167,7 +167,7 @@ The following Ohm files are **no longer used** anywhere in the pipeline and are 
 | `pull_solar_count_and_capacity.py` | Downloads EIA 861M Excel files; aggregates residential PV/battery capacity and customer counts by state and year |
 | `solar_eligible_households.py` | Filters ResStock metadata to estimate solar-eligible household counts by state |
 | `solar_technical_potential.py` | Loads NREL SLOPE residential PV technical generation potential by state |
-| `median_solar_costs.py` | Processes LBNL Tracking the Sun data; applies CPI inflation adjustment from FRED; computes median $/kW and system size by state and year |
+| `median_solar_costs.py` | Reads LBNL's Tracking the Sun data tool export: residential median $/kW and system size by state and year; `latest_by_state` picks each state's most recent reliable year for state_stats |
 | `average_electricity_prices.py` | State prices from EIA API (2015–2026); utility prices from EIA 861 annual files (2015–2024); inflation-adjusted to 2026 dollars |
 | `process_solartrace_timelines.py` | Reshapes Solar TRACE xlsx into tidy long-format tables; produces `state_timelines` (direct reshape) and `utility_timelines` (AHJ→utility weighted-median aggregation) |
 | `median_permit_fees.py` | Aggregates Solar TRACE fee data; population-weighted median fees by state |
@@ -203,7 +203,7 @@ gcloud auth application-default login \
 
 API keys required (set in `.env` or as environment variables):
 - `EIA_API_KEY` — for electricity prices
-- `FRED_API_KEY` — for CPI inflation data (solar costs module)
+- `FRED_API_KEY` — for CPI inflation data (electricity prices module)
 
 ---
 

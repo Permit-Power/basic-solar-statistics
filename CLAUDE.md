@@ -23,7 +23,7 @@ modules/
   pull_solar_count_and_capacity.py   # Downloads EIA 861M Excel files and aggregates PV/battery stats
   solar_eligible_households.py       # Computes solar-eligible household counts from ResStock metadata
   solar_technical_potential.py       # NREL SLOPE residential PV technical generation potential
-  median_solar_costs.py              # Processes LBNL Tracking the Sun cost data (real $/W)
+  median_solar_costs.py              # Reads LBNL Tracking the Sun data tool export (state medians, $/kW and kW)
   solar_bill_savings_update.py       # Loads pre-computed dGen bill savings (2026 cohort, baseline scenario)
   median_permit_fees.py              # Aggregates Solar TRACE permitting fee data
   median_interconnection_timelines.py# Aggregates Solar TRACE interconnection timeline data
@@ -77,7 +77,7 @@ In CI, authentication is handled automatically via [Workload Identity Federation
 | Solar TRACE fees & IX timelines | Static CSVs in `data/` | Read from disk |
 | Bill savings | Pre-computed CSVs in `data/bill_savings_csvs/` | Must be present before pipeline runs |
 | EIA 861M solar/battery stats | Downloaded live from EIA website | `pull_solar_count_and_capacity.py` |
-| LBNL Tracking the Sun costs | Local CSV in `data/` | `median_solar_costs.py` |
+| LBNL Tracking the Sun costs | Data tool export `data/tts_state_download_data.xlsx` (committed) | `median_solar_costs.py` |
 | EIA 861 electricity prices | Downloaded live from EIA website | `average_electricity_prices.py` |
 
 ## Google Drive upload structure
