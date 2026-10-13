@@ -52,8 +52,8 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | `potential_solar_generation_by_state.csv` | NREL SLOPE | Technical generation potential in GWh by state |
 | `residential_solar_costs_by_state_over_time.csv` | LBNL TTS data tool | Median residential $/kW (inflation-adjusted by LBNL) and system size (kW) by state and year, with sample sizes |
 | `annual_and_lifetime_solar_savings_by_state.csv` | dGen | Median year-1 and lifetime (25-year, 2026 $) bill savings for a typical solar customer, by state, under the state's export compensation policy (PV only; see "Solar bill savings" below) |
-| `electricity_rates_by_state.csv` | EIA API | Avg price ($/kWh) and annual bill by state, sector, year (2026 $) |
-| `electricity_rates_by_utility.csv` | EIA 861 | Avg price ($/kWh) and annual bill by utility, sector, year (2026 $) |
+| `electricity_rates_by_state.csv` | EIA API | Avg price ($/kWh) and annual bill by state, sector, year (2018 on, 2026 $), plus a `US` row (national revenue / national sales) for comparison |
+| `electricity_rates_by_utility.csv` | EIA 861 | Avg price ($/kWh) and annual bill by utility, sector, year (2018 on, 2026 $) |
 | `solartrace_timelines_by_state.csv` | Solar TRACE xlsx | All timeline metrics by state, year, size class, tech class |
 | `solartrace_timelines_by_utility.csv` | Solar TRACE xlsx | All timeline metrics by utility, state, year, size class, tech class (weighted median) |
 | `cancellation_rates_by_state.csv` | Ohm Analytics | Solar permit cancellation rates by state |

@@ -13,7 +13,7 @@ Utility-level (EIA Form 861 annual ZIP files):
 
 State-level (EIA API v2 — retail-sales endpoint):
     • Fetches annual customers, price, revenue, and sales for all sectors
-      and all states over a configurable year range (default 2015–2026).
+      and all states plus a US total over a configurable year range (default 2018–2026).
     • Converts nominal cents/kWh to real $/kWh using FRED CPI.
     • Consistent methodology across all years (no file-format changes).
 
@@ -479,10 +479,18 @@ def _fetch_state_prices_from_api(start_year: int, end_year: int) -> pd.DataFrame
     }
 
     logger.info("Fetching EIA API state prices %s–%s", start_year, end_year)
-    resp = requests.get(EIA_API_URL, params=params, timeout=30)
-    resp.raise_for_status()
+    # The API returns at most `length` rows per request, so page through.
+    data = []
+    while True:
+        resp = requests.get(EIA_API_URL, params=params, timeout=30)
+        resp.raise_for_status()
+        response = resp.json().get("response", {})
+        page = response.get("data", [])
+        data.extend(page)
+        params["offset"] += len(page)
+        if not page or params["offset"] >= int(response.get("total", 0)):
+            break
 
-    data = resp.json().get("response", {}).get("data", [])
     if not data:
         raise RuntimeError(f"No EIA API data returned for {start_year}–{end_year}.")
 
@@ -508,7 +516,9 @@ def _harmonize_api_to_state_prices(
 
     Output columns: year, state, sector, customers, price_per_kwh, avg_annual_bill, pct_change_yoy
     """
-    _VALID_STATES = {
+    # The 50 states, DC, and "US" (EIA's national total: national revenue /
+    # national sales). Census-region rows (ENC, PACC, ...) are dropped.
+    _VALID_STATES = {"US",
         "AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL",
         "IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE",
         "NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD",
@@ -545,7 +555,7 @@ def _harmonize_api_to_state_prices(
 
 def build_eia861_prices(
     utility_years: Sequence[int],
-    state_start_year: int = 2015,
+    state_start_year: int = 2018,
     state_end_year: int = 2026,
     reference_year: int = 2026,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
@@ -564,9 +574,9 @@ def build_eia861_prices(
     Parameters
     ----------
     utility_years : Sequence[int]
-        Years to pull from EIA 861 files for utility-level data (e.g., range(2015, 2025)).
+        Years to pull from EIA 861 files for utility-level data (e.g., range(2018, 2025)).
     state_start_year : int
-        First year for EIA API state-level pull. Default: 2015.
+        First year for EIA API state-level pull. Default: 2018.
     state_end_year : int
         Last year for EIA API state-level pull. Default: 2026.
     reference_year : int
