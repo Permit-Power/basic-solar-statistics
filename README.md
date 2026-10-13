@@ -81,6 +81,7 @@ Reads from `output_csvs/` and a handful of static files in `data/`, joins everyt
 |--------|------------|---------------|
 | State, State (Abbr.) | `data/state_name_abbr.csv` | — |
 | Median solar savings in first year | `output_csvs/annual_and_lifetime_solar_savings_by_state.csv` | — |
+| Median % bill reduction in first year | same | Median of each household's (bill without solar − bill with solar) ÷ bill without solar, year 1 |
 | Median solar savings over lifetime | same | 25 years, 2026 dollars; export policy per state |
 | Average electricity retail cost ($/kWh) | `output_csvs/electricity_rates_by_state.csv` | Latest year, residential sector |
 | Average annual electricity bill | same | Latest year, residential sector |
@@ -127,7 +128,7 @@ The following Ohm files are **no longer used** anywhere in the pipeline and are 
 - **Two dGen runs**, identical except export compensation: `synapse_attachrate_75` credits exports at full retail (net metering) and `synapse_attachrate_75_net_billing` at hourly wholesale prices (net billing). California is on its NEM 3.0 net billing in both.
 - **Per-state policy** from `data/dsire_iou_net_metering_may2026.csv` (DSIRE, investor-owned utilities, residential): net metering states use the net metering run, net billing states the net billing run, and states credited between retail and avoided cost (NH, NV at 75% of retail, TX) the average of the two. DC (not in the file) uses net metering; TN (no export compensation) uses net billing, which overstates. Overrides and notes are in `SCENARIO_OVERRIDES` / `SCENARIO_NOTES`.
 - **Typical solar customer**: weighted medians over the 2026 adopters of the net metering run, in both runs (same households, matched by `agent_id`). Weighting the net billing run by its own adopters would pick a smaller, better-economics group.
-- **First-year savings** = bill without solar − bill with solar (PV only), year 1. **Lifetime** = 25 years of savings in 2026 dollars (dGen's discounted savings with the 5% real discount removed).
+- **First-year savings** = bill without solar − bill with solar (PV only), year 1. **First-year % bill reduction** = that savings ÷ the bill without solar, per household (the median of households' percentages, so not median savings ÷ median bill). **Lifetime** = 25 years of savings in 2026 dollars (dGen's discounted savings with the 5% real discount removed).
 - The CSV also keeps both runs' values, the policy, the scenario used, and a note per state.
 
 ---

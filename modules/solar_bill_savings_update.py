@@ -112,6 +112,8 @@ def compute_state_bill_savings_baseline(
     by agent_id), so two runs describe the same households.
 
     Year-1 savings  = utility_bill_wo_sys_pv_only[1] - utility_bill_w_sys_pv_only[1]
+    Year-1 % bill reduction = year-1 savings / utility_bill_wo_sys_pv_only[1] x 100,
+                       per household (median of households' percentages)
     Lifetime savings = sum over years 1-25 of
                        cf_discounted_savings_pv_only[t] * (1 + real_discount_rate)^t
                        (gross energy value in today's dollars; not discounted)
@@ -123,7 +125,8 @@ def compute_state_bill_savings_baseline(
     Returns
     -------
     pd.DataFrame
-        Columns: state_abbr, year_1_savings, lifetime_savings, median_bill_year_1, weight_basis
+        Columns: state_abbr, year_1_savings, pct_bill_reduction_year_1, lifetime_savings,
+        median_bill_year_1, weight_basis
     """
     results = []
 
@@ -159,6 +162,8 @@ def compute_state_bill_savings_baseline(
             wo_arr[1] if len(wo_arr) >= 2 else np.nan
             for wo_arr in wo
         ])
+        with np.errstate(divide="ignore", invalid="ignore"):
+            pct_reduction = np.where(bill_wo_year1 > 0, year1 / bill_wo_year1 * 100, np.nan)
         lifetime = np.array([
             sum(v * r ** t for t, v in enumerate(ds_arr[1:26], start=1)) if len(ds_arr) >= 26 else np.nan
             for ds_arr, r in zip(ds, real_discount)
@@ -171,6 +176,7 @@ def compute_state_bill_savings_baseline(
         results.append({
             "state_abbr": state_abbr.upper(),
             "year_1_savings": _weighted_median(year1, weights),
+            "pct_bill_reduction_year_1": _weighted_median(pct_reduction, weights),
             "lifetime_savings": _weighted_median(lifetime, weights),
             "median_bill_year_1": _weighted_median(bill_wo_year1, weights),
             "weight_basis": weight_basis,
@@ -225,10 +231,9 @@ def compute_state_bill_savings(
     Returns
     -------
     pd.DataFrame
-        Columns: state_abbr, year_1_savings, lifetime_savings, median_bill_year_1,
-        export_policy, savings_scenario, scenario_note, year_1_savings_net_metering,
-        year_1_savings_net_billing, lifetime_savings_net_metering,
-        lifetime_savings_net_billing, net_billing_weight_basis
+        Columns: state_abbr, year_1_savings, pct_bill_reduction_year_1, lifetime_savings,
+        median_bill_year_1, export_policy, savings_scenario, scenario_note, and each
+        measure's _net_metering / _net_billing values, net_billing_weight_basis
     """
     nm = compute_state_bill_savings_baseline(NET_METERING_RUN, base_directory, cohort_year).set_index("state_abbr")
     nb = compute_state_bill_savings_baseline(NET_BILLING_RUN, base_directory, cohort_year,
@@ -238,6 +243,8 @@ def compute_state_bill_savings(
     out = pd.DataFrame({
         "year_1_savings_net_metering": nm["year_1_savings"],
         "year_1_savings_net_billing": nb["year_1_savings"],
+        "pct_bill_reduction_year_1_net_metering": nm["pct_bill_reduction_year_1"],
+        "pct_bill_reduction_year_1_net_billing": nb["pct_bill_reduction_year_1"],
         "lifetime_savings_net_metering": nm["lifetime_savings"],
         "lifetime_savings_net_billing": nb["lifetime_savings"],
         # The bill without solar is the same in both runs; use the adopter-weighted one.
@@ -249,7 +256,7 @@ def compute_state_bill_savings(
     if missing:
         raise ValueError(f"No export compensation scenario for: {missing}; add them to {dsire_csv.name} or SCENARIO_OVERRIDES")
 
-    for measure in ("year_1_savings", "lifetime_savings"):
+    for measure in ("year_1_savings", "pct_bill_reduction_year_1", "lifetime_savings"):
         nm_vals, nb_vals = out[f"{measure}_net_metering"], out[f"{measure}_net_billing"]
         out[measure] = np.select(
             [out["savings_scenario"] == NET_METERING, out["savings_scenario"] == NET_BILLING],
@@ -257,8 +264,10 @@ def compute_state_bill_savings(
             default=(nm_vals + nb_vals) / 2,
         )
 
-    cols = ["year_1_savings", "lifetime_savings", "median_bill_year_1", "export_policy", "savings_scenario",
-            "scenario_note", "year_1_savings_net_metering", "year_1_savings_net_billing",
+    cols = ["year_1_savings", "pct_bill_reduction_year_1", "lifetime_savings", "median_bill_year_1",
+            "export_policy", "savings_scenario", "scenario_note",
+            "year_1_savings_net_metering", "year_1_savings_net_billing",
+            "pct_bill_reduction_year_1_net_metering", "pct_bill_reduction_year_1_net_billing",
             "lifetime_savings_net_metering", "lifetime_savings_net_billing", "net_billing_weight_basis"]
     return out[cols].reset_index()
 
