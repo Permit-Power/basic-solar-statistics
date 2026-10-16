@@ -30,3 +30,6 @@ msa_tracking/data/raw/
 msa_tracking/runs/
 msa_tracking/run_log.txt
 msa_tracking/launchd.*.log
+
+# Licensed Ohm Analytics data (keep local, do not commit)
+data/ohm_analytics_*.csv
