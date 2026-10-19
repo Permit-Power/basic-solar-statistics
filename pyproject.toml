@@ -28,10 +28,12 @@ package-mode = false
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^7.1.0"
 python-dotenv = "^1.2.2"
+pytest = "^9.1.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
 
 
 

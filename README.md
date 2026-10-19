@@ -201,6 +201,14 @@ poetry run papermill compile_state_stats.ipynb compile_state_stats-output.ipynb
 
 `pipeline.ipynb` takes one papermill parameter, `UPLOAD` (default `True`, which the GitHub Action uses). With `-p UPLOAD False` it skips Drive authentication, folder creation, sheet uploads, and the manifest, and still writes `output_csvs/`. Uploading overwrites the shared Big Numbers Drive sheets, so use `UPLOAD False` for local runs. Stage 2 never uploads.
 
+### Tests
+
+```bash
+poetry run pytest
+```
+
+`tests/test_state_stats.py` checks `output_csvs/state_stats.csv` (run both stages first). Columns built only from `data/` must match `tests/golden/state_stats_static.csv` exactly; the five EIA-derived columns (electricity price and bill, installations, capacity, penetration) get range and null checks.
+
 ### Authentication
 
 In CI, Workload Identity Federation handles Google Drive auth automatically. Locally:
