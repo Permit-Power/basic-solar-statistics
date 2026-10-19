@@ -1,5 +1,4 @@
-# Large data files
-data/resstock_metadata.csv
+# Large local data file (1.9 GB; not used by any code)
 data/TTS_LBNL_public_file_*.csv
 
 # Python
@@ -14,6 +13,9 @@ notebooks/*-output.ipynb
 
 # Generated CSV exports (for Claude Project uploads)
 output_csvs/
+
+# Written locally by pipeline.ipynb (ManifestBuilder.save)
+manifest.json
 
 # Environment / secrets
 .env
