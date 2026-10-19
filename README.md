@@ -43,7 +43,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | Solar capacity | Downloads EIA 861M files for 2017–2025, aggregates PV/battery stats | EIA 861M (live) | `capacity` |
 | Solar eligibility | Filters ResStock households for rooftop suitability | ResStock metadata | `eligibility` |
 | Solar costs | Reads LBNL Tracking the Sun data tool export (state medians, inflation-adjusted by LBNL) | `data/tts_state_download_data.xlsx` | `costs` |
-| Electricity prices | Pulls state prices from EIA API (2015–2026), utility prices from EIA 861 files (2015–2024) | EIA API + EIA 861 (live) | `state_prices`, `util_prices` |
+| Electricity prices | Pulls state prices from EIA API (2018 onward), utility prices from EIA 861 files (2018–2024) | EIA API + EIA 861 (live) | `state_prices`, `util_prices` |
 | Permitting fees | Aggregates Solar TRACE fee data by AHJ and state | `data/solartrace_fees.csv` | `ahj_df_fees`, `state_df_fees` |
 | IX timelines (legacy) | Aggregates old Solar TRACE IX CSV by AHJ and state | `data/solartrace_ix.csv` | `ahj_df_ix`, `state_df_ix` |
 | Solar TRACE timelines | Reshapes Solar TRACE xlsx into tidy utility and state tables | `data/SolarTRACE Dataset v9-9-2025.xlsx` | `utility_timelines`, `state_timelines` |
@@ -175,7 +175,7 @@ The following Ohm files are **no longer used** by the pipeline (replaced by Sola
 | `solar_eligible_households.py` | Filters ResStock metadata to estimate solar-eligible household counts by state |
 | `solar_technical_potential.py` | Loads NREL SLOPE residential PV technical generation potential by state |
 | `median_solar_costs.py` | Reads LBNL's Tracking the Sun data tool export: residential median $/kW and system size by state and year; `latest_by_state` picks each state's most recent reliable year for state_stats |
-| `average_electricity_prices.py` | State prices from EIA API (2015–2026); utility prices from EIA 861 annual files (2015–2024); inflation-adjusted to 2026 dollars |
+| `average_electricity_prices.py` | State prices from EIA API (2018 onward); utility prices from EIA 861 annual files (2018–2024); inflation-adjusted to 2026 dollars |
 | `process_solartrace_timelines.py` | Reshapes Solar TRACE xlsx into tidy long-format tables; produces `state_timelines` (direct reshape) and `utility_timelines` (AHJ→utility weighted-median aggregation) |
 | `median_permit_fees.py` | Aggregates Solar TRACE fee data; population-weighted median fees by state |
 | `median_interconnection_timelines.py` | **Legacy.** Processes old `solartrace_ix.csv`; superseded by `process_solartrace_timelines.py` for state_stats purposes but still runs in pipeline |
