@@ -2,6 +2,13 @@
 
 Pulls, processes, and organizes solar statistics for U.S. states and jurisdictions. A GitHub Action runs the full pipeline on the 1st of each month, uploading results to a shared Google Drive folder ("The Big Numbers Database").
 
+## What's in this repo
+
+1. **Monthly Big Numbers pipeline** (`notebooks/`, `modules/`, `data/`): pulls and processes the statistics, uploads them to Drive, run by the GitHub Action.
+2. **MSA tracking** (`msa_tracking/`): a separate pipeline scheduled locally with launchd; see [below](#msa-utility-approval-tracking-msa_tracking).
+3. **One-off analyses** (`ad_hocs/`): exploratory notebooks, not part of any pipeline.
+4. **Local bill-savings export** (`notebooks/export_bill_savings.ipynb`): regenerates `data/bill_savings_csvs/` from dGen outputs; needs the dGen shared drive.
+
 ---
 
 ## Pipeline architecture
@@ -12,7 +19,7 @@ The pipeline runs in two stages, both executed as Jupyter notebooks via `papermi
 Stage 1: pipeline.ipynb
   - Pulls live data from EIA, LBNL, and other sources
   - Processes static input files from data/
-  - Uploads all outputs to Google Drive
+  - Uploads all outputs to Google Drive (skipped with -p UPLOAD False)
   - Writes processed DataFrames to output_csvs/
 
 Stage 2: compile_state_stats.ipynb
@@ -115,9 +122,9 @@ Both Ohm Analytics and Solar TRACE provide permitting, inspection, and interconn
 - **Permitting timeline distributions** (percentile breakdowns) — uploaded to Drive only, not in `state_stats.csv`
 - **AHJ-level permitting and inspection medians** — uploaded to Drive only, not in `state_stats.csv`
 
-The following Ohm files are **no longer used** anywhere in the pipeline and are kept only as historical reference:
-- `data/state_inspection_timelines_pv.csv` — replaced by Solar TRACE
-- `data/state_median_permitting_timelines_by_tech.csv` — replaced by Solar TRACE
+The following Ohm files are **no longer used** by the pipeline (replaced by Solar TRACE); `ad_hocs/solartrace_exploration.ipynb` still reads them for comparison:
+- `data/state_inspection_timelines_pv.csv`
+- `data/state_median_permitting_timelines_by_tech.csv`
 
 ---
 
@@ -135,29 +142,28 @@ The following Ohm files are **no longer used** anywhere in the pipeline and are 
 
 ## data/ folder — static inputs
 
-| File | Used by | Notes |
-|------|---------|-------|
-| `SolarTRACE Dataset v9-9-2025.xlsx` | `process_solartrace_timelines.py` | Primary timeline source |
-| `solartrace_fees.csv` | `median_permit_fees.py` | Permitting fee data |
-| `solartrace_ix.csv` | `median_interconnection_timelines.py` | Legacy IX data; still uploaded to Drive but not used in state_stats |
-| `tts_state_download_data.xlsx` | `median_solar_costs.py` | LBNL Tracking the Sun data tool export (trackingthesun.lbl.gov, 2026 edition, installs through 2025); replace with a new export to update |
-| `resstock_metadata_technical_potential.csv` | `solar_eligible_households.py` | ~34 MB; ResStock household metadata |
-| `bill_savings_csvs/` | `solar_bill_savings_update.py` | Pre-computed dGen outputs; must exist before pipeline runs |
-| `dsire_iou_net_metering_may2026.csv` | `solar_bill_savings_update.py` | State residential export compensation (DSIRE, IOUs), picks the dGen run per state |
-| `state_cancellation_rates.csv` | `compile_state_stats.ipynb` | Ohm; used in state_stats |
-| `ahj_cancellation_rates.csv` | `pipeline.ipynb` | Ohm; uploaded to Drive only |
-| `ahj_distribution_permitting_timelines_pv.csv` | `pipeline.ipynb`, `median_permit_fees.py` | Ohm; provides AHJ population weights for fees module |
-| `state_distribution_permitting_timelines_pv.csv` | `pipeline.ipynb` | Ohm; uploaded to Drive only |
-| `ahj_median_permitting_timelines_by_tech.csv` | `pipeline.ipynb` | Ohm; uploaded to Drive only |
-| `ahj_inspection_timelines_pv.csv` | `pipeline.ipynb` | Ohm; uploaded to Drive only |
-| `state_inspection_timelines_pv.csv` | — | Ohm; **no longer used**, superseded by Solar TRACE |
-| `state_median_permitting_timelines_by_tech.csv` | — | Ohm; **no longer used**, superseded by Solar TRACE |
-| `solar_jobs.csv` | `pipeline.ipynb` | IREC; uploaded to Drive only |
-| `state_name_abbr.csv` | `pipeline.ipynb`, `compile_state_stats.ipynb` | State name ↔ abbreviation mapping |
-| `utility_interconnection_fees.csv` | — | Reference file for interconnection fee research |
-| `nrel_solar_suitability_by_zip.csv` | `solar_eligible_households.py` | NREL rooftop suitability by ZIP |
-| `solar_potential.csv` | `solar_technical_potential.py` | NREL SLOPE technical potential |
-| `techpot_baseline_state.csv` | `solar_technical_potential.py` | NREL SLOPE state totals |
+| File | Used by | How produced | Notes |
+|------|---------|--------------|-------|
+| `SolarTRACE Dataset v9-9-2025.xlsx` | `process_solartrace_timelines.py` | downloaded source snapshot | Primary timeline source |
+| `solartrace_fees.csv` | `median_permit_fees.py` | unknown | Permitting fee data |
+| `solartrace_ix.csv` | `median_interconnection_timelines.py` | unknown | Legacy IX data; still uploaded to Drive but not used in state_stats |
+| `tts_state_download_data.xlsx` | `median_solar_costs.py` | downloaded source snapshot | LBNL Tracking the Sun data tool export (trackingthesun.lbl.gov, 2026 edition, installs through 2025); replace with a new export to update |
+| `resstock_metadata_technical_potential.csv` | `solar_eligible_households.py` | processed outside this repo (no script) | ~34 MB; ResStock household metadata |
+| `bill_savings_csvs/` | `solar_bill_savings_update.py` | generated by `notebooks/export_bill_savings.ipynb` | Pre-computed dGen outputs; must exist before pipeline runs |
+| `dsire_iou_net_metering_may2026.csv` | `solar_bill_savings_update.py` | processed outside this repo (no script) | State residential export compensation (DSIRE, IOUs), picks the dGen run per state |
+| `state_cancellation_rates.csv` | `compile_state_stats.ipynb` | processed outside this repo (no script) | Ohm; used in state_stats |
+| `ahj_cancellation_rates.csv` | `pipeline.ipynb` | processed outside this repo (no script) | Ohm; uploaded to Drive only |
+| `ahj_distribution_permitting_timelines_pv.csv` | `pipeline.ipynb`, `median_permit_fees.py` | processed outside this repo (no script) | Ohm; provides AHJ population weights for fees module |
+| `state_distribution_permitting_timelines_pv.csv` | `pipeline.ipynb` | processed outside this repo (no script) | Ohm; uploaded to Drive only |
+| `ahj_median_permitting_timelines_by_tech.csv` | `pipeline.ipynb` | processed outside this repo (no script) | Ohm; uploaded to Drive only |
+| `ahj_inspection_timelines_pv.csv` | `pipeline.ipynb` | processed outside this repo (no script) | Ohm; uploaded to Drive only |
+| `state_inspection_timelines_pv.csv` | `ad_hocs/solartrace_exploration.ipynb` | processed outside this repo (no script) | Ohm; **no longer used by the pipeline**, superseded by Solar TRACE |
+| `state_median_permitting_timelines_by_tech.csv` | `ad_hocs/solartrace_exploration.ipynb` | processed outside this repo (no script) | Ohm; **no longer used by the pipeline**, superseded by Solar TRACE |
+| `solar_jobs.csv` | `pipeline.ipynb` | unknown | IREC; uploaded to Drive only |
+| `state_name_abbr.csv` | `pipeline.ipynb`, `compile_state_stats.ipynb` | lookup table | State name ↔ abbreviation mapping |
+| `nrel_solar_suitability_by_zip.csv` | `solar_eligible_households.py` | downloaded source snapshot | NREL rooftop suitability by ZIP |
+| `solar_potential.csv` | — | unknown | Not read by any code |
+| `techpot_baseline_state.csv` | `solar_technical_potential.py` | downloaded source snapshot | NREL SLOPE state totals |
 
 ---
 
@@ -176,6 +182,7 @@ The following Ohm files are **no longer used** anywhere in the pipeline and are 
 | `solar_bill_savings_update.py` | Loads pre-computed dGen bill savings from `data/bill_savings_csvs/` |
 | `drive_uploader.py` | Google Drive helpers: authenticate, ensure folder path, upload DataFrame as CSV |
 | `manifest.py` | Builds and uploads a JSON manifest of all Drive files |
+| `storage_attachment_rate.py` | Loads and summarizes Ohm Analytics monthly storage attachment rates by state (raw export `data/ohm_analytics_*.csv` stays local, gitignored). **Not yet wired into the pipeline** |
 
 ---
 
@@ -183,15 +190,16 @@ The following Ohm files are **no longer used** anywhere in the pipeline and are 
 
 ```bash
 poetry install --no-interaction
-poetry run pip install papermill
 
-# Stage 1
+# Stage 1 (computes outputs without publishing)
 cd notebooks
-poetry run papermill pipeline.ipynb pipeline-output.ipynb
+poetry run papermill pipeline.ipynb pipeline-output.ipynb -p UPLOAD False
 
 # Stage 2
 poetry run papermill compile_state_stats.ipynb compile_state_stats-output.ipynb
 ```
+
+`pipeline.ipynb` takes one papermill parameter, `UPLOAD` (default `True`, which the GitHub Action uses). With `-p UPLOAD False` it skips Drive authentication, folder creation, sheet uploads, and the manifest, and still writes `output_csvs/`. Uploading overwrites the shared Big Numbers Drive sheets, so use `UPLOAD False` for local runs. Stage 2 never uploads.
 
 ### Authentication
 
@@ -272,7 +280,7 @@ The run log is where problems show up:
 ### Running it manually
 
 ```bash
-poetry install --with msa          # playwright, beautifulsoup4, papermill (optional group, not installed in CI)
+poetry install --with msa          # playwright, beautifulsoup4 (optional group, not installed in CI)
 poetry run playwright install chromium
 ```
 
