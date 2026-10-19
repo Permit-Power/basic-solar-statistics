@@ -384,11 +384,6 @@ def parse_net_metering(df_raw: pd.DataFrame) -> pd.DataFrame:
     year_col = find_uc_col("year")
     state_col = find_uc_col("state")
 
-    # Month series; filter out header row and footer notes
-    month_series = pd.to_numeric(df_raw[month_col], errors="coerce")
-    data_mask = month_series.notna()
-    df_data = df_raw.loc[data_mask].copy()
-
     # Year is constant; extract once
     year_val = pd.to_numeric(df_raw[year_col], errors="coerce").dropna().iloc[0]
     year = int(year_val)

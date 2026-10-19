@@ -190,6 +190,7 @@ The following Ohm files are **no longer used** by the pipeline (replaced by Sola
 
 ```bash
 poetry install --no-interaction
+poetry run pre-commit install   # once per clone: runs ruff (pyflakes rules) on every commit
 
 # Stage 1 (computes outputs without publishing)
 cd notebooks

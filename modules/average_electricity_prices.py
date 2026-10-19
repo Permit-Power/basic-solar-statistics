@@ -40,7 +40,7 @@ import os
 import tempfile
 import zipfile
 from pathlib import Path
-from typing import List, Sequence, Tuple
+from typing import Sequence, Tuple
 
 import pandas as pd
 import requests

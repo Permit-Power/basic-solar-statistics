@@ -7,7 +7,7 @@ authors = [
 ]
 license = { text = "Apache 2.0" }
 readme = "README.md"
-requires-python = "^3.11"
+requires-python = ">=3.11,<4.0"
 dependencies = [
     "pandas (>=2.3.3,<3.0.0)",
     "numpy (>=2.3.4,<3.0.0)",
@@ -29,10 +29,14 @@ package-mode = false
 ipykernel = "^7.1.0"
 python-dotenv = "^1.2.2"
 pytest = "^9.1.1"
+ruff = "^0.17.1"
+pre-commit = "^4.7.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
 
 
 
@@ -43,3 +47,6 @@ optional = true
 [tool.poetry.group.msa.dependencies]
 playwright = "^1.63.0"
 beautifulsoup4 = "^4.15.0"
+
+[tool.ruff.lint]
+select = ["F"]
