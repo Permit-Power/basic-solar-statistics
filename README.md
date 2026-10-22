@@ -5,9 +5,8 @@ Pulls, processes, and organizes solar statistics for U.S. states and jurisdictio
 ## What's in this repo
 
 1. **Monthly Big Numbers pipeline** (`notebooks/`, `modules/`, `data/`): pulls and processes the statistics, uploads them to Drive, run by the GitHub Action.
-2. **MSA tracking** (`msa_tracking/`): a separate pipeline scheduled locally with launchd; see [below](#msa-utility-approval-tracking-msa_tracking).
-3. **One-off analyses** (`ad_hocs/`): exploratory notebooks, not part of any pipeline.
-4. **Local bill-savings export** (`notebooks/export_bill_savings.ipynb`): regenerates `data/bill_savings_csvs/` from dGen outputs; needs the dGen shared drive.
+2. **One-off analyses** (`ad_hocs/`): exploratory notebooks, not part of any pipeline.
+3. **Local bill-savings export** (`notebooks/export_bill_savings.ipynb`): regenerates `data/bill_savings_csvs/` from dGen outputs; needs the dGen shared drive.
 
 ---
 
@@ -224,94 +223,4 @@ API keys required (set in `.env` or as environment variables):
 
 ---
 
-## MSA utility approval tracking (`msa_tracking/`)
-
-A separate, locally scheduled pipeline that tracks which utilities have approved meter socket adapters (MSAs) from ConnectDER, Enphase, and Tesla, and what share of households live where at least one is approved. It is not part of the GitHub Action: Tesla's page is behind Akamai bot protection and only loads in a real (headed) browser, which is unlikely to work from a CI runner.
-
-```
-msa_tracking/
-  1_pull_msa.ipynb        # download manufacturer listings -> data/raw/msa/YYYY-MM-DD/
-  2_pull_eia.ipynb        # download EIA Form 861          -> data/raw/eia/YYYY/
-  3_pull_census.ipynb     # download Census households by county -> data/raw/census/YYYY/
-  4_process_msa.ipynb     # parse snapshots                -> outputs/msa_master.csv, msa_summary.csv
-  5_process_eia.ipynb     # customers + population by utility -> outputs/eia_residential_customers.csv
-  6_join_outputs.ipynb    # join via crosswalk             -> outputs/msa_utilities_all.csv, msa_state_summary.csv
-  common.py               # paths, EIA_YEAR, ACS_YEAR, run logging
-  mappings.py             # hand-edited dictionaries: utility names, approval levels, states
-  data/
-    raw/                  # downloads (git-ignored)
-    msa_eia_crosswalk.csv # hand-reviewed MSA utility -> EIA utility ID mapping
-  outputs/                # everything generated
-  run_scheduled.sh        # runs the six notebooks (used by launchd)
-  org.permitpower.msa-tracking.plist   # launchd job definition
-  run_log.txt             # what each step did, warnings, errors (git-ignored)
-  runs/                   # executed notebook copies from scheduled runs (git-ignored)
-```
-
-Each notebook explains its step at the top and can be opened and run on its own, in order.
-
-### Steps
-
-**1. Pull MSA listings.** Saves each manufacturer's raw response untouched, so a broken parser never loses history. A failing source is logged and the others are still saved; `fetch_status.json` records what succeeded.
-
-| Manufacturer | Products | Source |
-|---|---|---|
-| ConnectDER | IslandDER MSA, Solar MSA, EV MSA | Public Prismic CMS API behind connectder.com (the site itself has a bot checkpoint) |
-| Enphase | IQ Meter Collar | Static HTML listing |
-| Tesla | Backup Switch (Powerwall), Backup Switch (Powershare) | Static HTML behind Akamai; headed Playwright Chromium, window parked off-screen |
-
-**2. Pull EIA.** Downloads the annual EIA-861 zip for `EIA_YEAR` (2024, the latest final year). Utility-level customer counts aren't in the EIA API.
-
-**3. Pull Census.** Households and people living in households for every county, from the American Community Survey 5-year estimates (`ACS_YEAR` = 2024, i.e. 2020-2024). Uses the Census table files, which need no API key.
-
-**4. Process MSA.** Rebuilds from *every* snapshot on each run, so fixing a parser or `mappings.py` corrects the whole history.
-- `msa_master.csv`: one row per snapshot × manufacturer × product × state × utility; verbatim fields plus `*_std` columns. Nothing filtered.
-- `msa_summary.csv`: current status per state × utility with a `Tesla`, `Enphase`, `ConnectDER` column: `Approved`, `Pilot`, `Case-by-case`, `Pending` (ConnectDER "In Progress"/"Expected"), or blank. Each brand's best status across its products, from its latest snapshot. Tesla and Enphase only list approved utilities, so being listed counts as approved.
-
-**5. Process EIA.** Residential customers (our stand-in for households) counted under the utility that owns the wires and meter, which is who approves an MSA: bundled utilities, delivery-only utilities in restructured states, Texas wires companies, and small short-form utilities (residential share estimated from similar utilities; `residential_estimated`). Retail suppliers and third-party rooftop solar owners are left out because those households are already counted under their utility. Checked against EIA's published totals (US within 0.1%).
-
-Population = residential customers × people per household in the utility's service area (household-weighted over the counties EIA lists for it), then scaled so each state matches its Census population in households. The scaling corrects for customers outnumbering households (vacation homes, vacant units, extra meters) in most states, and for master-metered apartments in NY, DC and HI. Connecticut (reported by planning region, not county) and a few renamed Alaska areas use their state's average.
-
-**6. Join and outputs.** `data/msa_eia_crosswalk.csv` links MSA names to EIA utility IDs. One MSA utility can be several EIA utilities (NV Energy, Evergy, Hawaiian Electric, Black Hills Energy in WY); the four former FirstEnergy Pennsylvania companies share one EIA utility, split by `customer_share` from their 2023 counts.
-- `msa_utilities_all.csv`: every EIA utility × state (EIA's utility names, e.g. Public Service Co of Colorado for Xcel Energy) with ownership, population, and the three brand statuses. "Any device approved" is `Yes` when at least one brand is Approved; the rest are advocacy targets.
-- `msa_state_summary.csv`: per state and US, population, how many people live where at least one device is approved, the % overall and per brand, and utility counts. Only `Approved` counts.
-
-Both exports use readable column names and report population. Residential customer (household) counts and percentages, plus working columns (state code, EIA utility ID, MSA name, people per household, estimate flag, EIA year), stay in the notebook's `utilities` and `states` tables.
-
-### Maintenance
-
-The run log is where problems show up:
-- **"unmapped ... values"**: a new spelling or status from a manufacturer. Add it to `mappings.py`.
-- **"MSA utilities missing from msa_eia_crosswalk.csv"**: a newly listed utility. Add a row (state, utility as in `msa_summary.csv`, EIA utility ID from `eia_residential_customers.csv`). Notebook 6 fails until it's added, so it can't be silently dropped.
-- **A step FAILED**: e.g. Tesla blocked. The scheduled run retries the next day.
-
-### Running it manually
-
-```bash
-poetry install --with msa          # playwright, beautifulsoup4 (optional group, not installed in CI)
-poetry run playwright install chromium
-```
-
-Open the notebooks and run them in order, or from the terminal:
-
-```bash
-msa_tracking/run_scheduled.sh --force    # all six steps (step 1 still skips sources done this month)
-```
-
-After editing `mappings.py` or the crosswalk, rerun only notebooks 4 and 6.
-
-### Schedule (launchd, macOS)
-
-launchd runs `run_scheduled.sh` daily at 10:00 and at login. It only does work while this month's MSA snapshot is incomplete, so the net effect is one snapshot per month that catches up after the Mac was asleep or off, and retries a failed source the next day without re-downloading the others. The Mac must be logged in, since Tesla needs a browser window.
-
-```bash
-# install / reload
-cp msa_tracking/org.permitpower.msa-tracking.plist ~/Library/LaunchAgents/
-launchctl bootout gui/$(id -u)/org.permitpower.msa-tracking 2>/dev/null
-launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/org.permitpower.msa-tracking.plist
-
-launchctl kickstart gui/$(id -u)/org.permitpower.msa-tracking   # run now
-launchctl bootout gui/$(id -u)/org.permitpower.msa-tracking     # uninstall
-```
-
-`launchd.out.log` / `launchd.err.log` capture anything the scripts print or crash with. The plist hard-codes this repo's path and `run_scheduled.sh` hard-codes `/opt/homebrew/bin/poetry`; edit them if either moves.
+MSA utility approval tracking moved out of this repo in October 2026.

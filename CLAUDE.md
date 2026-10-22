@@ -12,7 +12,7 @@ change structure, inputs, or outputs.
   overwrites the shared Big Numbers Drive sheets.
 - Where code goes: `modules/` only holds code used by the Big Numbers pipeline
   (or about to be, like `storage_attachment_rate.py`). A standalone project gets its
-  own top-level folder, like `msa_tracking/`. One-off analyses go in `ad_hocs/`.
+  own top-level folder. One-off analyses go in `ad_hocs/`.
 - Files in `data/` are committed snapshots. Replacing one (e.g. a new Tracking the
   Sun or Solar TRACE export) is a data update: plan it, and expect golden tests to
   fail. Report which values moved and by how much before updating the golden file.
@@ -20,5 +20,3 @@ change structure, inputs, or outputs.
   gitignored. The aggregated Ohm CSVs already in `data/` are fine to keep.
 - Legacy but intentionally kept: `modules/median_interconnection_timelines.py` and
   `data/solartrace_ix.csv` still feed two Drive sheets.
-- `msa_tracking/` is not run by the GitHub Action. Its launchd plist hard-codes
-  this repo's path, so don't move the folder.
