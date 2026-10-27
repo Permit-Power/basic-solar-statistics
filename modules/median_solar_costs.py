@@ -21,6 +21,10 @@ Output columns
     pct_change_price       year-over-year % change in median_price_per_kw, by state
     price_n                systems behind the price median
     system_size_n          systems behind the size median
+    price_p20_per_kw       20th percentile installed price, $/kW DC (same systems as the median)
+    price_p80_per_kw       80th percentile installed price, $/kW DC
+    system_size_p20_kw     20th percentile system size, kW DC
+    system_size_p80_kw     80th percentile system size, kW DC
 
 LBNL leaves a value blank when a state has too few systems, so many states
 have no price or size in a given year; some recent medians it does publish
@@ -62,11 +66,16 @@ def load_tts_state_data(path: Path = TTS_XLSX, min_year: int = 2000) -> pd.DataF
         "median_system_size_kw": df["system_size_kw_median"],
         "price_n": df["price_N"],
         "system_size_n": df["system_size_N"],
+        "price_p20_per_kw": df["price_p20"] * 1000,
+        "price_p80_per_kw": df["price_p80"] * 1000,
+        "system_size_p20_kw": df["system_size_p20"],
+        "system_size_p80_kw": df["system_size_p80"],
     }).sort_values(["state", "year"]).reset_index(drop=True)
 
     out["pct_change_price"] = out.groupby("state")["median_price_per_kw"].pct_change(fill_method=None) * 100
     return out[["state", "year", "median_price_per_kw", "median_system_size_kw", "pct_change_price",
-                "price_n", "system_size_n"]]
+                "price_n", "system_size_n", "price_p20_per_kw", "price_p80_per_kw",
+                "system_size_p20_kw", "system_size_p80_kw"]]
 
 
 # Minimum number of systems behind a median for latest_by_state to use it.
