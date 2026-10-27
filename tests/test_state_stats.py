@@ -26,8 +26,10 @@ if not STATE_STATS.is_file():
 
 # (min, max) inclusive, set from the October 2026 run with wide margins.
 LIVE_RANGES = {
-    "Average electricity retail cost ($/kWh)": (0.05, 0.80),   # now 0.12 to 0.42
-    "Average annual electricity bill": (500, 5000),            # now 1,213 to 2,557
+    "Average electricity retail cost ($/kWh)": (0.05, 0.80),   # now 0.12 to 0.40 (2025 $)
+    "Electricity price excluding fixed charges ($/kWh)": (0.05, 0.80),  # now 0.085 to 0.38
+    "Assumed residential fixed charge ($/month)": (0, 50),    # now 2.15 (CA) to 34.60 (NE)
+    "Average annual electricity bill": (500, 5000),            # now 1,136 to 2,495
     "Number of solar installations": (0, 5_000_000),           # now 109 (ND) to 2.2M
     "Total installed solar capacity (MW)": (0.1, 40_000),      # now 1.3 to 13,800
     "Solar penetration": (0, 1.0),                             # now 0.0006 (ND) to 0.54
@@ -73,3 +75,8 @@ def test_no_state_has_zero_installations(stats):
     # installs from); annual EIA 861 with the national-average fallback fixes it.
     zero = set(stats.loc[stats["Number of solar installations"] == 0, "State (Abbr.)"])
     assert not zero, zero
+
+
+def test_energy_price_below_average_price(stats):
+    gap = stats["Average electricity retail cost ($/kWh)"] - stats["Electricity price excluding fixed charges ($/kWh)"]
+    assert (gap > 0).all(), stats.loc[gap <= 0, "State"].tolist()

@@ -42,7 +42,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | Solar capacity | Downloads annual EIA 861 files for 2017–2025, aggregates PV/battery stats | EIA 861 (live) | `capacity` |
 | Solar eligibility | Filters ResStock households for rooftop suitability | ResStock metadata | `eligibility` |
 | Solar costs | Reads LBNL Tracking the Sun data tool export (state medians in 2025 dollars, inflation-adjusted by LBNL) | `data/tts_state_download_data.xlsx` | `costs` |
-| Electricity prices | Pulls state prices from EIA API (2018 onward), utility prices from EIA 861 files (2018–2024) | EIA API + EIA 861 (live) | `state_prices`, `util_prices` |
+| Electricity prices | Pulls state prices from EIA API (2018 onward), utility prices from EIA 861 files (2018–2024); assumed residential fixed charges (2020 on) from URDB and hand-checked tariffs, and the residential price without them | EIA API + EIA 861 (live), `data/urdb_residential_schedules.csv`, `data/residential_fixed_charges_manual.csv` | `state_prices`, `util_prices`, `fixed_by_utility` |
 | Permitting fees | Aggregates Solar TRACE fee data by AHJ and state | `data/solartrace_fees.csv` | `ahj_df_fees`, `state_df_fees` |
 | IX timelines (legacy) | Aggregates old Solar TRACE IX CSV by AHJ and state | `data/solartrace_ix.csv` | `ahj_df_ix`, `state_df_ix` |
 | Solar TRACE timelines | Reshapes Solar TRACE xlsx into tidy utility and state tables | `data/SolarTRACE Dataset v9-9-2025.xlsx` | `utility_timelines`, `state_timelines` |
@@ -58,8 +58,9 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | `potential_solar_generation_by_state.csv` | NREL SLOPE | Technical generation potential in GWh by state |
 | `residential_solar_costs_by_state_over_time.csv` | LBNL TTS data tool | Median residential $/kW (2025 dollars: the 2025 value is nominal and LBNL adjusts earlier years to 2025) and system size (kW) by state and year, with sample sizes and 20th/80th percentiles |
 | `annual_and_lifetime_solar_savings_by_state.csv` | dGen | Median year-1 and lifetime (25-year, 2026 $) bill savings for a typical solar customer, by state, under the state's export compensation policy (PV only; see "Solar bill savings" below) |
-| `electricity_rates_by_state.csv` | EIA API | Avg price ($/kWh) and annual bill by state, sector, year (2018 on, 2026 $), plus a `US` row (national revenue / national sales) for comparison |
-| `electricity_rates_by_utility.csv` | EIA 861 | Avg price ($/kWh) and annual bill by utility, sector, year (2018 on, 2026 $) |
+| `electricity_rates_by_state.csv` | EIA API | Avg price ($/kWh) and annual bill by state, sector, year (2018 on, in dollars of the latest year, now 2025), plus a `US` row (national revenue / national sales) for comparison. Residential rows from 2020 also have `fixed_charge_monthly` (assumed, same dollars), `fixed_charge_year`, `fixed_charge_coverage` and `energy_price_per_kwh` (price without the fixed charge); see "Residential fixed charges" below |
+| `residential_fixed_charges_by_utility.csv` | URDB + hand checks | Fixed charge per main utility, state and year (2020 on, nominal $/month), with its source; the input to the state values |
+| `electricity_rates_by_utility.csv` | EIA 861 | Avg price ($/kWh) and annual bill by utility, sector, year (2018 on, 2025 $) |
 | `solartrace_timelines_by_state.csv` | Solar TRACE xlsx | All timeline metrics by state, year, size class, tech class |
 | `solartrace_timelines_by_utility.csv` | Solar TRACE xlsx | All timeline metrics by utility, state, year, size class, tech class (weighted median) |
 | `cancellation_rates_by_state.csv` | Ohm Analytics | Solar permit cancellation rates by state |
@@ -90,6 +91,8 @@ Reads from `output_csvs/` and a handful of static files in `data/`, joins everyt
 | Median % bill reduction in first year | same | Median of each household's (bill without solar − bill with solar) ÷ bill without solar, year 1 |
 | Median solar savings over lifetime | same | 25 years, 2026 dollars; export policy per state |
 | Average electricity retail cost ($/kWh) | `output_csvs/electricity_rates_by_state.csv` | Latest year, residential sector |
+| Electricity price excluding fixed charges ($/kWh) | same | Latest year, residential; average price minus the assumed fixed charge per kWh |
+| Assumed residential fixed charge ($/month) | same | Latest year, residential (as tariffed, unless borrowed from an earlier year and adjusted) |
 | Average annual electricity bill | same | Latest year, residential sector |
 | Number of solar installations | `output_csvs/solar_storage_capacity_installations_by_state_sector.csv` | Latest year, residential sector |
 | Total installed solar capacity (MW) | same | Latest year, residential sector |
@@ -124,6 +127,17 @@ Both Ohm Analytics and Solar TRACE provide permitting, inspection, and interconn
 The following Ohm files are **no longer used** by the pipeline (replaced by Solar TRACE); `ad_hocs/solartrace_exploration.ipynb` still reads them for comparison:
 - `data/state_inspection_timelines_pv.csv`
 - `data/state_median_permitting_timelines_by_tech.csv`
+
+---
+
+## Residential fixed charges
+
+EIA's average price (revenue ÷ kWh) includes fixed monthly charges, so it overstates what a kWh costs. `energy_price_per_kwh` takes out an assumed fixed charge per state and year:
+
+- **Main utilities**: from that year's EIA 861, the utilities (no retail suppliers) that together serve 95% of the state's residential customers. Texas delivery utilities come from EIA's Delivery_Companies file.
+- **Each utility's charge**: a hand-checked tariff value where one exists (`data/residential_fixed_charges_manual.csv`), otherwise URDB's residential schedule in effect on July 1 (started within 6 years; default schedule, else median of standard ones; over $50/month dropped).
+- **State charge**: customer-weighted mean over utilities that have one. If those utilities serve under 50% of the main utilities' customers, the state's nearest year at or above 50% is used (`fixed_charge_year`).
+- **Not removed**: retail suppliers' own fixed charges (e.g. Texas REP base charges) and minimum bills.
 
 ---
 
@@ -162,6 +176,8 @@ The following Ohm files are **no longer used** by the pipeline (replaced by Sola
 | `state_name_abbr.csv` | `pipeline.ipynb`, `compile_state_stats.ipynb` | lookup table | State name ↔ abbreviation mapping |
 | `nrel_solar_suitability_by_zip.csv` | `solar_eligible_households.py` | downloaded source snapshot | NREL rooftop suitability by ZIP |
 | `techpot_baseline_state.csv` | `solar_technical_potential.py` | downloaded source snapshot | NREL SLOPE state totals |
+| `urdb_residential_schedules.csv` | `average_electricity_prices.py` | `refresh_urdb_snapshot()` (downloaded 2026-10-27) | OpenEI U.S. Utility Rate Database, residential schedules with a fixed charge |
+| `residential_fixed_charges_manual.csv` | `average_electricity_prices.py` | checked by hand, October 2026 | Fixed charges for large utilities where URDB was wrong or missing (CA, ME, MS, NE, Texas TDUs), each with source, quote and evidence level |
 
 ---
 
@@ -173,7 +189,7 @@ The following Ohm files are **no longer used** by the pipeline (replaced by Sola
 | `solar_eligible_households.py` | Filters ResStock metadata to estimate solar-eligible household counts by state |
 | `solar_technical_potential.py` | Loads NREL SLOPE residential PV technical generation potential by state |
 | `median_solar_costs.py` | Reads LBNL's Tracking the Sun data tool export: residential median $/kW and system size by state and year; `latest_by_state` picks each state's most recent reliable year for state_stats |
-| `average_electricity_prices.py` | State prices from EIA API (2018 onward); utility prices from EIA 861 annual files (2018–2024); inflation-adjusted to 2026 dollars |
+| `average_electricity_prices.py` | State prices from EIA API (2018 onward); utility prices from EIA 861 annual files (2018–2024); inflation-adjusted (FRED CPI) to dollars of the latest year with EIA state data, so the latest year is as paid. Also the assumed residential fixed charge per state and year and the price without it (method in the module's "Residential fixed charges" comment) |
 | `process_solartrace_timelines.py` | Reshapes Solar TRACE xlsx into tidy long-format tables; produces `state_timelines` (direct reshape) and `utility_timelines` (AHJ→utility weighted-median aggregation) |
 | `median_permit_fees.py` | Aggregates Solar TRACE fee data; population-weighted median fees by state |
 | `median_interconnection_timelines.py` | **Legacy.** Processes old `solartrace_ix.csv`; superseded by `process_solartrace_timelines.py` for state_stats purposes but still runs in pipeline |
@@ -218,8 +234,8 @@ gcloud auth application-default login \
 ```
 
 API keys required (set in `.env` or as environment variables):
-- `EIA_API_KEY` — for electricity prices
 - `FRED_API_KEY` — for CPI inflation data (electricity prices module)
+- `EIA_API_KEY` — for electricity prices
 
 ---
 
