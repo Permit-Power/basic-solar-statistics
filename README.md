@@ -41,7 +41,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | Ohm static uploads | Loads pre-processed Ohm CSVs and uploads directly to Drive | Ohm Analytics | `cancellation_*`, `permitting_timelines_*`, `inspection_timelines_ahj` |
 | Solar capacity | Downloads EIA 861M files for 2017–2025, aggregates PV/battery stats | EIA 861M (live) | `capacity` |
 | Solar eligibility | Filters ResStock households for rooftop suitability | ResStock metadata | `eligibility` |
-| Solar costs | Reads LBNL Tracking the Sun data tool export (state medians, inflation-adjusted by LBNL) | `data/tts_state_download_data.xlsx` | `costs` |
+| Solar costs | Reads LBNL Tracking the Sun data tool export (state medians in 2025 dollars, inflation-adjusted by LBNL) | `data/tts_state_download_data.xlsx` | `costs` |
 | Electricity prices | Pulls state prices from EIA API (2018 onward), utility prices from EIA 861 files (2018–2024) | EIA API + EIA 861 (live) | `state_prices`, `util_prices` |
 | Permitting fees | Aggregates Solar TRACE fee data by AHJ and state | `data/solartrace_fees.csv` | `ahj_df_fees`, `state_df_fees` |
 | IX timelines (legacy) | Aggregates old Solar TRACE IX CSV by AHJ and state | `data/solartrace_ix.csv` | `ahj_df_ix`, `state_df_ix` |
@@ -56,7 +56,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | `solar_storage_capacity_installations_by_state_sector.csv` | EIA 861M | Cumulative solar/storage capacity and install counts by state, sector, year |
 | `solar_eligible_households_by_state.csv` | ResStock | Eligible and suitable household counts by state |
 | `potential_solar_generation_by_state.csv` | NREL SLOPE | Technical generation potential in GWh by state |
-| `residential_solar_costs_by_state_over_time.csv` | LBNL TTS data tool | Median residential $/kW (inflation-adjusted by LBNL) and system size (kW) by state and year, with sample sizes |
+| `residential_solar_costs_by_state_over_time.csv` | LBNL TTS data tool | Median residential $/kW (2025 dollars: the 2025 value is nominal and LBNL adjusts earlier years to 2025) and system size (kW) by state and year, with sample sizes |
 | `annual_and_lifetime_solar_savings_by_state.csv` | dGen | Median year-1 and lifetime (25-year, 2026 $) bill savings for a typical solar customer, by state, under the state's export compensation policy (PV only; see "Solar bill savings" below) |
 | `electricity_rates_by_state.csv` | EIA API | Avg price ($/kWh) and annual bill by state, sector, year (2018 on, 2026 $), plus a `US` row (national revenue / national sales) for comparison |
 | `electricity_rates_by_utility.csv` | EIA 861 | Avg price ($/kWh) and annual bill by utility, sector, year (2018 on, 2026 $) |

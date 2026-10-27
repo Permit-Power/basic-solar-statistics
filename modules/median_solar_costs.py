@@ -7,7 +7,10 @@ downloaded from https://trackingthesun.lbl.gov).
 
 The export already contains LBNL's state-level statistics, computed with
 LBNL's own methodology and already adjusted for inflation by LBNL, so this
-module only reshapes them. (It replaces processing the full ~2 GB Tracking the
+module only reshapes them. Prices are in 2025 dollars: the 2025 values are
+nominal and LBNL adjusts earlier years to 2025 (concluded by comparing with
+the earlier 2024-edition export; the workbook itself doesn't state the dollar
+year). (It replaces processing the full ~2 GB Tracking the
 Sun public file, which needed a Google Drive download and a FRED CPI series.)
 
 Output columns
