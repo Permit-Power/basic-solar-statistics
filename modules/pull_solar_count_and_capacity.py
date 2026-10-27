@@ -1,8 +1,15 @@
 """
 pull_solar_count_and_capacity.py
 
-Download and aggregate EIA 861M distributed solar (PV) and battery statistics
+Download and aggregate EIA distributed solar (PV) and battery statistics
 for U.S. states, combining non-net-metered and net-metered data.
+
+Two sources, same output schema:
+- download_and_aggregate_distributed_solar_annual: annual EIA-861 files
+  (every utility; used by the pipeline).
+- download_and_aggregate_distributed_solar: monthly EIA 861M files, December
+  of each year. 861M runs below annual EIA-861 in about a third of states
+  (TX about 40% low), so it is kept only for a possible preliminary figure.
 
 Supported years: 2017–2025
 
@@ -18,7 +25,8 @@ Final output schema (one row per year, state, sector):
 
 NOTES:
 - Only Residential, Commercial, Industrial sectors are included.
-- Non-net residential PV customers are estimated from non-net capacity using the state's NEM average system size.
+- Non-net residential PV customers are estimated from non-net capacity using the state's NEM average system size
+  (annual: the national average where a state has fewer than MIN_NEM_INSTALLS_FOR_STATE_AVG net-metered installs).
 - Battery capacity from older "Storage" fields and newer "Battery" fields
   are summed.
 - Battery energy (MWh) is only populated in years where EIA reports it.
@@ -27,12 +35,15 @@ NOTES:
 from __future__ import annotations
 
 import datetime
+import zipfile
 from io import BytesIO
 from typing import Iterable, Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
 import requests
+
+from average_electricity_prices import _build_eia861_url, _download_zip_to_bytes
 
 
 # ---------------------------------------------------------------------------
@@ -641,5 +652,135 @@ def download_and_aggregate_distributed_solar(years: Iterable[int]) -> pd.DataFra
             all_rows.append(row.to_dict())
 
     out = pd.DataFrame(all_rows)
+    out = out.sort_values(["year", "state", "sector"]).reset_index(drop=True)
+    return out
+
+
+# ---------------------------------------------------------------------------
+# ANNUAL EIA-861
+# ---------------------------------------------------------------------------
+
+# Below this many residential net-metered installs, a state's average system
+# size is not used to estimate non-net installs (AL has 0 to about 80 most
+# years); the national average is used instead.
+MIN_NEM_INSTALLS_FOR_STATE_AVG = 100
+
+
+def _read_annual_sheet(
+    zf: zipfile.ZipFile, prefix: str, year: int, header_rows: int
+) -> Tuple[pd.DataFrame, pd.Series]:
+    """
+    Read the first sheet (states, one row per utility) of an annual EIA-861 file.
+
+    Returns the data rows for `year` and one label per column: the header rows
+    joined with " | " (e.g. "Photovoltaic | Capacity MW | Residential"), with
+    blank cells dropped and repeated spaces collapsed.
+    """
+    name = next(n for n in zf.namelist() if n.split("/")[-1].lower().startswith(prefix.lower()))
+    raw = pd.read_excel(zf.open(name), sheet_name=0, header=None)
+    head = raw.iloc[:header_rows].ffill(axis=1)
+    labels = head.apply(lambda col: " | ".join(" ".join(str(v).split()) for v in col if pd.notna(v)))
+    data = raw.iloc[header_rows:]
+    data = data[pd.to_numeric(data[0], errors="coerce") == year]
+    return data, labels
+
+
+def _state_sum(data: pd.DataFrame, labels: pd.Series, candidates: List[str]) -> pd.Series | None:
+    """
+    Sum the columns whose label is in `candidates` by state (column 1).
+
+    EIA's "." (no data) counts as 0. Returns None if no candidate column exists
+    in this year's file.
+    """
+    cols = [c for c in labels.index if labels[c] in candidates]
+    if not cols:
+        return None
+    vals = data[cols].apply(pd.to_numeric, errors="coerce").sum(axis=1)
+    return vals.groupby(data[1]).sum()
+
+
+def download_and_aggregate_distributed_solar_annual(years: Iterable[int]) -> pd.DataFrame:
+    """
+    Aggregate net-metered + non-net-metered distributed solar and battery
+    statistics by state from annual EIA-861 files (f861YYYY.zip).
+
+    Every utility row in the states sheet is summed, including EIA's
+    "Adjustment" rows (utility 99999). Those convert DC-reported PV capacity to
+    AC (about -17.4% of DC capacity) and never add installs, so state MW is AC.
+    The sums equal EIA's own "States- State Level" sheet where it exists
+    (checked for 2023 and 2025). Territories are not included.
+
+    Parameters
+    ----------
+    years : Iterable[int]
+        Years in [2017, 2025].
+
+    Returns
+    -------
+    pd.DataFrame
+        Same columns as download_and_aggregate_distributed_solar.
+    """
+    frames = []
+    for year in years:
+        zf = zipfile.ZipFile(BytesIO(_download_zip_to_bytes(_build_eia861_url(year))))
+        nem, nem_labels = _read_annual_sheet(zf, "Net_Metering", year, header_rows=3)
+        non, non_labels = _read_annual_sheet(zf, "Non_Net_Metering", year, header_rows=2)
+        states = sorted(set(nem[1]) | set(non[1]))
+        assert len(states) == 51, f"{year}: expected 50 states + DC, got {len(states)}"
+
+        def nem_sum(fields: List[str], sector: str) -> pd.Series | None:
+            return _state_sum(nem, nem_labels, [f"{f} | {sector}" for f in fields])
+
+        def non_sum(blocks: List[str], sector: str) -> pd.Series | None:
+            return _state_sum(non, non_labels, [f"{b} | {sector}" for b in blocks])
+
+        def total(parts: List[pd.Series | None], empty: float) -> pd.Series:
+            """Sum the parts that exist (missing states = 0); `empty` if none exist."""
+            present = [p.reindex(states).fillna(0) for p in parts if p is not None]
+            return sum(present) if present else pd.Series(empty, index=states)
+
+        for sector in SECTORS:
+            # 2017-2020 say "Customers", 2021 on "Installations"; storage sat under
+            # Photovoltaic through 2022 and is a Battery block from 2023.
+            pv_mw_nem = total([nem_sum(["Photovoltaic | Capacity MW"], sector)], 0.0)
+            pv_n_nem = total([nem_sum(["Photovoltaic | Customers", "Photovoltaic | Installations"], sector)], 0.0)
+            pv_mw_non = total([non_sum(["Photovoltaic", "Photovoltaic (MW)"], sector)], 0.0)
+            batt_mw = total([
+                nem_sum(["Photovoltaic | Storage Capacity (MW)",
+                         "Battery | PV-Paired Battery Capacity (MW)",
+                         "Battery | Not PV-Paired Battery Capacity (MW)"], sector),
+                non_sum(["Storage", "Battery (MW)"], sector),
+            ], 0.0)
+            batt_n = total([
+                nem_sum(["Photovoltaic | Storage Customers", "Photovoltaic | Storage Installations",
+                         "Battery | PV-Paired Installations", "Battery | Not PV-Paired Installations"], sector),
+            ], 0.0)
+            batt_mwh = total([
+                nem_sum(["Battery | PV-Paired Energy Capacity (MWh)",
+                         "Battery | Not PV-Paired Energy Capacity (MWh)"], sector),
+                non_sum(["Battery Energy (MWh)"], sector),
+            ], np.nan)
+
+            # Non-net files have capacity only; estimate residential installs
+            # from the net-metered average system size.
+            pv_n_non = pd.Series(0.0, index=states)
+            if sector == "Residential":
+                us_avg = pv_mw_nem.sum() / pv_n_nem.sum()
+                avg = (pv_mw_nem / pv_n_nem).where(pv_n_nem >= MIN_NEM_INSTALLS_FOR_STATE_AVG, us_avg)
+                pv_n_non = (pv_mw_non / avg).round()
+
+            frames.append(pd.DataFrame({
+                "year": year,
+                "state": states,
+                "sector": sector,
+                "pv_capacity_mw": (pv_mw_nem + pv_mw_non).values,
+                "pv_customers": (pv_n_nem + pv_n_non).values,
+                "battery_capacity_mw": batt_mw.values,
+                "battery_energy_mwh": batt_mwh.values,
+                "battery_customers": batt_n.values,
+            }))
+
+    out = pd.concat(frames, ignore_index=True)
+    assert np.isfinite(out["pv_customers"]).all(), "pv_customers has NaN or inf"
     out = out.sort_values(["year", "state", "sector"]).reset_index(drop=True)
     return out

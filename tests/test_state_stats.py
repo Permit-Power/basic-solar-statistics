@@ -28,14 +28,10 @@ if not STATE_STATS.is_file():
 LIVE_RANGES = {
     "Average electricity retail cost ($/kWh)": (0.05, 0.80),   # now 0.12 to 0.42
     "Average annual electricity bill": (500, 5000),            # now 1,213 to 2,557
-    "Number of solar installations": (0, 5_000_000),           # now 0 (AL) to 2.2M
-    "Total installed solar capacity (MW)": (0.1, 40_000),      # now 1.4 to 13,800
-    "Solar penetration": (0, 1.0),                             # now 0 (AL) to 0.54
+    "Number of solar installations": (0, 5_000_000),           # now 109 (ND) to 2.2M
+    "Total installed solar capacity (MW)": (0.1, 40_000),      # now 1.3 to 13,800
+    "Solar penetration": (0, 1.0),                             # now 0.0006 (ND) to 0.54
 }
-
-# Alabama reports 0 residential installations but 4.5 MW of capacity in EIA 861M.
-# Looks like a data bug; allowed here until it's investigated.
-KNOWN_ZERO_INSTALLS = {"AL"}
 
 
 @pytest.fixture(scope="module")
@@ -72,6 +68,8 @@ def test_live_column_in_range(stats, col):
     assert out.empty, out.to_string()
 
 
-def test_zero_installations_only_known_states(stats):
+def test_no_state_has_zero_installations(stats):
+    # AL had 0 under EIA 861M (no net-metered customers to estimate non-net
+    # installs from); annual EIA 861 with the national-average fallback fixes it.
     zero = set(stats.loc[stats["Number of solar installations"] == 0, "State (Abbr.)"])
-    assert zero <= KNOWN_ZERO_INSTALLS, zero - KNOWN_ZERO_INSTALLS
+    assert not zero, zero

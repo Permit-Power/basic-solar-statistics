@@ -39,7 +39,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 |------|-------------|--------|----------------|
 | Load data | Reads static input files | `data/` | — |
 | Ohm static uploads | Loads pre-processed Ohm CSVs and uploads directly to Drive | Ohm Analytics | `cancellation_*`, `permitting_timelines_*`, `inspection_timelines_ahj` |
-| Solar capacity | Downloads EIA 861M files for 2017–2025, aggregates PV/battery stats | EIA 861M (live) | `capacity` |
+| Solar capacity | Downloads annual EIA 861 files for 2017–2025, aggregates PV/battery stats | EIA 861 (live) | `capacity` |
 | Solar eligibility | Filters ResStock households for rooftop suitability | ResStock metadata | `eligibility` |
 | Solar costs | Reads LBNL Tracking the Sun data tool export (state medians in 2025 dollars, inflation-adjusted by LBNL) | `data/tts_state_download_data.xlsx` | `costs` |
 | Electricity prices | Pulls state prices from EIA API (2018 onward), utility prices from EIA 861 files (2018–2024) | EIA API + EIA 861 (live) | `state_prices`, `util_prices` |
@@ -53,7 +53,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 
 | File | Source | Contents |
 |------|--------|----------|
-| `solar_storage_capacity_installations_by_state_sector.csv` | EIA 861M | Cumulative solar/storage capacity and install counts by state, sector, year |
+| `solar_storage_capacity_installations_by_state_sector.csv` | EIA 861 (annual) | Cumulative solar/storage capacity (MW, AC) and install counts by state, sector, year; residential non-net-metered installs are estimated from capacity |
 | `solar_eligible_households_by_state.csv` | ResStock | Eligible and suitable household counts by state |
 | `potential_solar_generation_by_state.csv` | NREL SLOPE | Technical generation potential in GWh by state |
 | `residential_solar_costs_by_state_over_time.csv` | LBNL TTS data tool | Median residential $/kW (2025 dollars: the 2025 value is nominal and LBNL adjusts earlier years to 2025) and system size (kW) by state and year, with sample sizes and 20th/80th percentiles |
@@ -169,7 +169,7 @@ The following Ohm files are **no longer used** by the pipeline (replaced by Sola
 
 | Module | What it does |
 |--------|-------------|
-| `pull_solar_count_and_capacity.py` | Downloads EIA 861M Excel files; aggregates residential PV/battery capacity and customer counts by state and year |
+| `pull_solar_count_and_capacity.py` | Downloads annual EIA 861 files (861M reader kept, unused); aggregates PV/battery capacity and customer counts by state, sector and year |
 | `solar_eligible_households.py` | Filters ResStock metadata to estimate solar-eligible household counts by state |
 | `solar_technical_potential.py` | Loads NREL SLOPE residential PV technical generation potential by state |
 | `median_solar_costs.py` | Reads LBNL's Tracking the Sun data tool export: residential median $/kW and system size by state and year; `latest_by_state` picks each state's most recent reliable year for state_stats |
