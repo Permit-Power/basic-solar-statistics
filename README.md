@@ -47,6 +47,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | IX timelines (legacy) | Aggregates old Solar TRACE IX CSV by AHJ and state | `data/solartrace_ix.csv` | `ahj_df_ix`, `state_df_ix` |
 | Solar TRACE timelines | Reshapes Solar TRACE xlsx into tidy utility and state tables | `data/SolarTRACE Dataset v9-9-2025.xlsx` | `utility_timelines`, `state_timelines` |
 | Bill savings | Loads pre-computed dGen savings | `data/bill_savings_csvs/` | `savings` |
+| Energy insecurity | Weighted share of households with any energy insecurity by state (EIA's Table HC11.1 definition) | `data/recs2024_energy_insecurity_microdata.csv` | `energy_insecurity` |
 | Export CSVs | Writes all processed DataFrames to `output_csvs/` | — | — |
 
 ### output_csvs/ written by Stage 1
@@ -74,6 +75,7 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | `interconnection_timelines_by_state.csv` | Solar TRACE (legacy CSV) | IX timelines by state — legacy, not used in state_stats |
 | `interconnection_timelines_by_ahj.csv` | Solar TRACE (legacy CSV) | IX timelines by AHJ — legacy, not used in state_stats |
 | `solar_jobs_by_state.csv` | IREC | Solar jobs by state and category |
+| `energy_insecurity_by_state.csv` | EIA RECS 2024 | Households, energy-insecure households and their share (fraction) by state; see "Household energy insecurity" below |
 | `state_stats.csv` | All of the above | Final joined state-level summary (written by Stage 2) |
 
 ---
@@ -101,6 +103,7 @@ Reads from `output_csvs/` and a handful of static files in `data/`, joins everyt
 | Percent of total households suitable | same | — |
 | Solar penetration | computed: installs / eligible households | — |
 | Annual technical potential (GWh) | `output_csvs/potential_solar_generation_by_state.csv` | — |
+| Percent of households with energy insecurity | `output_csvs/energy_insecurity_by_state.csv` | 2024; a fraction (0.21 to 0.46) |
 | Median solar cost ($/kW) | `output_csvs/residential_solar_costs_by_state_over_time.csv` | Most recent of 2025/2024 with a median based on ≥200 systems; blank otherwise. The year used per state is in `output_csvs/solar_costs_latest_by_state.csv` |
 | Median solar system size (kW) | same | Same rule, chosen separately from cost |
 | Solar permit cancellation rate | `data/state_cancellation_rates.csv` | 2022–2024 combined |
@@ -153,6 +156,16 @@ EIA's average price (revenue ÷ kWh) includes fixed monthly charges, so it overs
 
 ---
 
+## Household energy insecurity
+
+`modules/energy_insecurity.py` follows EIA's definition in RECS 2024 Table HC11.1 (preliminary release, March 2026). A household counts if, in the past 12 months, it reduced or went without food or medicine to pay energy bills, kept the home at an unhealthy temperature, got a disconnect or delivery stop notice, or could not use its heating or air conditioning (equipment broken and unaffordable to fix, or fuel or electricity cut off for nonpayment). "Unable to pay an energy bill" (`SCALEP`) is asked but is not in EIA's definition.
+
+- The module asserts that the national totals match the table (132.54M households, 43.56M energy-insecure), so a changed definition or input fails loudly.
+- State estimates rest on 152 (DE) to 1,025 (NY) surveyed households. Standard errors from the 60 replicate weights are about 1.5 to 4 percentage points, so states a few points apart are not clearly different. state_stats has the percentage only.
+- The data are preliminary; EIA may revise them in a later release.
+
+---
+
 ## data/ folder — static inputs
 
 | File | Used by | How produced | Notes |
@@ -177,6 +190,7 @@ EIA's average price (revenue ÷ kWh) includes fixed monthly charges, so it overs
 | `nrel_solar_suitability_by_zip.csv` | `solar_eligible_households.py` | downloaded source snapshot | NREL rooftop suitability by ZIP |
 | `techpot_baseline_state.csv` | `solar_technical_potential.py` | downloaded source snapshot | NREL SLOPE state totals |
 | `urdb_residential_schedules.csv` | `average_electricity_prices.py` | `refresh_urdb_snapshot()` (downloaded 2026-10-27) | OpenEI U.S. Utility Rate Database, residential schedules with a fixed charge |
+| `recs2024_energy_insecurity_microdata.csv` | `energy_insecurity.py` | `trim_microdata()` on EIA's `recs2024_public_microdata_v1.csv` (kept local, gitignored with the codebook and Table HC11.1 PDF) | RECS 2024 public microdata: ID, state, final weight and the 9 energy insecurity questions used |
 | `residential_fixed_charges_manual.csv` | `average_electricity_prices.py` | checked by hand, October 2026 | Fixed charges for large utilities where URDB was wrong or missing (CA, ME, MS, NE, Texas TDUs), each with source, quote and evidence level |
 
 ---
@@ -196,6 +210,7 @@ EIA's average price (revenue ÷ kWh) includes fixed monthly charges, so it overs
 | `solar_bill_savings_update.py` | Loads pre-computed dGen bill savings from `data/bill_savings_csvs/` |
 | `drive_uploader.py` | Google Drive helpers: authenticate, ensure folder path, upload DataFrame as CSV |
 | `manifest.py` | Builds and uploads a JSON manifest of all Drive files |
+| `energy_insecurity.py` | Share of households with any energy insecurity by state, from RECS 2024 microdata (EIA's Table HC11.1 definition); `trim_microdata` makes the committed input |
 | `storage_attachment_rate.py` | Loads and summarizes Ohm Analytics monthly storage attachment rates by state (raw export `data/ohm_analytics_*.csv` stays local, gitignored). **Not yet wired into the pipeline** |
 
 ---

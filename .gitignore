@@ -30,3 +30,9 @@ poetry.lock.bak
 
 # Licensed Ohm Analytics data (keep local, do not commit)
 data/ohm_analytics_*.csv
+
+# EIA RECS 2024 full public microdata, codebook and table PDF (keep local);
+# the trimmed copy data/recs2024_energy_insecurity_microdata.csv is committed
+data/recs2024_public_microdata_v1.csv
+data/2024 RECS Codebook for Public File v1.xlsx
+data/EIA_RECS_Energy_Insecurity_2024.pdf
