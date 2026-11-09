@@ -51,6 +51,7 @@ NET_METERING_RUN = "synapse_attachrate_75"
 NET_BILLING_RUN = "synapse_attachrate_75_net_billing"
 COHORT_YEAR = 2026
 OUTPUT_FILENAME = f"state_bill_savings_{COHORT_YEAR}_by_export_policy.csv"
+US_OUTPUT_FILENAME = f"us_bill_savings_{COHORT_YEAR}.csv"
 
 # State residential export compensation (DSIRE, investor-owned utilities).
 DSIRE_CSV = Path(__file__).resolve().parents[1] / "data" / "dsire_iou_net_metering_may2026.csv"
@@ -98,6 +99,57 @@ def _weighted_median(values: np.ndarray, weights: np.ndarray) -> float:
     return float(v[np.searchsorted(cumw, 0.5 * w.sum(), side="left")])
 
 
+def _load_cohort(state_abbr: str, run_name: str, base_directory: str, cohort_year: int,
+                 weights_run: Optional[str] = None):
+    """
+    One state's households for the cohort year from one run (None if the run is
+    missing or has no rows), and the label of the weights used. With weights_run,
+    new_adopters comes from that run instead (matched by agent_id).
+    """
+    baseline_path = os.path.join(base_directory, state_abbr, run_name, "baseline.csv")
+    if not os.path.isfile(baseline_path):
+        return None, None
+
+    df = pd.read_csv(baseline_path)
+    df = df[df["year"] == cohort_year]
+    if df.empty:
+        return None, None
+    weights_label = "new_adopters"
+    if weights_run is not None:
+        w_df = pd.read_csv(os.path.join(base_directory, state_abbr, weights_run, "baseline.csv"),
+                           usecols=["year", "agent_id", "new_adopters"])
+        w_df = w_df[w_df["year"] == cohort_year]
+        if set(w_df["agent_id"]) != set(df["agent_id"]):
+            raise ValueError(f"{state_abbr}: {run_name} and {weights_run} model different households")
+        df = df.drop(columns="new_adopters").merge(w_df[["agent_id", "new_adopters"]], on="agent_id")
+        weights_label = f"new_adopters ({weights_run})"
+    return df, weights_label
+
+
+def _household_measures(df: pd.DataFrame):
+    """Each household's year-1 savings, year-1 bill without solar, % reduction and 25-year savings."""
+    wo = df["utility_bill_wo_sys_pv_only"].apply(_parse_array)
+    w  = df["utility_bill_w_sys_pv_only"].apply(_parse_array)
+    ds = df["cf_discounted_savings_pv_only"].apply(_parse_array)
+    real_discount = 1 + df["real_discount_rate"].values
+
+    year1 = np.array([
+        (wo_arr[1] - w_arr[1]) if len(wo_arr) >= 2 and len(w_arr) >= 2 else np.nan
+        for wo_arr, w_arr in zip(wo, w)
+    ])
+    bill_wo_year1 = np.array([
+        wo_arr[1] if len(wo_arr) >= 2 else np.nan
+        for wo_arr in wo
+    ])
+    with np.errstate(divide="ignore", invalid="ignore"):
+        pct_reduction = np.where(bill_wo_year1 > 0, year1 / bill_wo_year1 * 100, np.nan)
+    lifetime = np.array([
+        sum(v * r ** t for t, v in enumerate(ds_arr[1:26], start=1)) if len(ds_arr) >= 26 else np.nan
+        for ds_arr, r in zip(ds, real_discount)
+    ])
+    return year1, bill_wo_year1, pct_reduction, lifetime
+
+
 def compute_state_bill_savings_baseline(
     run_name: str,
     base_directory: str = BASE_DIRECTORY,
@@ -131,43 +183,11 @@ def compute_state_bill_savings_baseline(
     results = []
 
     for state_abbr in sorted(os.listdir(base_directory)):
-        baseline_path = os.path.join(base_directory, state_abbr, run_name, "baseline.csv")
-        if not os.path.isfile(baseline_path):
+        df, weights_label = _load_cohort(state_abbr, run_name, base_directory, cohort_year, weights_run)
+        if df is None:
             continue
 
-        df = pd.read_csv(baseline_path)
-        df = df[df["year"] == cohort_year]
-        if df.empty:
-            continue
-        weights_label = "new_adopters"
-        if weights_run is not None:
-            w_df = pd.read_csv(os.path.join(base_directory, state_abbr, weights_run, "baseline.csv"),
-                               usecols=["year", "agent_id", "new_adopters"])
-            w_df = w_df[w_df["year"] == cohort_year]
-            if set(w_df["agent_id"]) != set(df["agent_id"]):
-                raise ValueError(f"{state_abbr}: {run_name} and {weights_run} model different households")
-            df = df.drop(columns="new_adopters").merge(w_df[["agent_id", "new_adopters"]], on="agent_id")
-            weights_label = f"new_adopters ({weights_run})"
-
-        wo = df["utility_bill_wo_sys_pv_only"].apply(_parse_array)
-        w  = df["utility_bill_w_sys_pv_only"].apply(_parse_array)
-        ds = df["cf_discounted_savings_pv_only"].apply(_parse_array)
-        real_discount = 1 + df["real_discount_rate"].values
-
-        year1 = np.array([
-            (wo_arr[1] - w_arr[1]) if len(wo_arr) >= 2 and len(w_arr) >= 2 else np.nan
-            for wo_arr, w_arr in zip(wo, w)
-        ])
-        bill_wo_year1 = np.array([
-            wo_arr[1] if len(wo_arr) >= 2 else np.nan
-            for wo_arr in wo
-        ])
-        with np.errstate(divide="ignore", invalid="ignore"):
-            pct_reduction = np.where(bill_wo_year1 > 0, year1 / bill_wo_year1 * 100, np.nan)
-        lifetime = np.array([
-            sum(v * r ** t for t, v in enumerate(ds_arr[1:26], start=1)) if len(ds_arr) >= 26 else np.nan
-            for ds_arr, r in zip(ds, real_discount)
-        ])
+        year1, bill_wo_year1, pct_reduction, lifetime = _household_measures(df)
         if df["new_adopters"].sum() > 0:
             weights, weight_basis = df["new_adopters"].values.astype(float), weights_label
         else:
@@ -272,6 +292,58 @@ def compute_state_bill_savings(
     return out[cols].reset_index()
 
 
+def compute_us_bill_savings(
+    base_directory: str = BASE_DIRECTORY,
+    cohort_year: int = COHORT_YEAR,
+    dsire_csv: Path = DSIRE_CSV,
+) -> pd.DataFrame:
+    """
+    National bill savings: the weighted median over every modeled state's
+    households pooled together, weighted by the net metering run's cohort_year
+    adopters. Each household takes its state's policy value (net metering run,
+    net billing run, or the average of the two for that household). State
+    medians cannot be combined, so this needs the household rows.
+
+    Returns
+    -------
+    pd.DataFrame
+        One row: state_abbr ("US"), year_1_savings, pct_bill_reduction_year_1,
+        lifetime_savings, median_bill_year_1, states (number pooled)
+    """
+    scenarios = state_savings_scenarios(dsire_csv).set_index("state_abbr")["savings_scenario"]
+    names = ["year_1_savings", "median_bill_year_1", "pct_bill_reduction_year_1", "lifetime_savings"]
+    pooled, weights = [], []
+    n_states = 0
+    for state_abbr in sorted(os.listdir(base_directory)):
+        nm_df, _ = _load_cohort(state_abbr, NET_METERING_RUN, base_directory, cohort_year)
+        if nm_df is None:
+            continue
+        if state_abbr.upper() not in scenarios.index:
+            raise ValueError(f"No export compensation scenario for: {state_abbr}")
+        scenario = scenarios[state_abbr.upper()]
+        nm = pd.DataFrame(dict(zip(names, _household_measures(nm_df))), index=nm_df["agent_id"])
+        if not nm.index.is_unique:
+            raise ValueError(f"{state_abbr}: agent_id is not unique in {NET_METERING_RUN}")
+        if scenario != NET_METERING:
+            nb_df, _ = _load_cohort(state_abbr, NET_BILLING_RUN, base_directory, cohort_year, NET_METERING_RUN)
+            if nb_df is None:
+                raise ValueError(f"{state_abbr}: needs {NET_BILLING_RUN} for {scenario}")
+            nb = pd.DataFrame(dict(zip(names, _household_measures(nb_df))), index=nb_df["agent_id"]).reindex(nm.index)
+            for measure in ("year_1_savings", "pct_bill_reduction_year_1", "lifetime_savings"):
+                nm[measure] = nb[measure] if scenario == NET_BILLING else (nm[measure] + nb[measure]) / 2
+        n_states += 1
+        pooled.append(nm)
+        weights.append(nm_df["new_adopters"].values.astype(float))
+
+    pooled, weights = pd.concat(pooled), np.concatenate(weights)
+    return pd.DataFrame([{
+        "state_abbr": "US",
+        **{m: _weighted_median(pooled[m].values, weights) for m in
+           ("year_1_savings", "pct_bill_reduction_year_1", "lifetime_savings", "median_bill_year_1")},
+        "states": n_states,
+    }])
+
+
 def export_state_bill_savings_to_csv(
     export_directory: str,
     output_filename: str = OUTPUT_FILENAME,
@@ -279,7 +351,9 @@ def export_state_bill_savings_to_csv(
     cohort_year: int = COHORT_YEAR,
 ) -> str:
     """
-    Compute state-level bill savings and write to a CSV for use in CI.
+    Compute state-level bill savings and write to a CSV for use in CI. Also writes the
+    national row (compute_us_bill_savings) to US_OUTPUT_FILENAME in the same folder;
+    the pipeline does not read it.
 
     Returns
     -------
@@ -290,6 +364,8 @@ def export_state_bill_savings_to_csv(
     export_dir_path.mkdir(parents=True, exist_ok=True)
     output_path = export_dir_path / output_filename
     compute_state_bill_savings(base_directory=base_directory, cohort_year=cohort_year).to_csv(output_path, index=False)
+    compute_us_bill_savings(base_directory=base_directory, cohort_year=cohort_year).to_csv(
+        export_dir_path / US_OUTPUT_FILENAME, index=False)
     return str(output_path)
 
 

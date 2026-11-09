@@ -153,6 +153,7 @@ EIA's average price (revenue ÷ kWh) includes fixed monthly charges, so it overs
 - **Typical solar customer**: weighted medians over the 2026 adopters of the net metering run, in both runs (same households, matched by `agent_id`). Weighting the net billing run by its own adopters would pick a smaller, better-economics group.
 - **First-year savings** = bill without solar − bill with solar (PV only), year 1. **First-year % bill reduction** = that savings ÷ the bill without solar, per household (the median of households' percentages, so not median savings ÷ median bill). **Lifetime** = 25 years of savings in 2026 dollars (dGen's discounted savings with the 5% real discount removed).
 - The CSV also keeps both runs' values, the policy, the scenario used, and a note per state.
+- **National row** (`data/bill_savings_csvs/us_bill_savings_2026.csv`, written by the same export; the pipeline does not read it): the weighted median over all states' households pooled together, with the same weights and measures, each household taking its state's policy value (the average of the two runs per household in NH, NV and TX). 49 states; AK and HI are not modeled.
 
 ---
 
