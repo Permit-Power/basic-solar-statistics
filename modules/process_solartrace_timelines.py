@@ -1,78 +1,92 @@
 """
 process_solartrace_timelines.py
 
-Process the Solar TRACE dataset into two tidy long-format DataFrames.
+Process NLR's Solar TRACE timelines file into tidy long-format DataFrames.
 
-Source sheets (SolarTRACE Dataset v9-9-2025.xlsx):
-    - AHJ-Utility Timelines  → utility_df  (weighted median aggregation AHJ → utility)
-    - State-Level Timelines  → state_df    (reshape/rename only)
+Source: data/SolarTRACE Residential PII Requirements Timelines Dataset_Final.xlsx
+(NLR, completed 8/31/2026): residential systems up to 20 kW, 2017-2025, PV only
+and PV+storage. Medians are in business days; NLR leaves a median blank below
+10 projects. Each sheet has two header rows (display names, then coded names
+like `2024_pv_med_permit`); this module reads the coded row.
+    - State-Level Timelines  -> state_df   (reshape only)
+    - AHJ-Utility Timelines  -> utility_df (install-weighted median over AHJs)
+                             -> ahj_df     (install-weighted median over utilities)
 
-utility_df columns:
-    state, utility, eia_id, year, size_class, tech_class,
-    installs, permit_time_days, pre_install_ix_days,
-    inspection_time_days, final_ix_to_pto_days
+Timeline values are treated as per AHJ-utility pair: IX values vary across
+the AHJs a utility serves, and permit/inspection values vary across a few
+utilities within one AHJ, so both roll-ups weight by installs.
 
 state_df columns:
-    state, year, size_class, tech_class,
-    installs, permit_time_days, pre_install_ix_days, install_time_days,
+    state, year, tech_class, installs, permit_time_days, pre_install_ix_days,
     inspection_time_days, final_ix_to_pto_days, project_time_days
 
-size_class values : "0_10kw", "10_20kw"
-tech_class values : "pv_only", "pv_storage"
+utility_df columns:
+    state, utility, eia_id, year, tech_class, installs, then for each of
+    permit_time_days, pre_install_ix_days, inspection_time_days,
+    final_ix_to_pto_days: the median and `<col>_installs` (installs in the
+    AHJs that report it)
+
+ahj_df columns:
+    state, ahj, geo_id, year, tech_class, installs, permit_time_days,
+    permit_time_days_installs, inspection_time_days, inspection_time_days_installs
+
+latest_df (from latest_by_state) columns, one row per state:
+    for each tech prefix (pv_only_, pv_storage_): year, installs and the four
+    shown medians from the chosen year, then the same five fields from 2024
+    with a _2024 suffix
+
+tech_class values: "pv_only", "pv_storage"
 """
 
 import re
 
 import pandas as pd
 
-# ---------------------------------------------------------------------------
-# Constants
-# ---------------------------------------------------------------------------
-
 _AHJ_SHEET = "AHJ-Utility Timelines"
 _STATE_SHEET = "State-Level Timelines"
 
 _METRIC_MAP = {
-    "Installs": "installs",
-    "Median AHJ Permit Time": "permit_time_days",
-    "Median Pre-Install IX Time": "pre_install_ix_days",
-    "Median Install Time": "install_time_days",
-    "Median Inspection Time": "inspection_time_days",
-    "Median Final IX to PTO": "final_ix_to_pto_days",
-    "Median Project Time": "project_time_days",
+    "install_count": "installs",
+    "med_permit": "permit_time_days",
+    "med_pre_IX": "pre_install_ix_days",
+    "med_inspection": "inspection_time_days",
+    "med_post_IX": "final_ix_to_pto_days",
+    "med_total_project": "project_time_days",
 }
+_TECH_MAP = {"pv": "pv_only", "pv+st": "pv_storage"}
+_COL_RE = re.compile(r"^(\d{4})_(pv|pv\+st)_(" + "|".join(_METRIC_MAP) + r")$")
 
-_SIZE_MAP = {"0-10kW": "0_10kw", "10-20kW": "10_20kw"}
-_TECH_MAP = {"PV Only": "pv_only", "PV+Storage": "pv_storage"}
-
-_COL_RE = re.compile(
-    r"^(Installs"
-    r"|Median AHJ Permit Time"
-    r"|Median Pre-Install IX Time"
-    r"|Median Install Time"
-    r"|Median Inspection Time"
-    r"|Median Final IX to PTO"
-    r"|Median Project Time)"
-    r" (\d{4}) (0-10kW|10-20kW) (PV Only|PV\+Storage)$"
-)
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
+# The four medians shown per state (total project time is not shown).
+SHOWN = ["permit_time_days", "pre_install_ix_days", "inspection_time_days", "final_ix_to_pto_days"]
+# Year rule (Wael, 2026-11-12): latest year up to LATEST_YEAR with at least
+# MIN_INSTALLS installs and all four SHOWN medians, chosen per state and tech.
+LATEST_YEAR = 2025
+MIN_INSTALLS = 100
+HOVER_YEAR = 2024
 
 
 def _parse_data_columns(columns):
-    """Return list of (col_name, metric, year, size_class, tech_class) for matching columns."""
+    """Return list of (col_name, metric, year, tech_class) for matching columns."""
     parsed = []
     for col in columns:
-        m = _COL_RE.match(col)
+        m = _COL_RE.match(str(col))
         if m:
-            metric = _METRIC_MAP[m.group(1)]
-            year = int(m.group(2))
-            size = _SIZE_MAP[m.group(3)]
-            tech = _TECH_MAP[m.group(4)]
-            parsed.append((col, metric, year, size, tech))
+            parsed.append((col, _METRIC_MAP[m.group(3)], int(m.group(1)), _TECH_MAP[m.group(2)]))
     return parsed
+
+
+def _reshape_to_long(df: pd.DataFrame, id_cols: list[str]) -> pd.DataFrame:
+    """Melt a sheet to one row per (id_cols x year x tech_class)."""
+    parsed = _parse_data_columns(df.columns)
+    records = []
+    for _, row in df.iterrows():
+        base = {c: row[c] for c in id_cols}
+        groups: dict = {}
+        for col, metric, year, tech in parsed:
+            groups.setdefault((year, tech), {})[metric] = row[col]
+        for (year, tech), metrics in groups.items():
+            records.append({**base, "year": year, "tech_class": tech, **metrics})
+    return pd.DataFrame(records)
 
 
 def _weighted_median(values: pd.Series, weights: pd.Series) -> float:
@@ -85,137 +99,78 @@ def _weighted_median(values: pd.Series, weights: pd.Series) -> float:
     return df.loc[cum_w >= cutoff, "v"].iloc[0]
 
 
-# ---------------------------------------------------------------------------
-# AHJ sheet → utility_df
-# ---------------------------------------------------------------------------
-
-
-def _reshape_ahj_to_long(ahj: pd.DataFrame) -> pd.DataFrame:
-    """Melt AHJ-Utility sheet to one row per (AHJ × year × size_class × tech_class)."""
-    id_cols = ["state", "ahj", "geo_id", "utility", "eia_id"]
-    parsed = _parse_data_columns(ahj.columns)
-
-    records = []
-    for _, row in ahj.iterrows():
-        base = {c: row[c] for c in id_cols if c in ahj.columns}
-        groups: dict = {}
-        for col, metric, year, size, tech in parsed:
-            groups.setdefault((year, size, tech), {})[metric] = row[col]
-        for (year, size, tech), metrics in groups.items():
-            records.append({**base, "year": year, "size_class": size, "tech_class": tech, **metrics})
-
-    return pd.DataFrame(records)
-
-
-def compute_utility_timelines(ahj: pd.DataFrame) -> pd.DataFrame:
-    """
-    Aggregate AHJ-level data to utility level using install-weighted medians.
-
-    Groups by (state, utility, eia_id, year, size_class, tech_class).
-    Rows with zero installs are dropped.
-
-    Returns
-    -------
-    pd.DataFrame
-    """
-    long = _reshape_ahj_to_long(ahj)
-
-    timeline_cols = [
-        "permit_time_days",
-        "pre_install_ix_days",
-        "inspection_time_days",
-        "final_ix_to_pto_days",
-    ]
-
-    group_keys = ["state", "utility", "eia_id", "year", "size_class", "tech_class"]
+def _rollup(long: pd.DataFrame, group_keys: list[str], timeline_cols: list[str]) -> pd.DataFrame:
+    """Install-weighted median of each timeline column per group; zero-install groups dropped."""
     results = []
-
     for keys, sub in long.groupby(group_keys, dropna=False):
         weights = pd.to_numeric(sub["installs"], errors="coerce").fillna(0)
-        total_installs = weights.sum()
-        if total_installs == 0:
+        if weights.sum() == 0:
             continue
-
         rec = dict(zip(group_keys, keys))
-        rec["installs"] = total_installs
-
+        rec["installs"] = weights.sum()
         for col in timeline_cols:
-            if col in sub.columns:
-                values = pd.to_numeric(sub[col], errors="coerce")
-                rec[col] = _weighted_median(values, weights)
-                rec[f"{col}_installs"] = weights[values.notna()].sum()
-
+            values = pd.to_numeric(sub[col], errors="coerce")
+            rec[col] = _weighted_median(values, weights)
+            rec[f"{col}_installs"] = weights[values.notna()].sum()
         results.append(rec)
-
-    col_order = ["state", "utility", "eia_id", "year", "size_class", "tech_class", "installs"]
-    for col in timeline_cols:
-        col_order += [col, f"{col}_installs"]
-    df = pd.DataFrame(results)
-    present = [c for c in col_order if c in df.columns]
-    return df[present].sort_values(["state", "utility", "year", "size_class", "tech_class"]).reset_index(drop=True)
+    return pd.DataFrame(results).sort_values(group_keys).reset_index(drop=True)
 
 
-# ---------------------------------------------------------------------------
-# State sheet → state_df
-# ---------------------------------------------------------------------------
+def compute_utility_timelines(ahj_long: pd.DataFrame) -> pd.DataFrame:
+    """Aggregate AHJ-utility pairs to utility level using install-weighted medians."""
+    return _rollup(ahj_long, ["state", "utility", "eia_id", "year", "tech_class"], SHOWN)
+
+
+def compute_ahj_timelines(ahj_long: pd.DataFrame) -> pd.DataFrame:
+    """Aggregate AHJ-utility pairs to AHJ level (permit and inspection only)."""
+    return _rollup(ahj_long, ["state", "ahj", "geo_id", "year", "tech_class"],
+                   ["permit_time_days", "inspection_time_days"])
 
 
 def compute_state_timelines(state: pd.DataFrame) -> pd.DataFrame:
+    """Reshape the State-Level Timelines sheet; values come directly from the source."""
+    df = _reshape_to_long(state, ["state"])
+    cols = ["state", "year", "tech_class", "installs"] + SHOWN + ["project_time_days"]
+    return df[cols].sort_values(["state", "year", "tech_class"]).reset_index(drop=True)
+
+
+def latest_by_state(state_df: pd.DataFrame, latest_year: int = LATEST_YEAR,
+                    min_installs: int = MIN_INSTALLS, hover_year: int = HOVER_YEAR) -> pd.DataFrame:
     """
-    Reshape the State-Level Timelines sheet into a tidy long-format DataFrame.
-    No aggregation — values come directly from the source sheet.
-
-    Returns
-    -------
-    pd.DataFrame
+    Per state and tech class, the latest year up to `latest_year` with at least
+    `min_installs` installs and all four SHOWN medians; a state with no such
+    year is left blank. Also carries every state's `hover_year` values
+    (whether or not that year passes the rule) for comparison.
     """
-    parsed = _parse_data_columns(state.columns)
-
-    records = []
-    for _, row in state.iterrows():
-        groups: dict = {}
-        for col, metric, year, size, tech in parsed:
-            groups.setdefault((year, size, tech), {})[metric] = row[col]
-        for (year, size, tech), metrics in groups.items():
-            records.append({"state": row["state"], "year": year, "size_class": size, "tech_class": tech, **metrics})
-
-    col_order = [
-        "state", "year", "size_class", "tech_class",
-        "installs", "permit_time_days", "pre_install_ix_days",
-        "install_time_days", "inspection_time_days",
-        "final_ix_to_pto_days", "project_time_days",
-    ]
-    df = pd.DataFrame(records)
-    present = [c for c in col_order if c in df.columns]
-    return df[present].sort_values(["state", "year", "size_class", "tech_class"]).reset_index(drop=True)
-
-
-# ---------------------------------------------------------------------------
-# Pipeline
-# ---------------------------------------------------------------------------
+    fields = ["installs"] + SHOWN
+    out = pd.DataFrame({"state": sorted(state_df["state"].unique())})
+    for tech in ["pv_only", "pv_storage"]:
+        t = state_df[state_df["tech_class"] == tech]
+        ok = t[(t["year"] <= latest_year) & (t["installs"] >= min_installs) & t[SHOWN].notna().all(axis=1)]
+        chosen = ok.sort_values("year").drop_duplicates("state", keep="last")[["state", "year"] + fields]
+        hover = t[t["year"] == hover_year][["state"] + fields]
+        out = (out
+               .merge(chosen.rename(columns={c: f"{tech}_{c}" for c in ["year"] + fields}), on="state", how="left")
+               .merge(hover.rename(columns={f: f"{tech}_{f}_{hover_year}" for f in fields}), on="state", how="left"))
+        out[f"{tech}_year"] = out[f"{tech}_year"].astype("Int64")
+    return out
 
 
 def load_solartrace(path: str) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Load AHJ-Utility Timelines and State-Level Timelines sheets from the xlsx."""
-    ahj = pd.read_excel(path, sheet_name=_AHJ_SHEET)
-    state = pd.read_excel(path, sheet_name=_STATE_SHEET)
+    """Load the two timeline sheets, using the coded (second) header row."""
+    ahj = pd.read_excel(path, sheet_name=_AHJ_SHEET, header=1)
+    ahj.columns = ["state", "ahj", "geo_id", "utility", "eia_id"] + list(ahj.columns[5:])
+    state = pd.read_excel(path, sheet_name=_STATE_SHEET, header=1)
+    state = state.rename(columns={state.columns[0]: "state"})
     return ahj, state
 
 
-def run_pipeline(path: str) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """
-    Full pipeline: load xlsx → utility_df, state_df.
-
-    Parameters
-    ----------
-    path : str
-        Path to the SolarTRACE xlsx file.
-
-    Returns
-    -------
-    utility_df, state_df
-    """
+def run_pipeline(path: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Full pipeline: xlsx -> utility_df, state_df, ahj_df, latest_df."""
     ahj, state = load_solartrace(path)
-    utility_df = compute_utility_timelines(ahj)
+    ahj_long = _reshape_to_long(ahj, ["state", "ahj", "geo_id", "utility", "eia_id"])
+    utility_df = compute_utility_timelines(ahj_long)
+    ahj_df = compute_ahj_timelines(ahj_long)
     state_df = compute_state_timelines(state)
-    return utility_df, state_df
+    latest_df = latest_by_state(state_df)
+    return utility_df, state_df, ahj_df, latest_df
