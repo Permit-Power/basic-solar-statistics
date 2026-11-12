@@ -44,7 +44,6 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | Solar costs | Reads LBNL Tracking the Sun data tool export (state medians in 2025 dollars, inflation-adjusted by LBNL) | `data/tts_state_download_data.xlsx` | `costs` |
 | Electricity prices | Pulls state prices from EIA API (2018 onward), utility prices from EIA 861 files (2018–2024); assumed residential fixed charges (2020 on) from URDB and hand-checked tariffs, and the residential price without them | EIA API + EIA 861 (live), `data/urdb_residential_schedules.csv`, `data/residential_fixed_charges_manual.csv` | `state_prices`, `util_prices`, `fixed_by_utility` |
 | Permitting fees | Aggregates Solar TRACE fee data by AHJ and state | `data/solartrace_fees.csv` | `ahj_df_fees`, `state_df_fees` |
-| IX timelines (legacy) | Aggregates old Solar TRACE IX CSV by AHJ and state | `data/solartrace_ix.csv` | `ahj_df_ix`, `state_df_ix` |
 | Solar TRACE timelines | Reshapes Solar TRACE xlsx into tidy state, utility and AHJ tables; picks the year per state | `data/SolarTRACE Residential PII Requirements Timelines Dataset_Final.xlsx` | `utility_timelines`, `state_timelines`, `ahj_timelines`, `latest_timelines` |
 | Bill savings | Loads pre-computed dGen savings | `data/bill_savings_csvs/` | `savings` |
 | Energy insecurity | Weighted share of households with any energy insecurity by state (EIA's Table HC11.1 definition) | `data/recs2024_energy_insecurity_microdata.csv` | `energy_insecurity` |
@@ -74,8 +73,8 @@ Stage 2 never pulls from the internet — it only reads from `output_csvs/`. Thi
 | `inspection_timelines_by_ahj.csv` | Ohm Analytics | Median inspection timeline by AHJ |
 | `permitting_fees_by_state.csv` | Solar TRACE | Median permitting fee by state |
 | `permitting_fees_by_ahj.csv` | Solar TRACE | Median permitting fee by AHJ |
-| `interconnection_timelines_by_state.csv` | Solar TRACE (legacy CSV) | IX timelines by state — legacy, not used in state_stats |
-| `interconnection_timelines_by_ahj.csv` | Solar TRACE (legacy CSV) | IX timelines by AHJ — legacy, not used in state_stats |
+| `interconnection_timelines_by_state.csv` | Solar TRACE xlsx | Pre-install IX and final IX to PTO medians by state, year, tech class (Drive sheet "Interconnection Timelines by State") |
+| `interconnection_timelines_by_ahj.csv` | Solar TRACE xlsx | Pre-install IX and final IX to PTO medians by AHJ-utility pair, year, tech class (Drive sheet "Interconnection Timelines by AHJ") |
 | `solar_jobs_by_state.csv` | IREC | Solar jobs by state and category |
 | `energy_insecurity_by_state.csv` | EIA RECS 2024 | Households, energy-insecure households and their share (fraction) by state; see "Household energy insecurity" below |
 | `state_stats.csv` | All of the above | Final joined state-level summary (written by Stage 2) |
@@ -122,7 +121,7 @@ Reads from `output_csvs/` and a handful of static files in `data/`, joins everyt
 
 Both Ohm Analytics and Solar TRACE provide permitting, inspection, and interconnection timeline data, and both are partially in use.
 
-**Solar TRACE** (`SolarTRACE Residential PII Requirements Timelines Dataset_Final.xlsx`, NLR, completed 8/31/2026) is the **primary source** for all timeline metrics used in `state_stats.csv`. It covers permit time, pre-install IX, inspection time, final IX to PTO, and total project time (median business days; blank below 10 projects) for residential systems up to 20 kW, by state and AHJ-utility pair, year (2017–2025), and tech class (PV only / PV+storage). NLR notes 2025 comes from 7 installers, and projects without a PTO date are left out of every median. The older `SolarTRACE Dataset v9-9-2025.xlsx` stays in `data/` for now (not read by the pipeline).
+**Solar TRACE** (`SolarTRACE Residential PII Requirements Timelines Dataset_Final.xlsx`, NLR, completed 8/31/2026) is the **primary source** for all timeline metrics used in `state_stats.csv`. It covers permit time, pre-install IX, inspection time, final IX to PTO, and total project time (median business days; blank below 10 projects) for residential systems up to 20 kW, by state and AHJ-utility pair, year (2017–2025), and tech class (PV only / PV+storage). NLR notes 2025 comes from 7 installers, and projects without a PTO date are left out of every median. The older `SolarTRACE Dataset v9-9-2025.xlsx` and `solartrace_ix.csv` are in `data/archive/`, and the module that read the CSV in `modules/archive/` (none run in the pipeline).
 
 **Ohm Analytics** (static CSVs in `data/`) is still used for:
 - **Cancellation rates** — no Solar TRACE equivalent; used in `state_stats.csv`
@@ -174,9 +173,9 @@ EIA's average price (revenue ÷ kWh) includes fixed monthly charges, so it overs
 | File | Used by | How produced | Notes |
 |------|---------|--------------|-------|
 | `SolarTRACE Residential PII Requirements Timelines Dataset_Final.xlsx` | `process_solartrace_timelines.py` | from NLR | Primary timeline source |
-| `SolarTRACE Dataset v9-9-2025.xlsx` | none | downloaded source snapshot | Previous timeline source; not read by the pipeline |
+| `archive/SolarTRACE Dataset v9-9-2025.xlsx` | `ad_hocs/solartrace_exploration.ipynb` | downloaded source snapshot | Previous timeline source; not read by the pipeline |
 | `solartrace_fees.csv` | `median_permit_fees.py` | processed outside this repo (no script), from Solar TRACE | Permitting fee data |
-| `solartrace_ix.csv` | `median_interconnection_timelines.py` | processed outside this repo (no script), from Solar TRACE | Legacy IX data; still uploaded to Drive but not used in state_stats |
+| `archive/solartrace_ix.csv` | `modules/archive/median_interconnection_timelines.py` | processed outside this repo (no script), from Solar TRACE | Previous IX data; not read by the pipeline |
 | `tts_state_download_data.xlsx` | `median_solar_costs.py` | downloaded source snapshot | LBNL Tracking the Sun data tool export (trackingthesun.lbl.gov, 2026 edition, installs through 2025); replace with a new export to update |
 | `resstock_metadata_technical_potential.csv` | `solar_eligible_households.py` | processed outside this repo (no script) | ~34 MB; ResStock household metadata |
 | `bill_savings_csvs/` | `solar_bill_savings_update.py` | generated by `notebooks/export_bill_savings.ipynb` | Pre-computed dGen outputs; must exist before pipeline runs |
@@ -210,7 +209,6 @@ EIA's average price (revenue ÷ kWh) includes fixed monthly charges, so it overs
 | `average_electricity_prices.py` | State prices from EIA API (2018 onward); utility prices from EIA 861 annual files (2018–2024); inflation-adjusted (FRED CPI) to dollars of the latest year with EIA state data, so the latest year is as paid. Also the assumed residential fixed charge per state and year and the price without it (method in the module's "Residential fixed charges" comment) |
 | `process_solartrace_timelines.py` | Reshapes Solar TRACE xlsx into tidy long-format tables: `state_timelines` (direct reshape), `utility_timelines` and `ahj_timelines` (install-weighted medians over AHJ-utility pairs), and `latest_timelines` (year rule for state_stats) |
 | `median_permit_fees.py` | Aggregates Solar TRACE fee data; population-weighted median fees by state |
-| `median_interconnection_timelines.py` | **Legacy.** Processes old `solartrace_ix.csv`; superseded by `process_solartrace_timelines.py` for state_stats purposes but still runs in pipeline |
 | `solar_bill_savings_update.py` | Loads pre-computed dGen bill savings from `data/bill_savings_csvs/` |
 | `drive_uploader.py` | Google Drive helpers: authenticate, ensure folder path, upload DataFrame as CSV |
 | `manifest.py` | Builds and uploads a JSON manifest of all Drive files |

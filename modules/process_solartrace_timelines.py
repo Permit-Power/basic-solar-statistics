@@ -26,6 +26,10 @@ utility_df columns:
     final_ix_to_pto_days: the median and `<col>_installs` (installs in the
     AHJs that report it)
 
+pair_df columns (AHJ-utility pairs, IX only):
+    state, ahj, geo_id, utility, eia_id, year, tech_class, installs,
+    pre_install_ix_days, final_ix_to_pto_days
+
 ahj_df columns:
     state, ahj, geo_id, year, tech_class, installs, permit_time_days,
     permit_time_days_installs, inspection_time_days, inspection_time_days_installs
@@ -165,12 +169,15 @@ def load_solartrace(path: str) -> tuple[pd.DataFrame, pd.DataFrame]:
     return ahj, state
 
 
-def run_pipeline(path: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """Full pipeline: xlsx -> utility_df, state_df, ahj_df, latest_df."""
+def run_pipeline(path: str) -> tuple[pd.DataFrame, ...]:
+    """Full pipeline: xlsx -> utility_df, state_df, ahj_df, latest_df, pair_df."""
     ahj, state = load_solartrace(path)
     ahj_long = _reshape_to_long(ahj, ["state", "ahj", "geo_id", "utility", "eia_id"])
     utility_df = compute_utility_timelines(ahj_long)
     ahj_df = compute_ahj_timelines(ahj_long)
     state_df = compute_state_timelines(state)
     latest_df = latest_by_state(state_df)
-    return utility_df, state_df, ahj_df, latest_df
+    ix_cols = ["pre_install_ix_days", "final_ix_to_pto_days"]
+    pair_df = ahj_long.dropna(subset=ix_cols, how="all")[
+        ["state", "ahj", "geo_id", "utility", "eia_id", "year", "tech_class", "installs"] + ix_cols]
+    return utility_df, state_df, ahj_df, latest_df, pair_df.reset_index(drop=True)

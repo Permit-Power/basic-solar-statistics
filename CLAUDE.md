@@ -18,5 +18,5 @@ change structure, inputs, or outputs.
   fail. Report which values moved and by how much before updating the golden file.
 - Raw Ohm Analytics exports (`data/ohm_analytics_*.csv`) stay local and are
   gitignored. The aggregated Ohm CSVs already in `data/` are fine to keep.
-- Legacy but intentionally kept: `modules/median_interconnection_timelines.py` and
-  `data/solartrace_ix.csv` still feed two Drive sheets.
+- Archived (2026-11-12): the old Solar TRACE xlsx and `solartrace_ix.csv` in
+  `data/archive/`, `median_interconnection_timelines.py` in `modules/archive/`. Not run.
